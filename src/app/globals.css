@@ -1772,3 +1772,73 @@ body.siteIsLoading {
   .whyGrid article { min-height:260px; }
   .reviewGrid article { padding:28px 24px; }
 }
+/* Mobile navbar correction */
+@media (max-width: 700px) {
+  .nav {
+    top: 12px;
+    width: calc(100% - 28px);
+    margin-inline: auto;
+  }
+
+  .navInner {
+    width: 100%;
+    min-height: 58px;
+    padding: 6px 7px 6px 14px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    border-radius: 999px;
+  }
+
+  .brand {
+    min-width: 0;
+    padding-left: 0;
+  }
+
+  .brand img {
+    width: 112px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navCta {
+    min-height: 44px;
+    padding: 0 15px;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 12px;
+    border-radius: 999px;
+  }
+
+  .navCta svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav {
+    width: calc(100% - 20px);
+  }
+
+  .navInner {
+    padding-left: 11px;
+  }
+
+  .brand img {
+    width: 98px;
+  }
+
+  .navCta {
+    min-height: 41px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .navCta svg {
+    display: none;
+  }
+}
