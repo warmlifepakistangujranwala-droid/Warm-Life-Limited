@@ -1,0 +1,131 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : admin-topbar.css
+ * Module  : Admin CMS Navigation
+ *
+ * Purpose :
+ * Styles the administration top navigation.
+ *
+ * Version : v0.3.0
+ * ============================================================
+ */
+
+.admin-topbar {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #e3e9e6;
+  padding: 0 34px;
+  background: rgb(255 255 255 / 92%);
+  backdrop-filter: blur(14px);
+}
+
+.admin-topbar__left,
+.admin-topbar__actions,
+.admin-topbar__profile {
+  display: flex;
+  align-items: center;
+}
+
+.admin-topbar__left {
+  gap: 13px;
+}
+
+.admin-topbar__left strong,
+.admin-topbar__left span,
+.admin-topbar__profile strong,
+.admin-topbar__profile span {
+  display: block;
+}
+
+.admin-topbar__left strong {
+  color: #173128;
+  font-size: 16px;
+}
+
+.admin-topbar__left span {
+  margin-top: 3px;
+  color: #78827e;
+  font-size: 11px;
+}
+
+.admin-topbar__menu {
+  display: none;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #dce4df;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #07573e;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.admin-topbar__actions {
+  gap: 24px;
+}
+
+.admin-topbar__website-link {
+  color: #096045;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-topbar__website-link:hover {
+  color: #bd8d26;
+}
+
+.admin-topbar__profile {
+  gap: 10px;
+}
+
+.admin-topbar__avatar {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border-radius: 50%;
+  background: #07573e;
+  color: #f0c152;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.admin-topbar__profile strong {
+  color: #23342d;
+  font-size: 12px;
+}
+
+.admin-topbar__profile span {
+  margin-top: 3px;
+  color: #87908c;
+  font-size: 10px;
+}
+
+@media (max-width: 1050px) {
+  .admin-topbar__menu {
+    display: grid;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-topbar {
+    padding: 0 16px;
+  }
+
+  .admin-topbar__website-link {
+    display: none;
+  }
+
+  .admin-topbar__profile div {
+    display: none;
+  }
+}

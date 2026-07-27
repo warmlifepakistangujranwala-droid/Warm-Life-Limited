@@ -1,0 +1,42 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : logout-button.css
+ * Module  : Admin Authentication
+ *
+ * Purpose :
+ * Styles the administrator logout action.
+ *
+ * Version : v0.3.0
+ * ============================================================
+ */
+
+.admin-logout-button {
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 6%);
+  color: rgb(255 255 255 / 82%);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.admin-logout-button:hover:not(:disabled) {
+  background: rgb(255 255 255 / 11%);
+  color: #ffffff;
+}
+
+.admin-logout-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}

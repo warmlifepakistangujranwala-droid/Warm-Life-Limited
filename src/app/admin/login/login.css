@@ -1,0 +1,619 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : login.css
+ * Module  : Admin Authentication
+ *
+ * Purpose :
+ * Styles the luxury Warm Life CMS administrator login page.
+ *
+ * Version : v0.2.0
+ * ============================================================
+ */
+
+/* ============================================================
+   Login Page Foundation
+   ============================================================ */
+
+.admin-login-page {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(580px, 1fr) minmax(640px, 1fr);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ============================================================
+   Left Login Panel
+   ============================================================ */
+
+.admin-login-page__panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 54px clamp(42px, 7vw, 120px);
+  background:
+    radial-gradient(circle at 0 100%, rgb(213 170 75 / 8%), transparent 28%),
+    radial-gradient(circle at 0 0, rgb(213 170 75 / 9%), transparent 25%),
+    #ffffff;
+}
+
+/* Decorative upper golden curve. */
+.admin-login-page__panel::before {
+  position: absolute;
+  top: -370px;
+  left: -390px;
+  width: 700px;
+  height: 700px;
+  border: 1px solid rgb(206 158 52 / 42%);
+  border-radius: 50%;
+  content: "";
+}
+
+/* Decorative lower golden curve. */
+.admin-login-page__panel::after {
+  position: absolute;
+  bottom: -440px;
+  left: -410px;
+  width: 740px;
+  height: 740px;
+  border: 1px solid rgb(206 158 52 / 32%);
+  border-radius: 50%;
+  content: "";
+}
+
+/* Contains the logo and complete login form. */
+.admin-login-page__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 590px;
+}
+
+/* ============================================================
+   Warm Life Logo
+   ============================================================ */
+
+/* Centres the logo horizontally above the login form. */
+.admin-login-page__brand {
+  display: grid;
+  width: 100%;
+  height: 180px;
+  place-items: center;
+  margin-bottom: 12px;
+  overflow: visible;
+}
+
+.admin-login-page__logo {
+  display: block;
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  transform: translateY(-10px);
+}
+
+/* ============================================================
+   Login Form
+   ============================================================ */
+
+.admin-login-form {
+  width: 100%;
+}
+
+.admin-login-form__heading {
+  margin-bottom: 34px;
+}
+
+.admin-login-form__eyebrow {
+  position: relative;
+  margin: 0 0 17px;
+  padding-bottom: 10px;
+  color: #06523a;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.admin-login-form__eyebrow::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 56px;
+  height: 2px;
+  border-radius: 999px;
+  background: #d2a63e;
+  content: "";
+}
+
+.admin-login-form__heading h1 {
+  margin: 0;
+  color: #111413;
+  font-size: clamp(37px, 4.4vw, 58px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.admin-login-form__heading h1 span {
+  color: #075b40;
+}
+
+.admin-login-form__description {
+  margin: 15px 0 0;
+  color: #676f6b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   Form Fields
+   ============================================================ */
+
+.admin-login-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 23px;
+}
+
+.admin-login-form__field label {
+  color: #161b19;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.admin-login-form__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.admin-login-form__input-wrapper input {
+  width: 100%;
+  min-height: 60px;
+  box-sizing: border-box;
+  border: 1px solid #d9dedb;
+  border-radius: 12px;
+  padding: 0 54px;
+  outline: none;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 7px 25px rgb(20 62 45 / 3%);
+  color: #163a2d;
+  font: inherit;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-login-form__input-wrapper input::placeholder {
+  color: #8a918d;
+}
+
+.admin-login-form__input-wrapper input:focus {
+  border-color: #08704d;
+  box-shadow:
+    0 0 0 4px rgb(8 112 77 / 10%),
+    0 10px 28px rgb(20 62 45 / 6%);
+  transform: translateY(-1px);
+}
+
+.admin-login-form__input-icon {
+  position: absolute;
+  z-index: 1;
+  left: 18px;
+  display: inline-flex;
+  color: #086343;
+  pointer-events: none;
+}
+
+.admin-login-form__password-toggle {
+  position: absolute;
+  z-index: 2;
+  right: 17px;
+  display: inline-flex;
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  color: #7a827e;
+  cursor: pointer;
+}
+
+.admin-login-form__password-toggle:hover {
+  color: #075b40;
+}
+
+/* Forgot password link remains below the password field. */
+.admin-login-form__forgot-link {
+  width: fit-content;
+  color: #075b40;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.admin-login-form__forgot-link:hover {
+  color: #c18f25;
+}
+
+/* ============================================================
+   Error Message
+   ============================================================ */
+
+.admin-login-form__error {
+  margin-bottom: 22px;
+  border: 1px solid #e7b5b5;
+  border-radius: 12px;
+  padding: 13px 15px;
+  background: #fff4f4;
+  color: #9a2424;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Sign In Button
+   ============================================================ */
+
+.admin-login-form__submit {
+  display: flex;
+  width: 100%;
+  min-height: 61px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  border: 0;
+  border-radius: 12px;
+  margin-top: 8px;
+  background: linear-gradient(
+    100deg,
+    #075b40 0%,
+    #006a48 55%,
+    #07583f 100%
+  );
+  box-shadow:
+    0 14px 30px rgb(0 88 60 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 16%);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 750;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.admin-login-form__submit svg {
+  color: #e2b647;
+}
+
+.admin-login-form__submit:hover:not(:disabled) {
+  box-shadow:
+    0 18px 35px rgb(0 88 60 / 24%),
+    inset 0 1px 0 rgb(255 255 255 / 18%);
+  transform: translateY(-2px);
+}
+
+.admin-login-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* ============================================================
+   Secure Access Divider
+   ============================================================ */
+
+.admin-login-form__secure-divider {
+  display: grid;
+  align-items: center;
+  gap: 14px;
+  grid-template-columns: 1fr auto 1fr;
+  margin: 27px 0;
+}
+
+.admin-login-form__secure-divider > span {
+  height: 1px;
+  background: #dfe3e1;
+}
+
+.admin-login-form__secure-divider p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #8b928e;
+  font-size: 13px;
+}
+
+/* ============================================================
+   Restricted Access Notice
+   ============================================================ */
+
+.admin-login-form__restricted {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #e5e9e6;
+  border-radius: 13px;
+  padding: 17px 18px;
+  background: linear-gradient(
+    100deg,
+    rgb(234 248 240 / 88%),
+    rgb(255 255 255 / 90%)
+  );
+  box-shadow: 0 10px 28px rgb(24 70 52 / 4%);
+}
+
+.admin-login-form__restricted-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff2cd;
+  color: #076143;
+}
+
+.admin-login-form__restricted strong {
+  display: block;
+  color: #1a211e;
+  font-size: 14px;
+}
+
+.admin-login-form__restricted p {
+  margin: 5px 0 0;
+  color: #676f6b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Right Visual Panel
+   ============================================================ */
+
+.admin-login-page__visual {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(60px, 7vw, 110px);
+  background:
+    radial-gradient(circle at 20% 10%, rgb(22 135 89 / 22%), transparent 35%),
+    linear-gradient(135deg, #063c2c 0%, #004b35 48%, #002f23 100%);
+}
+
+/* Background image and dark green overlay. */
+.admin-login-page__visual::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgb(0 50 35 / 86%), rgb(0 57 39 / 72%)),
+    url("/images/admin-login-background.jpg") center / cover no-repeat;
+  content: "";
+  opacity: 0.52;
+}
+
+/* Soft golden glow. */
+.admin-login-page__visual::after {
+  position: absolute;
+  right: -180px;
+  bottom: -240px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(214 170 69 / 20%), transparent 67%);
+  content: "";
+}
+
+.admin-login-page__visual-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 690px;
+  color: #ffffff;
+}
+
+.admin-login-page__security-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #e3b548;
+}
+
+.admin-login-page__security-label span {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.admin-login-page__short-line {
+  width: 78px;
+  height: 2px;
+  margin: 22px 0 28px;
+  background: linear-gradient(90deg, #e2b248, transparent);
+}
+
+.admin-login-page__visual h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(43px, 5vw, 72px);
+  font-weight: 760;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+}
+
+.admin-login-page__visual h2 strong {
+  color: #e2b248;
+  font-weight: inherit;
+}
+
+.admin-login-page__visual-description {
+  max-width: 620px;
+  margin: 0;
+  color: rgb(255 255 255 / 84%);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   CMS Feature Cards
+   ============================================================ */
+
+.admin-login-page__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 62px);
+  margin-top: 48px;
+}
+
+.admin-login-page__feature {
+  margin: 0;
+}
+
+.admin-login-page__feature-icon {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 5%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%);
+  color: #e2b248;
+  backdrop-filter: blur(7px);
+}
+
+.admin-login-page__feature p {
+  margin: 14px 0 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   Decorative Gold Lines
+   ============================================================ */
+
+.admin-login-page__gold-line {
+  position: absolute;
+  z-index: 1;
+  width: 680px;
+  height: 680px;
+  border: 1px solid rgb(227 178 72 / 62%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.admin-login-page__gold-line--top {
+  top: -520px;
+  right: -160px;
+}
+
+.admin-login-page__gold-line--bottom {
+  right: -310px;
+  bottom: -470px;
+}
+
+.admin-login-page__dot-pattern {
+  position: absolute;
+  z-index: 1;
+  width: 90px;
+  height: 90px;
+  opacity: 0.62;
+  background-image: radial-gradient(#e3b248 1.3px, transparent 1.3px);
+  background-size: 13px 13px;
+}
+
+.admin-login-page__dot-pattern--top {
+  top: 35px;
+  right: 40px;
+}
+
+.admin-login-page__dot-pattern--bottom {
+  bottom: 36px;
+  left: 35px;
+}
+
+/* ============================================================
+   Responsive Layout
+   ============================================================ */
+
+@media (max-width: 1180px) {
+  .admin-login-page {
+    grid-template-columns: minmax(520px, 1fr) minmax(480px, 0.85fr);
+  }
+
+  .admin-login-page__visual {
+    padding: 55px;
+  }
+
+  .admin-login-page__features {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 960px) {
+  .admin-login-page {
+    display: block;
+  }
+
+  .admin-login-page__panel {
+    min-height: 100vh;
+    padding: 46px 28px;
+  }
+
+  .admin-login-page__visual {
+    display: none;
+  }
+
+  .admin-login-page__content {
+    max-width: 590px;
+  }
+
+  .admin-login-page__brand {
+    margin-bottom: 34px;
+  }
+
+  .admin-login-page__logo {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-login-page__panel {
+    padding: 30px 20px;
+  }
+
+  .admin-login-page__brand {
+    margin-bottom: 30px;
+  }
+
+  .admin-login-page__logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .admin-login-form__heading h1 {
+    font-size: 38px;
+  }
+
+  .admin-login-form__input-wrapper input {
+    min-height: 56px;
+  }
+
+  .admin-login-form__restricted {
+    align-items: flex-start;
+  }
+}

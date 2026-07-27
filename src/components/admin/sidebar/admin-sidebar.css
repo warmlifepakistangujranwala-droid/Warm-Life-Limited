@@ -1,0 +1,287 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : admin-sidebar.css
+ * Module  : Admin CMS Navigation
+ *
+ * Purpose :
+ * Styles the complete Warm Life CMS sidebar navigation.
+ *
+ * Version : v0.4.0
+ * ============================================================
+ */
+
+/* ============================================================
+   Sidebar Foundation
+   ============================================================ */
+
+.admin-sidebar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 290px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 22px 16px;
+  background:
+    radial-gradient(
+      circle at 0 0,
+      rgb(214 171 67 / 12%),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      #073e2e 0%,
+      #043326 52%,
+      #03291f 100%
+    );
+  box-shadow: 16px 0 40px rgb(7 47 34 / 12%);
+  color: #ffffff;
+}
+
+/* ============================================================
+   Brand Area
+   ============================================================ */
+
+.admin-sidebar__brand {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+  padding: 2px 6px 21px;
+}
+
+.admin-sidebar__logo {
+  display: block;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.admin-sidebar__brand-copy {
+  min-width: 0;
+}
+
+.admin-sidebar__brand strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.admin-sidebar__brand span {
+  display: block;
+  margin-top: 5px;
+  color: rgb(255 255 255 / 58%);
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.admin-sidebar__close {
+  display: none;
+}
+
+/* ============================================================
+   Scrollable Navigation
+   ============================================================ */
+
+.admin-sidebar__navigation {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 10px -5px 10px 0;
+  padding-right: 5px;
+  scrollbar-color: rgb(224 179 72 / 35%) transparent;
+  scrollbar-width: thin;
+}
+
+.admin-sidebar__navigation::-webkit-scrollbar {
+  width: 5px;
+}
+
+.admin-sidebar__navigation::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-sidebar__navigation::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgb(224 179 72 / 28%);
+}
+
+/* ============================================================
+   Navigation Groups
+   ============================================================ */
+
+.admin-sidebar__group {
+  margin-bottom: 17px;
+}
+
+.admin-sidebar__section-label {
+  margin: 0 12px 8px;
+  color: #ddb14b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ============================================================
+   Navigation Links
+   ============================================================ */
+
+.admin-sidebar__link {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0 12px;
+  color: rgb(255 255 255 / 70%);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-sidebar__link:hover {
+  background: rgb(255 255 255 / 6%);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.admin-sidebar__link--active {
+  border-color: rgb(226 180 72 / 24%);
+  background:
+    linear-gradient(
+      90deg,
+      rgb(225 180 74 / 19%),
+      rgb(255 255 255 / 5%)
+    );
+  box-shadow: inset 3px 0 0 #e2b448;
+  color: #ffffff;
+}
+
+.admin-sidebar__icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 7%);
+  color: #e2b448;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.admin-sidebar__link--active .admin-sidebar__icon {
+  background: rgb(226 180 72 / 14%);
+}
+
+.admin-sidebar__link-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Sidebar Footer
+   ============================================================ */
+
+.admin-sidebar__footer {
+  flex: 0 0 auto;
+  border-top: 1px solid rgb(255 255 255 / 9%);
+  padding-top: 15px;
+}
+
+.admin-sidebar__status {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 11px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgb(255 255 255 / 4%);
+}
+
+.admin-sidebar__status-indicator {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #50d28c;
+  box-shadow: 0 0 0 5px rgb(80 210 140 / 11%);
+}
+
+.admin-sidebar__status strong,
+.admin-sidebar__status span {
+  display: block;
+}
+
+.admin-sidebar__status strong {
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.admin-sidebar__status span {
+  margin-top: 3px;
+  color: rgb(255 255 255 / 52%);
+  font-size: 9px;
+}
+
+/* ============================================================
+   Responsive Navigation
+   ============================================================ */
+
+@media (max-width: 1050px) {
+  .admin-sidebar {
+    transform: translateX(-105%);
+    transition: transform 220ms ease;
+  }
+
+  .admin-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .admin-sidebar__close {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 8px;
+    background: rgb(255 255 255 / 5%);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-sidebar {
+    width: min(290px, 90vw);
+  }
+}

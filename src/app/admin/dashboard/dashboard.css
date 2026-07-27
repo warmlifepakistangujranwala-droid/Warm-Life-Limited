@@ -1,0 +1,363 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : dashboard.css
+ * Module  : Admin Dashboard
+ *
+ * Purpose :
+ * Styles the primary Warm Life CMS dashboard.
+ *
+ * Version : v0.3.0
+ * ============================================================
+ */
+
+/* ============================================================
+   Dashboard Header
+   ============================================================ */
+
+.admin-dashboard__view-website {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #d9e3de;
+  border-radius: 10px;
+  padding: 0 18px;
+  background: #ffffff;
+  box-shadow: 0 7px 20px rgb(19 67 49 / 5%);
+  color: #075b40;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-dashboard__view-website:hover {
+  border-color: #bfcfc7;
+  box-shadow: 0 10px 25px rgb(19 67 49 / 9%);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Statistics Cards
+   ============================================================ */
+
+.admin-dashboard__statistics {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 28px;
+}
+
+.admin-dashboard__stat-card {
+  border: 1px solid #e0e7e3;
+  border-radius: 16px;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 100% 0, rgb(212 169 66 / 8%), transparent 32%),
+    #ffffff;
+  box-shadow: 0 12px 35px rgb(25 69 53 / 5%);
+}
+
+.admin-dashboard__stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.admin-dashboard__stat-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 12px;
+  background: #eaf5f0;
+  color: #075b40;
+  font-size: 23px;
+}
+
+.admin-dashboard__status-badge {
+  border-radius: 999px;
+  padding: 6px 9px;
+  background: #edf8f2;
+  color: #16764f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin-dashboard__stat-value {
+  display: block;
+  margin-bottom: 8px;
+  color: #152b22;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.admin-dashboard__stat-card h2 {
+  margin: 0;
+  color: #263a32;
+  font-size: 15px;
+}
+
+.admin-dashboard__stat-card p {
+  margin: 7px 0 0;
+  color: #7a8580;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Main Dashboard Grid
+   ============================================================ */
+
+.admin-dashboard__content-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
+  margin-bottom: 28px;
+}
+
+.admin-dashboard__section {
+  border: 1px solid #e0e7e3;
+  border-radius: 16px;
+  padding: 25px;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgb(25 69 53 / 4%);
+}
+
+.admin-dashboard__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+
+.admin-dashboard__section-eyebrow {
+  margin: 0 0 6px;
+  color: #b48624;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admin-dashboard__section-header h2 {
+  margin: 0;
+  color: #1b3027;
+  font-size: 21px;
+}
+
+/* ============================================================
+   Quick Action Cards
+   ============================================================ */
+
+.admin-dashboard__quick-actions {
+  display: grid;
+  gap: 13px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-dashboard__action-card {
+  position: relative;
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e1e8e4;
+  border-radius: 13px;
+  padding: 17px;
+  background: #fbfdfc;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.admin-dashboard__action-card:hover {
+  border-color: #c8d7cf;
+  box-shadow: 0 10px 24px rgb(18 70 50 / 7%);
+  transform: translateY(-2px);
+}
+
+.admin-dashboard__action-icon {
+  display: grid;
+  width: 47px;
+  height: 47px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 11px;
+  background: #075b40;
+  color: #e4b94f;
+  font-size: 22px;
+}
+
+.admin-dashboard__action-card h3 {
+  margin: 0;
+  color: #1d3229;
+  font-size: 14px;
+}
+
+.admin-dashboard__action-card p {
+  margin: 6px 25px 0 0;
+  color: #78837e;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.admin-dashboard__action-arrow {
+  position: absolute;
+  right: 16px;
+  color: #9ba6a1;
+  font-size: 18px;
+}
+
+/* ============================================================
+   Website Status Panel
+   ============================================================ */
+
+.admin-dashboard__status-panel {
+  border-radius: 13px;
+  padding: 17px;
+  background: #f8fbf9;
+}
+
+.admin-dashboard__website-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e0e7e3;
+  margin-bottom: 10px;
+  padding-bottom: 17px;
+}
+
+.admin-dashboard__online-indicator {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #32bd73;
+  box-shadow: 0 0 0 6px rgb(50 189 115 / 12%);
+}
+
+.admin-dashboard__website-status strong {
+  color: #1d3329;
+  font-size: 13px;
+}
+
+.admin-dashboard__website-status p {
+  margin: 4px 0 0;
+  color: #7c8782;
+  font-size: 11px;
+}
+
+.admin-dashboard__status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  border-bottom: 1px solid #e7ece9;
+  color: #6c7973;
+  font-size: 12px;
+}
+
+.admin-dashboard__status-row:last-child {
+  border-bottom: 0;
+}
+
+.admin-dashboard__status-row strong {
+  color: #176e4c;
+  font-size: 11px;
+}
+
+/* ============================================================
+   Recent Activity
+   ============================================================ */
+
+.admin-dashboard__activity {
+  margin-bottom: 20px;
+}
+
+.admin-dashboard__empty-state {
+  display: flex;
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px dashed #ccd9d2;
+  border-radius: 13px;
+  background: #fafcfb;
+  text-align: left;
+}
+
+.admin-dashboard__empty-icon {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #eaf5f0;
+  color: #08704d;
+  font-weight: 800;
+}
+
+.admin-dashboard__empty-state h3 {
+  margin: 0;
+  color: #263a31;
+  font-size: 14px;
+}
+
+.admin-dashboard__empty-state p {
+  margin: 6px 0 0;
+  color: #7c8782;
+  font-size: 12px;
+}
+
+/* ============================================================
+   Responsive Dashboard
+   ============================================================ */
+
+@media (max-width: 1250px) {
+  .admin-dashboard__statistics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-dashboard__content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-dashboard__view-website {
+    width: 100%;
+  }
+
+  .admin-dashboard__statistics {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard__quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard__section,
+  .admin-dashboard__stat-card {
+    padding: 18px;
+  }
+
+  .admin-dashboard__empty-state {
+    align-items: flex-start;
+    padding: 20px;
+  }
+}

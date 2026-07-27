@@ -1,0 +1,60 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : admin-shell.css
+ * Module  : Admin CMS Layout
+ *
+ * Purpose :
+ * Styles the reusable authenticated administration shell.
+ *
+ * Version : v0.3.0
+ * ============================================================
+ */
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7f5;
+}
+
+.admin-shell__workspace {
+  width: calc(100% - 290px);
+  min-width: 0;
+  margin-left: 290px;
+}
+
+.admin-shell__content {
+  min-height: calc(100vh - 78px);
+  padding: 34px;
+}
+
+.admin-shell__overlay {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .admin-shell__workspace {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .admin-shell__content {
+    padding: 26px;
+  }
+
+  .admin-shell__overlay {
+    position: fixed;
+    z-index: 90;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgb(1 26 18 / 55%);
+    backdrop-filter: blur(2px);
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-shell__content {
+    padding: 20px 16px;
+  }
+}

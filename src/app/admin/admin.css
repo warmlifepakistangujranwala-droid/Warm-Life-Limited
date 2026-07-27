@@ -1,0 +1,56 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : admin.css
+ * Module  : Admin CMS Layout
+ *
+ * Purpose :
+ * Provides shared base styles for authenticated CMS pages.
+ *
+ * Version : v0.3.0
+ * ============================================================
+ */
+
+.admin-page {
+  min-height: 100%;
+}
+
+.admin-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.admin-page__eyebrow {
+  margin: 0 0 8px;
+  color: #b88925;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.admin-page__title {
+  margin: 0;
+  color: #13251e;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.admin-page__description {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: #69746f;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  .admin-page__header {
+    flex-direction: column;
+  }
+}
