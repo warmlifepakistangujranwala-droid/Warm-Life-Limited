@@ -1,33 +1,54 @@
 export type HeroSlide = {
   id: string;
   eyebrow: string | null;
+
   title_line_one: string;
+  title_line_one_color: string;
+
   title_line_two: string | null;
+  title_line_two_color: string;
+
   description: string | null;
+  description_color: string;
+
   primary_button_text: string | null;
   primary_button_link: string | null;
+
   secondary_button_text: string | null;
   secondary_button_link: string | null;
+
   video_url: string;
   video_poster_url: string | null;
+
   display_order: number;
   is_active: boolean;
   is_published: boolean;
+
   created_at: string;
   updated_at: string;
 };
 
 export type HeroSlideFormValues = {
   eyebrow: string;
+
   title_line_one: string;
+  title_line_one_color: string;
+
   title_line_two: string;
+  title_line_two_color: string;
+
   description: string;
+  description_color: string;
+
   primary_button_text: string;
   primary_button_link: string;
+
   secondary_button_text: string;
   secondary_button_link: string;
+
   video_url: string;
   video_poster_url: string;
+
   display_order: number;
   is_active: boolean;
   is_published: boolean;
@@ -46,9 +67,14 @@ export type HeroSlideActionResult<T = null> = {
   errors?: Record<string, string[]>;
 };
 
-export type HeroSlideStatus = "published" | "draft" | "inactive";
+export type HeroSlideStatus =
+  | "published"
+  | "draft"
+  | "inactive";
 
-export function getHeroSlideStatus(slide: HeroSlide): HeroSlideStatus {
+export function getHeroSlideStatus(
+  slide: HeroSlide,
+): HeroSlideStatus {
   if (!slide.is_active) {
     return "inactive";
   }
@@ -60,7 +86,9 @@ export function getHeroSlideStatus(slide: HeroSlide): HeroSlideStatus {
   return "draft";
 }
 
-export function getHeroSlideStatusLabel(slide: HeroSlide): string {
+export function getHeroSlideStatusLabel(
+  slide: HeroSlide,
+): string {
   const status = getHeroSlideStatus(slide);
 
   if (status === "published") {
@@ -76,15 +104,25 @@ export function getHeroSlideStatusLabel(slide: HeroSlide): string {
 
 export const defaultHeroSlideValues: HeroSlideFormValues = {
   eyebrow: "",
+
   title_line_one: "",
+  title_line_one_color: "#0b2f24",
+
   title_line_two: "",
+  title_line_two_color: "#2f7a55",
+
   description: "",
+  description_color: "#5f6f68",
+
   primary_button_text: "",
   primary_button_link: "",
+
   secondary_button_text: "",
   secondary_button_link: "",
+
   video_url: "",
   video_poster_url: "",
+
   display_order: 0,
   is_active: true,
   is_published: false,

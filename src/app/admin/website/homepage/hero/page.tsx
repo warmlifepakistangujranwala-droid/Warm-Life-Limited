@@ -106,6 +106,13 @@ export default async function HeroManagerPage() {
             <ArrowLeft size={16} />
             Homepage
           </Link>
+          <Link
+          href="/admin/website/homepage/hero/insights"
+          className="heroManager__backButton"
+          >
+          <ListVideo size={16} />
+          Manage Insights
+          </Link>
 
           <Link
             href="/admin/website/homepage/hero/new"
@@ -346,13 +353,13 @@ export default async function HeroManagerPage() {
                           </button>
                         </form>
 
-                        <Link
-                          href={`/admin/website/homepage/hero/${slide.id}`}
-                          className="heroSlideCard__editButton"
-                        >
-                          <Edit3 size={15} />
-                          Edit
-                        </Link>
+                            <Link
+        href={`/admin/website/homepage/hero/${slide.id}/edit`}
+        className="heroSlideCard__editButton"
+        >
+        <Edit3 size={15} />
+        Edit
+        </Link>
 
                         <form action={deleteHeroAction}>
                           <input

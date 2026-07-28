@@ -1,5 +1,13 @@
 import { z } from "zod";
 
+const hexColorSchema = z
+  .string()
+  .trim()
+  .regex(
+    /^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/,
+    "Please enter a valid hex colour.",
+  );
+
 export const heroSlideSchema = z.object({
   eyebrow: z
     .string()
@@ -12,15 +20,21 @@ export const heroSlideSchema = z.object({
     .min(1, "Title line one is required.")
     .max(120, "Title line one cannot exceed 120 characters."),
 
+  title_line_one_color: hexColorSchema,
+
   title_line_two: z
     .string()
     .trim()
     .max(120, "Title line two cannot exceed 120 characters."),
 
+  title_line_two_color: hexColorSchema,
+
   description: z
     .string()
     .trim()
     .max(600, "Description cannot exceed 600 characters."),
+
+  description_color: hexColorSchema,
 
   primary_button_text: z
     .string()
@@ -47,9 +61,7 @@ export const heroSlideSchema = z.object({
     .trim()
     .min(1, "Hero video is required."),
 
-  video_poster_url: z
-    .string()
-    .trim(),
+  video_poster_url: z.string().trim(),
 
   display_order: z
     .number()

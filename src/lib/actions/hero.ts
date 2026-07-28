@@ -83,6 +83,7 @@ export async function createHeroSlide(
   }
 
   revalidatePath("/admin/website/homepage/hero");
+revalidatePath("/");
 
   return {
     success: true,
@@ -124,7 +125,8 @@ export async function updateHeroSlide(
   }
 
   revalidatePath("/admin/website/homepage/hero");
-
+revalidatePath("/");
+revalidatePath(`/admin/website/homepage/hero/${id}/edit`);
   return {
     success: true,
     message: "Hero updated successfully.",
@@ -151,6 +153,7 @@ export async function deleteHeroSlide(id: string) {
   }
 
   revalidatePath("/admin/website/homepage/hero");
+revalidatePath("/");
 
   return {
     success: true,
@@ -183,6 +186,7 @@ export async function setHeroPublished(
   }
 
   revalidatePath("/admin/website/homepage/hero");
+revalidatePath("/");
 
   return {
     success: true,

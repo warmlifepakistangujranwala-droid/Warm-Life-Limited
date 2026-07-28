@@ -14,54 +14,72 @@ import {
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createHeroSlide } from "@/lib/actions/hero";
+import { updateHeroSlide } from "@/lib/actions/hero";
 import { createClient } from "@/lib/supabase/client";
-import type { HeroSlideFormValues } from "@/lib/types/hero";
+import type { HeroSlide, HeroSlideFormValues } from "@/lib/types/hero";
 
 const MAX_VIDEO_SIZE = 100 * 1024 * 1024;
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
 
-const initialFormValues: HeroSlideFormValues = {
-  eyebrow: "",
-  title_line_one: "",
-  title_line_one_color: "#0b2f24",
-  title_line_two: "",
-  title_line_two_color: "#2f7a55",
-  description: "",
-  description_color: "#5f6f68",
-  primary_button_text: "",
-  primary_button_link: "",
-  secondary_button_text: "",
-  secondary_button_link: "",
-  video_url: "",
-  video_poster_url: "",
-  display_order: 0,
-  is_active: true,
-  is_published: false,
-};
+function getInitialFormValues(
+  heroSlide: HeroSlide,
+): HeroSlideFormValues {
+  return {
+    eyebrow: heroSlide.eyebrow ?? "",
+    title_line_one: heroSlide.title_line_one,
+    title_line_one_color:
+      heroSlide.title_line_one_color ?? "#0b2f24",
+    title_line_two: heroSlide.title_line_two ?? "",
+    title_line_two_color:
+      heroSlide.title_line_two_color ?? "#2f7a55",
+    description: heroSlide.description ?? "",
+    description_color:
+      heroSlide.description_color ?? "#5f6f68",
+    primary_button_text:
+      heroSlide.primary_button_text ?? "",
+    primary_button_link:
+      heroSlide.primary_button_link ?? "",
+    secondary_button_text:
+      heroSlide.secondary_button_text ?? "",
+    secondary_button_link:
+      heroSlide.secondary_button_link ?? "",
+    video_url: heroSlide.video_url,
+    video_poster_url:
+      heroSlide.video_poster_url ?? "",
+    display_order: heroSlide.display_order,
+    is_active: heroSlide.is_active,
+    is_published: heroSlide.is_published,
+  };
+}
 
 type FormErrors = Partial<Record<keyof HeroSlideFormValues, string>>;
 
 const HEX_COLOR_PATTERN = /^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/;
 
-export default function HeroForm() {
+type HeroEditFormProps = {
+  heroSlide: HeroSlide;
+};
+
+export default function HeroEditForm({
+  heroSlide,
+}: HeroEditFormProps) {
   const router = useRouter();
   const supabase = createClient();
 
   const [formValues, setFormValues] =
-    useState<HeroSlideFormValues>(initialFormValues);
+    useState<HeroSlideFormValues>(() => getInitialFormValues(heroSlide));
 
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [posterFile, setPosterFile] = useState<File | null>(null);
 
-  const [videoPreview, setVideoPreview] = useState("");
-  const [posterPreview, setPosterPreview] = useState("");
+  const [videoPreview, setVideoPreview] = useState(heroSlide.video_url);
+  const [posterPreview, setPosterPreview] = useState(heroSlide.video_poster_url ?? "");
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [formMessage, setFormMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMode, setSubmitMode] = useState<"draft" | "publish">(
-    "draft",
+    heroSlide.is_published ? "publish" : "draft",
   );
 
   useEffect(() => {
@@ -342,7 +360,8 @@ export default function HeroForm() {
         uploadedPosterPath = uploadedPoster.storagePath;
       }
 
-      const result = await createHeroSlide({
+      const result = await updateHeroSlide({
+        id: heroSlide.id,
         ...formValues,
         eyebrow: formValues.eyebrow.trim(),
         title_line_one: formValues.title_line_one.trim(),
@@ -386,7 +405,7 @@ export default function HeroForm() {
         }
 
         setFormMessage(
-          result.message || "Hero slide could not be saved.",
+          result.message || "Hero slide could not be updated.",
         );
 
         return;
@@ -484,7 +503,7 @@ export default function HeroForm() {
                     <Film size={17} />
 
                     <div>
-                      <strong>{videoFile?.name}</strong>
+                      <strong>{videoFile?.name ?? "Current hero video"}</strong>
                       <span>
                         {videoFile
                           ? `${(
@@ -492,7 +511,7 @@ export default function HeroForm() {
                               1024 /
                               1024
                             ).toFixed(2)} MB`
-                          : ""}
+                          : "Existing uploaded video"}
                       </span>
                     </div>
                   </div>
@@ -1051,7 +1070,7 @@ export default function HeroForm() {
           <CheckCircle2 size={17} />
 
           <span>
-            Video and content will be saved securely to
+            Changes to this hero slide will be saved securely to
             Supabase.
           </span>
         </div>
@@ -1090,7 +1109,7 @@ export default function HeroForm() {
               <Eye size={17} />
             )}
 
-            Publish Hero
+            Update & Publish
           </button>
         </div>
       </footer>
