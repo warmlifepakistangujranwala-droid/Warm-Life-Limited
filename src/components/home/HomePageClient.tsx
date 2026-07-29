@@ -18,86 +18,43 @@ import {
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 
-
-import { useCallback, useEffect, useRef, useState } from "react";
-//import HeroSection from "@/components/home/HeroSection";
-
 import type { HeroSlide } from "@/lib/types/hero";
 import type { HeroInsight } from "@/lib/types/hero-insight";
+import type {
+  HomepageService,
+  HomepageServicesData,
+} from "@/lib/types/homepage-service";
 
-type Service = {
-  number: string;
-  title: string;
-  eyebrow: string;
-  description: string;
-  bullets: string[];
-  video: string;
-  objectPosition?: string;
-};
 type HomePageClientProps = {
   heroSlides: HeroSlide[];
   heroInsights: HeroInsight[];
+  homepageServices: HomepageServicesData;
 };
 
-const services: Service[] = [
-  {
-    number: "01",
-    eyebrow: "Renewable energy",
-    title: "Turn daylight into lower energy costs.",
-    description:
-      "Solar panels help households generate cleaner electricity at home, reduce reliance on the grid and support a more efficient energy future.",
-    bullets: [
-      "Cleaner electricity generated at home",
-      "Reduced grid dependence",
-      "Professional roof-mounted systems"
-    ],
-    video: "/videos/solar-installation.mp4",
-    objectPosition: "center"
-  },
-  {
-    number: "02",
-    eyebrow: "Heat retention",
-    title: "Keep valuable warmth inside your loft.",
-    description:
-      "Loft insulation helps slow heat loss through the roof, improving comfort during colder months while supporting lower household energy demand.",
-    bullets: [
-      "Less heat escaping through the roof",
-      "Improved comfort in colder weather",
-      "A practical whole-home efficiency upgrade"
-    ],
-    video: "/videos/loft-insulation.mp4",
-    objectPosition: "center"
-  },
-  {
-    number: "03",
-    eyebrow: "Building fabric",
-    title: "Protect the home through insulated cavity walls.",
-    description:
-      "Cavity wall insulation fills the space between internal and external walls, helping reduce heat loss and maintain a more stable indoor temperature.",
-    bullets: [
-      "Improved thermal performance",
-      "Reduced heat loss through external walls",
-      "A warmer and more consistent indoor environment"
-    ],
-    video: "/videos/cavity-wall.mp4",
-    objectPosition: "center"
-  }
-];
 export default function HomePageClient({
   heroSlides,
   heroInsights,
+  homepageServices,
 }: HomePageClientProps) {
   const serviceStoryRef = useRef<HTMLElement | null>(null);
   const wheelLockedRef = useRef(false);
 
+  const servicesSection = homepageServices?.section ?? null;
+  const services = homepageServices?.services ?? [];
+
   const [activeService, setActiveService] = useState(0);
 
+  const animationDuration =
+    servicesSection?.animation_duration ?? 720;
+
   const changeService = useCallback(
-    (direction: 1 | -1) => {
-      if (wheelLockedRef.current) {
+    (direction: 1 | -1): boolean => {
+      if (wheelLockedRef.current || services.length === 0) {
         return false;
       }
 
@@ -112,21 +69,32 @@ export default function HomePageClient({
 
       window.setTimeout(() => {
         wheelLockedRef.current = false;
-      }, 720);
+      }, animationDuration);
 
       return true;
     },
-    [activeService],
+    [activeService, animationDuration, services.length],
   );
+
+  useEffect(() => {
+    if (services.length === 0) {
+      setActiveService(0);
+      return;
+    }
+
+    setActiveService((currentIndex) =>
+      Math.min(currentIndex, services.length - 1),
+    );
+  }, [services.length]);
 
   useEffect(() => {
     const section = serviceStoryRef.current;
 
-    if (!section) {
+    if (!section || services.length === 0) {
       return;
     }
 
-    const updateServiceFromScroll = () => {
+    const updateServiceFromScroll = (): void => {
       const rect = section.getBoundingClientRect();
 
       const scrollableDistance = Math.max(
@@ -151,33 +119,27 @@ export default function HomePageClient({
 
     updateServiceFromScroll();
 
-    window.addEventListener(
-      "scroll",
-      updateServiceFromScroll,
-      {
-        passive: true,
-      },
-    );
-
-    window.addEventListener(
-      "resize",
-      updateServiceFromScroll,
-    );
+    window.addEventListener("scroll", updateServiceFromScroll, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateServiceFromScroll);
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        updateServiceFromScroll,
-      );
-
-      window.removeEventListener(
-        "resize",
-        updateServiceFromScroll,
-      );
+      window.removeEventListener("scroll", updateServiceFromScroll);
+      window.removeEventListener("resize", updateServiceFromScroll);
     };
-  }, []);
+  }, [services.length]);
 
-  const service = services[activeService];
+  const activeServiceData: HomepageService | null =
+    services[activeService] ?? null;
+
+  const scrollHeightPerService =
+    servicesSection?.scroll_height ?? 650;
+
+  const serviceSectionHeight =
+    services.length > 1
+      ? `calc(100vh + ${(services.length - 1) * scrollHeightPerService}px)`
+      : "100vh";
 
   return (
     <>
@@ -187,153 +149,264 @@ export default function HomePageClient({
           heroInsights={heroInsights}
         />
 
-        <section
-          className="introSection"
-          id="about"
-        >
-          <div className="shell introGrid">
-            <span>One connected journey</span>
+        {servicesSection?.is_active &&
+        activeServiceData &&
+        services.length > 0 ? (
+          <section
+            className="serviceStory"
+            id="services"
+            ref={serviceStoryRef}
+            style={{
+              minHeight: serviceSectionHeight,
+              backgroundColor: servicesSection.background_color,
+              paddingTop: `${servicesSection.padding_top}px`,
+              paddingBottom: `${servicesSection.padding_bottom}px`,
+            }}
+          >
+            <div className="serviceExperience">
+              <div className="serviceStage shell">
+                <div className="videoPanel">
+                  {activeServiceData.media_type === "video" &&
+                  activeServiceData.video_url ? (
+                    <video
+                      key={activeServiceData.video_url}
+                      className="serviceVideo isActive"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      poster={
+                        activeServiceData.video_poster_url ?? undefined
+                      }
+                      style={{
+                        objectPosition:
+                          activeServiceData.object_position ?? "center",
+                        transitionDuration: `${animationDuration}ms`,
+                      }}
+                    >
+                      <source
+                        src={activeServiceData.video_url}
+                        type="video/mp4"
+                      />
+                    </video>
+                  ) : activeServiceData.image_url ? (
+                    <Image
+                      key={activeServiceData.image_url}
+                      src={activeServiceData.image_url}
+                      alt={activeServiceData.service_name}
+                      fill
+                      priority={activeService === 0}
+                      sizes="(max-width: 900px) 100vw, 55vw"
+                      className="serviceVideo isActive object-cover"
+                      style={{
+                        objectPosition:
+                          activeServiceData.object_position ?? "center",
+                        transitionDuration: `${animationDuration}ms`,
+                      }}
+                    />
+                  ) : (
+                    <div
+                      className="serviceVideo isActive"
+                      aria-hidden="true"
+                      style={{
+                        backgroundColor:
+                          servicesSection.background_color,
+                      }}
+                    />
+                  )}
 
-            <h2>
-              See how every upgrade works together to create a
-              warmer, more efficient home.
-            </h2>
-          </div>
-        </section>
+                  <div className="videoGradient" />
 
-        <section
-          className="serviceStory"
-          id="services"
-          ref={serviceStoryRef}
-        >
-          <div className="serviceExperience">
-            <div className="serviceStage shell">
-              <div className="videoPanel">
-                <video
-                  key={service.video}
-                  className="serviceVideo isActive"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  style={{
-                    objectPosition:
-                      service.objectPosition ?? "center",
-                  }}
-                >
-                  <source
-                    src={service.video}
-                    type="video/mp4"
-                  />
-                </video>
+                  <div className="videoBadge">
+                    <span>
+                      {activeServiceData.display_number ??
+                        String(activeService + 1).padStart(2, "0")}
+                    </span>
+                    {activeServiceData.eyebrow ??
+                      activeServiceData.service_name}
+                  </div>
 
-                <div className="videoGradient" />
+                  <div className="videoNavigation">
+                    <button
+                      type="button"
+                      onClick={() => changeService(-1)}
+                      disabled={activeService === 0}
+                      aria-label="Previous service"
+                    >
+                      <ChevronLeft size={19} />
+                    </button>
 
-                <div className="videoBadge">
-                  <span>{service.number}</span>
-                  {service.eyebrow}
-                </div>
-
-                <div className="videoNavigation">
-                  <button
-                    type="button"
-                    onClick={() => changeService(-1)}
-                    disabled={activeService === 0}
-                    aria-label="Previous service"
-                  >
-                    <ChevronLeft size={19} />
-                  </button>
-
-                  <strong>
-                    {String(activeService + 1).padStart(
-                      2,
-                      "0",
-                    )}{" "}
-                    /{" "}
-                    {String(services.length).padStart(
-                      2,
-                      "0",
-                    )}
-                  </strong>
-
-                  <button
-                    type="button"
-                    onClick={() => changeService(1)}
-                    disabled={
-                      activeService ===
-                      services.length - 1
-                    }
-                    aria-label="Next service"
-                  >
-                    <ChevronRight size={19} />
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className="serviceCopy"
-                key={service.title}
-              >
-                <div className="sectionKicker">
-                  Upgrade {service.number}
-                </div>
-
-                <h2>{service.title}</h2>
-
-                <p>{service.description}</p>
-
-                <ul>
-                  {service.bullets.map((bullet) => (
-                    <li key={bullet}>
-                      <Check size={17} />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="wheelInstruction">
-                  <MousePointer2 size={17} />
-
-                  <div>
                     <strong>
-                      {activeService ===
-                      services.length - 1
-                        ? "Continue scrolling to the next section"
-                        : "Keep scrolling to reveal the next service"}
+                      {String(activeService + 1).padStart(2, "0")} /{" "}
+                      {String(services.length).padStart(2, "0")}
                     </strong>
 
-                    <span>
-                      This section stays in place while each
-                      service changes with your scroll.
-                    </span>
+                    <button
+                      type="button"
+                      onClick={() => changeService(1)}
+                      disabled={activeService === services.length - 1}
+                      aria-label="Next service"
+                    >
+                      <ChevronRight size={19} />
+                    </button>
                   </div>
                 </div>
 
                 <div
-                  className="serviceDots"
-                  aria-label="Service progress"
+                  className="serviceCopy"
+                  key={activeServiceData.id}
+                  style={{
+                    textAlign: servicesSection.section_alignment,
+                    transitionDuration: `${animationDuration}ms`,
+                  }}
                 >
-                  {services.map((item, index) => (
-                    <button
-                      type="button"
-                      key={item.title}
-                      className={
-                        index === activeService
-                          ? "isActive"
-                          : ""
+                  <h2
+                    style={{
+                      marginTop: 0,
+                      marginBottom: "24px",
+                      color: servicesSection.section_heading_color,
+                      fontSize: `${servicesSection.section_heading_size}px`,
+                      fontWeight: servicesSection.section_heading_weight,
+                    }}
+                  >
+                    {activeServiceData.service_name}
+                  </h2>
+
+                  <div
+                    className="sectionKicker"
+                    style={{
+                      color:
+                        activeServiceData.eyebrow_color ?? undefined,
+                      fontSize: `${activeServiceData.eyebrow_size ?? 14}px`,
+                    }}
+                  >
+                    {activeServiceData.eyebrow ??
+                      `Upgrade ${
+                        activeServiceData.display_number ??
+                        String(activeService + 1).padStart(2, "0")
+                      }`}
+                  </div>
+
+                  <h2
+                    style={{
+                      color: activeServiceData.title_color ?? undefined,
+                      fontSize: `${activeServiceData.title_size ?? 54}px`,
+                      fontWeight:
+                        activeServiceData.title_weight ?? 700,
+                    }}
+                  >
+                    {activeServiceData.title}
+                  </h2>
+
+                  {activeServiceData.description ? (
+                    <p
+                      style={{
+                        color:
+                          activeServiceData.description_color ??
+                          undefined,
+                        fontSize: `${
+                          activeServiceData.description_size ?? 18
+                        }px`,
+                      }}
+                    >
+                      {activeServiceData.description}
+                    </p>
+                  ) : null}
+
+                  {(activeServiceData.bullets ?? []).length > 0 ? (
+                    <ul>
+                      {(activeServiceData.bullets ?? []).map(
+                        (bullet, index) => (
+                          <li
+                            key={bullet.id ?? `${activeServiceData.id}-${index}`}
+                            style={{
+                              color:
+                                activeServiceData.bullet_color ??
+                                undefined,
+                              fontSize: `${
+                                activeServiceData.bullet_size ?? 16
+                              }px`,
+                            }}
+                          >
+                            <Check size={17} />
+                            {bullet.bullet_text}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  ) : null}
+
+                  {activeServiceData.button_text &&
+                  activeServiceData.button_link ? (
+                    <a
+                      href={activeServiceData.button_link}
+                      target={
+                        activeServiceData.open_in_new_tab
+                          ? "_blank"
+                          : undefined
                       }
-                      onClick={() =>
-                        setActiveService(index)
+                      rel={
+                        activeServiceData.open_in_new_tab
+                          ? "noopener noreferrer"
+                          : undefined
                       }
-                      aria-label={`View ${item.title}`}
-                    />
-                  ))}
+                      className="deliveryButton"
+                      style={{
+                        backgroundColor:
+                          activeServiceData.button_background_color ??
+                          "#0b2f24",
+                        color:
+                          activeServiceData.button_text_color ?? "#ffffff",
+                        borderRadius: `${
+                          activeServiceData.button_radius ?? 999
+                        }px`,
+                        fontSize: `${activeServiceData.button_size ?? 15}px`,
+                      }}
+                    >
+                      {activeServiceData.button_text}
+                      <ArrowRight size={16} />
+                    </a>
+                  ) : null}
+
+                  <div className="wheelInstruction">
+                    <MousePointer2 size={17} />
+
+                    <div>
+                      <strong>
+                        {activeService === services.length - 1
+                          ? "Continue scrolling to the next section"
+                          : "Keep scrolling to reveal the next service"}
+                      </strong>
+
+                      <span>
+                        This section stays in place while each service
+                        changes with your scroll.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    className="serviceDots"
+                    aria-label="Service progress"
+                  >
+                    {services.map((item, index) => (
+                      <button
+                        type="button"
+                        key={item.id}
+                        className={
+                          index === activeService ? "isActive" : ""
+                        }
+                        onClick={() => setActiveService(index)}
+                        aria-label={`View ${item.service_name}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
         <section className="deliverySection">
           <div className="shell deliveryGrid">
@@ -866,6 +939,5 @@ export default function HomePageClient({
     </>
   );
 }
-
 
 
