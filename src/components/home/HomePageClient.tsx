@@ -19,10 +19,13 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-
+import type { HomepageCertificationsData } from "@/lib/types/homepage-certification";
+import type { HomepagePartnersData } from "@/lib/types/homepage-partner";
+import type { HomepageLocalAuthoritiesData } from "@/lib/types/homepage-local-authority";
+import LocalAuthoritySection from "./LocalAuthoritySection";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-
+import PartnerMarquee from "./PartnerMarquee";
 import type { HeroSlide } from "@/lib/types/hero";
 import type { HeroInsight } from "@/lib/types/hero-insight";
 import type {
@@ -34,18 +37,56 @@ type HomePageClientProps = {
   heroSlides: HeroSlide[];
   heroInsights: HeroInsight[];
   homepageServices: HomepageServicesData;
+  homepageCertifications: HomepageCertificationsData;
+  homepagePartners: HomepagePartnersData;
+  homepageLocalAuthorities: HomepageLocalAuthoritiesData;
 };
 
 export default function HomePageClient({
   heroSlides,
   heroInsights,
   homepageServices,
+  homepageCertifications,
+  homepagePartners,
+  homepageLocalAuthorities,
 }: HomePageClientProps) {
   const serviceStoryRef = useRef<HTMLElement | null>(null);
   const wheelLockedRef = useRef(false);
 
+  const certificationsViewportRef = useRef<HTMLDivElement | null>(null);
+  const certificationsTrackRef = useRef<HTMLDivElement | null>(null);
+  const certificationAnimationRef = useRef<number | null>(null);
+  const certificationPositionRef = useRef(0);
+  const certificationLastTimeRef = useRef<number | null>(null);
+  const certificationPausedRef = useRef(false);
+  const certificationDraggingRef = useRef(false);
+  const certificationDragStartXRef = useRef(0);
+  const certificationDragStartPositionRef = useRef(0);
+
   const servicesSection = homepageServices?.section ?? null;
   const services = homepageServices?.services ?? [];
+
+  const certificationsSection =
+    homepageCertifications?.section ?? null;
+  const certifications =
+    homepageCertifications?.certifications ?? [];
+    const partnersSection =
+  homepagePartners?.section ?? null;
+
+const partners =
+  homepagePartners?.partners ?? [];
+  const visiblePartners = partners
+  .filter(
+    (partner) =>
+      partner.is_active &&
+      partner.is_published &&
+      Boolean(partner.logo_url),
+  )
+  .sort(
+    (firstPartner, secondPartner) =>
+      firstPartner.display_order -
+      secondPartner.display_order,
+  );
 
   const [activeService, setActiveService] = useState(0);
 
@@ -130,6 +171,156 @@ export default function HomePageClient({
     };
   }, [services.length]);
 
+
+  const updateCertificationTrack = useCallback((): void => {
+    const track = certificationsTrackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    const loopWidth = track.scrollWidth / 2;
+
+    if (loopWidth <= 0) {
+      return;
+    }
+
+    while (certificationPositionRef.current <= -loopWidth) {
+      certificationPositionRef.current += loopWidth;
+    }
+
+    while (certificationPositionRef.current > 0) {
+      certificationPositionRef.current -= loopWidth;
+    }
+
+    track.style.transform = `translate3d(${certificationPositionRef.current}px, 0, 0)`;
+  }, []);
+
+  useEffect(() => {
+    const track = certificationsTrackRef.current;
+
+    if (
+      !track ||
+      !certificationsSection?.is_active ||
+      certifications.length === 0
+    ) {
+      return;
+    }
+
+    certificationPositionRef.current = 0;
+    certificationLastTimeRef.current = null;
+    updateCertificationTrack();
+
+    const speed = Math.max(
+      10,
+      certificationsSection.autoplay_speed ?? 42,
+    );
+
+    const animate = (time: number): void => {
+      if (certificationLastTimeRef.current === null) {
+        certificationLastTimeRef.current = time;
+      }
+
+      const elapsed =
+        (time - certificationLastTimeRef.current) / 1000;
+      certificationLastTimeRef.current = time;
+
+      if (
+        !certificationPausedRef.current &&
+        !certificationDraggingRef.current
+      ) {
+        certificationPositionRef.current -= speed * elapsed;
+        updateCertificationTrack();
+      }
+
+      certificationAnimationRef.current =
+        window.requestAnimationFrame(animate);
+    };
+
+    certificationAnimationRef.current =
+      window.requestAnimationFrame(animate);
+
+    const handleResize = (): void => {
+      updateCertificationTrack();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      if (certificationAnimationRef.current !== null) {
+        window.cancelAnimationFrame(
+          certificationAnimationRef.current,
+        );
+      }
+
+      certificationAnimationRef.current = null;
+      certificationLastTimeRef.current = null;
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [
+    certifications.length,
+    certificationsSection?.autoplay_speed,
+    certificationsSection?.is_active,
+    updateCertificationTrack,
+  ]);
+
+  const handleCertificationsWheel = useCallback(
+    (event: React.WheelEvent<HTMLDivElement>): void => {
+      event.preventDefault();
+
+      const movement =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+      certificationPositionRef.current -= movement * 0.65;
+      updateCertificationTrack();
+    },
+    [updateCertificationTrack],
+  );
+
+  const handleCertificationPointerDown = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>): void => {
+      certificationDraggingRef.current = true;
+      certificationPausedRef.current = true;
+      certificationDragStartXRef.current = event.clientX;
+      certificationDragStartPositionRef.current =
+        certificationPositionRef.current;
+
+      event.currentTarget.setPointerCapture(event.pointerId);
+    },
+    [],
+  );
+
+  const handleCertificationPointerMove = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>): void => {
+      if (!certificationDraggingRef.current) {
+        return;
+      }
+
+      const distance =
+        event.clientX - certificationDragStartXRef.current;
+
+      certificationPositionRef.current =
+        certificationDragStartPositionRef.current + distance;
+
+      updateCertificationTrack();
+    },
+    [updateCertificationTrack],
+  );
+
+  const stopCertificationDragging = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>): void => {
+      certificationDraggingRef.current = false;
+      certificationPausedRef.current = false;
+
+      if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+        event.currentTarget.releasePointerCapture(event.pointerId);
+      }
+    },
+    [],
+  );
+
   const activeServiceData: HomepageService | null =
     services[activeService] ?? null;
 
@@ -149,7 +340,9 @@ export default function HomePageClient({
           heroInsights={heroInsights}
         />
 
-        {servicesSection?.is_active &&
+        
+
+         {servicesSection?.is_active &&
         activeServiceData &&
         services.length > 0 ? (
           <section
@@ -408,6 +601,7 @@ export default function HomePageClient({
           </section>
         ) : null}
 
+
         <section className="deliverySection">
           <div className="shell deliveryGrid">
             <div className="deliveryCard">
@@ -479,65 +673,317 @@ export default function HomePageClient({
           </div>
         </section>
 
-        <section className="brandBand certificationBand">
-          <div className="shell">
-            <div className="bandHeading">
-              <small>Our certifications</small>
-
-              <h2>
-                Recognised standards behind every survey
-                and installation.
+        {certificationsSection?.is_active &&
+        certifications.length > 0 ? (
+          <section
+            className="certificationsCmsSection"
+            aria-labelledby="certifications-heading"
+            style={{
+              backgroundColor:
+                certificationsSection.background_color,
+              paddingTop: `${certificationsSection.padding_top}px`,
+              paddingBottom: `${certificationsSection.padding_bottom}px`,
+            }}
+          >
+            <div className="shell">
+              <h2
+                id="certifications-heading"
+                className="certificationsCmsHeading"
+                style={{
+                  color: certificationsSection.heading_color,
+                  fontSize: `clamp(30px, 4vw, ${certificationsSection.heading_size}px)`,
+                  fontWeight:
+                    certificationsSection.heading_weight,
+                }}
+              >
+                {certificationsSection.heading}
               </h2>
             </div>
 
-            <div className="logoRail fiveLogos">
-              {[
-                "TrustMark",
-                "Gas Safe",
-                "Elmhurst Energy",
-                "Qualitymark Accredited",
-                "Retrofit Academy",
-              ].map((name) => (
-                <div
-                  className="logoTile"
-                  key={name}
-                >
-                  <span>{name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            <div
+              ref={certificationsViewportRef}
+              className="certificationsViewport"
+              onMouseEnter={() => {
+                certificationPausedRef.current = true;
+              }}
+              onMouseLeave={() => {
+                if (!certificationDraggingRef.current) {
+                  certificationPausedRef.current = false;
+                }
+              }}
+              onWheel={handleCertificationsWheel}
+              onPointerDown={handleCertificationPointerDown}
+              onPointerMove={handleCertificationPointerMove}
+              onPointerUp={stopCertificationDragging}
+              onPointerCancel={stopCertificationDragging}
+              aria-label="Certification logos"
+            >
+              <div
+                ref={certificationsTrackRef}
+                className="certificationsTrack"
+              >
+                {[...certifications, ...certifications].map(
+                  (certification, index) => {
+                    const logo = (
+                      <div className="certificationLogoCard">
+                        <Image
+                          src={certification.logo_url}
+                          alt={certification.name}
+                          width={220}
+                          height={120}
+                          className="certificationLogoImage"
+                          sizes="(max-width: 640px) 150px, 190px"
+                        />
+                        <span className="certificationLogoName">
+                          {certification.name}
+                        </span>
+                      </div>
+                    );
 
-        <section className="brandBand partnerBand">
-          <div className="shell">
-            <div className="bandHeading">
-              <small>Our partners</small>
-
-              <h4>
-                Working with trusted partners to deliver
-                reliable and efficient energy solutions.
-              </h4>
+                    return certification.website_url ? (
+                      <a
+                        key={`${certification.id}-${index}`}
+                        className="certificationLogoLink"
+                        href={certification.website_url}
+                        target={
+                          certification.open_in_new_tab
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          certification.open_in_new_tab
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        aria-label={`Visit ${certification.name}`}
+                        draggable={false}
+                      >
+                        {logo}
+                      </a>
+                    ) : (
+                      <div
+                        key={`${certification.id}-${index}`}
+                        className="certificationLogoLink"
+                      >
+                        {logo}
+                      </div>
+                    );
+                  },
+                )}
+              </div>
             </div>
 
-            <div className="logoRail partnerRail">
-              {[
-                "Worcester Bosch",
-                "SWIP",
-                "EWI Pro",
-                "City & Guilds",
-                "Worcester Bosch",
-              ].map((name, index) => (
-                <div
-                  className="logoTile"
-                  key={`${name}-${index}`}
-                >
-                  <span>{name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            <style jsx>{`
+              .certificationsCmsSection {
+                overflow: hidden;
+              }
+
+              .certificationsCmsHeading {
+                margin: 0 0 52px;
+                text-align: center;
+                line-height: 1.08;
+                letter-spacing: -0.035em;
+              }
+
+              .certificationsViewport {
+                width: 100%;
+                overflow: hidden;
+                cursor: grab;
+                touch-action: pan-y;
+                user-select: none;
+                padding: 18px 0 28px;
+              }
+
+              .certificationsViewport:active {
+                cursor: grabbing;
+              }
+
+              .certificationsTrack {
+                display: flex;
+                width: max-content;
+                align-items: center;
+                gap: 28px;
+                padding: 0 14px;
+                will-change: transform;
+              }
+
+              .certificationLogoLink {
+                display: block;
+                flex: 0 0 auto;
+                text-decoration: none;
+                color: inherit;
+              }
+
+              .certificationLogoCard {
+                width: 230px;
+                min-height: 154px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+                padding: 24px;
+                border: 1px solid rgba(23, 37, 29, 0.11);
+                border-radius: 22px;
+                background: rgba(255, 255, 255, 0.92);
+                box-shadow: 0 10px 30px rgba(23, 37, 29, 0.06);
+                transition:
+                  transform 280ms ease,
+                  box-shadow 280ms ease,
+                  border-color 280ms ease,
+                  background-color 280ms ease;
+              }
+
+              .certificationLogoCard:hover {
+                transform: translateY(-7px) scale(1.1);
+                border-color: rgba(168, 132, 54, 0.48);
+                background: #ffffff;
+                box-shadow:
+                  0 20px 44px rgba(23, 37, 29, 0.14),
+                  0 0 0 4px rgba(168, 132, 54, 0.08);
+                z-index: 2;
+              }
+
+              .certificationLogoImage {
+                width: 100%;
+                height: 82px;
+                object-fit: contain;
+                pointer-events: none;
+                filter: grayscale(1);
+                opacity: 0.78;
+                transition:
+                  filter 280ms ease,
+                  opacity 280ms ease,
+                  transform 280ms ease;
+              }
+
+              .certificationLogoCard:hover
+                .certificationLogoImage {
+                filter: grayscale(0);
+                opacity: 1;
+                transform: scale(1.03);
+              }
+
+              .certificationLogoName {
+                max-width: 190px;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 1.25;
+                text-align: center;
+                color: #17251d;
+                pointer-events: none;
+              }
+
+              @media (max-width: 700px) {
+                .certificationsCmsHeading {
+                  margin-bottom: 34px;
+                  padding: 0 20px;
+                }
+
+                .certificationsTrack {
+                  gap: 18px;
+                  padding: 0 9px;
+                }
+
+                .certificationLogoCard {
+                  width: 178px;
+                  min-height: 132px;
+                  padding: 18px;
+                  border-radius: 18px;
+                }
+
+                .certificationLogoImage {
+                  height: 68px;
+                }
+
+                .certificationLogoName {
+                  max-width: 145px;
+                  font-size: 13px;
+                }
+              }
+
+              @media (prefers-reduced-motion: reduce) {
+                .certificationLogoCard,
+                .certificationLogoImage {
+                  transition: none;
+                }
+              }
+            `}</style>
+          </section>
+        ) : null}
+
+         {partnersSection?.is_active &&
+visiblePartners.length > 0 ? (
+  <section
+    className="partnersCmsSection"
+    aria-labelledby="partners-heading"
+    style={{
+      backgroundColor:
+        partnersSection.background_color,
+      paddingTop: `${partnersSection.padding_top}px`,
+      paddingBottom: `${partnersSection.padding_bottom}px`,
+      overflow: "hidden",
+    }}
+  >
+    <div className="shell">
+      <div className="partnersCmsHeading">
+        {partnersSection.heading ? (
+          <h2
+            id="partners-heading"
+            style={{
+              margin: 0,
+              color:
+                partnersSection.heading_color,
+              fontSize: `clamp(28px, 4vw, ${partnersSection.heading_size}px)`,
+              fontWeight:
+                partnersSection.heading_weight,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {partnersSection.heading}
+          </h2>
+        ) : null}
+
+        {partnersSection.subheading ? (
+          <p
+            style={{
+              margin: "16px auto 0",
+              maxWidth: "760px",
+              color:
+                partnersSection.subheading_color,
+              fontSize: `clamp(15px, 2vw, ${partnersSection.subheading_size}px)`,
+              lineHeight: 1.7,
+            }}
+          >
+            {partnersSection.subheading}
+          </p>
+        ) : null}
+      </div>
+    </div>
+
+    <PartnerMarquee
+      partners={visiblePartners}
+      autoplaySpeed={
+        partnersSection.autoplay_speed ?? 42
+      }
+    />
+
+    <style jsx>{`
+      .partnersCmsHeading {
+        margin-bottom: 44px;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 700px) {
+        .partnersCmsHeading {
+          margin-bottom: 30px;
+        }
+      }
+    `}</style>
+  </section>
+) : null}
 
         <section className="whySection">
           <div className="shell">
@@ -859,38 +1305,9 @@ export default function HomePageClient({
           </div>
         </section>
 
-        <section className="authoritySection">
-          <div className="shell">
-            <div className="bandHeading authorityHeading">
-              <small>
-                Our local authority partners
-              </small>
-
-              <h2>
-                Collaborating with local authorities across
-                the UK to provide government-funded home
-                energy upgrades.
-              </h2>
-            </div>
-
-            <div className="logoRail authorityRail">
-              {[
-                "Watford Borough Council",
-                "Local Authority Partner",
-                "Wealden District Council",
-                "Local Authority Partner",
-                "Local Authority Partner",
-              ].map((name, index) => (
-                <div
-                  className="logoTile"
-                  key={`${name}-${index}`}
-                >
-                  <span>{name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <LocalAuthoritySection
+  data={homepageLocalAuthorities}
+/>
 
         <section
           className="approvalSection"
@@ -939,5 +1356,3 @@ export default function HomePageClient({
     </>
   );
 }
-
-
