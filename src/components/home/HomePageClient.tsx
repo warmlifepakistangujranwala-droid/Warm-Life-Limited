@@ -34,6 +34,8 @@ import type { HomepageWhyChooseUsData } from "@/lib/types/homepage-why-choose-us
 import WhyChooseUsSection from "./WhyChooseUsSection";
 import type { HomepageHowWeWorkData } from "@/lib/types/homepage-how-we-work";
 import HowWeWorkSection from "./HowWeWorkSection";
+import ReviewsSection from "./ReviewsSection";
+import type { HomepageReviewsData } from "@/lib/types/homepage-reviews";
 import type {
   HomepageService,
   HomepageServicesData,
@@ -49,6 +51,7 @@ type HomePageClientProps = {
   homepageDelivery: HomepageDeliveryData;
   homepageWhyChooseUs: HomepageWhyChooseUsData;
   homepageHowWeWork: HomepageHowWeWorkData;
+  homepageReviews: HomepageReviewsData;
 };
 
 export default function HomePageClient({
@@ -61,6 +64,7 @@ export default function HomePageClient({
   homepageDelivery,
   homepageWhyChooseUs,
   homepageHowWeWork,
+  homepageReviews,
 }: HomePageClientProps) {
   const serviceStoryRef = useRef<HTMLElement | null>(null);
   const wheelLockedRef = useRef(false);
@@ -936,71 +940,11 @@ visiblePartners.length > 0 ? (
 <HowWeWorkSection
   data={homepageHowWeWork}
 />
+  <ReviewsSection
+  data={homepageReviews}
+/>      
+
         
-
-        <section className="reviewsSection">
-          <div className="shell">
-            <div className="reviewsHeading">
-              <small>
-                What people say about us
-              </small>
-
-              <h2>
-                Stories from happy homeowners, based on
-                verified customer feedback and Google
-                Reviews.
-              </h2>
-            </div>
-
-            <div className="reviewGrid">
-              {[
-                [
-                  "Quick service, friendly and professional",
-                  "Dennis Cox",
-                  "Highly recommended. The team at Warm Life completed our installation efficiently and kept us informed throughout.",
-                ],
-                [
-                  "Reliable and easy",
-                  "Elva Magdalena Pochylska",
-                  "I received support from Warm Life and the service was reliable from start to finish.",
-                ],
-                [
-                  "Professional staff and services",
-                  "Punam Mhatre",
-                  "I am very happy with the service provided. The team was polite, professional and helpful.",
-                ],
-                [
-                  "Efficient & hassle-free",
-                  "Ahmed Mahmood",
-                  "Warm Life helped with the work and everything was organised clearly from the first contact to completion.",
-                ],
-              ].map(([title, name, text]) => (
-                <article key={title}>
-                  <div
-                    className="reviewStars"
-                    aria-label="Five star review"
-                  >
-                    {[0, 1, 2, 3, 4].map(
-                      (index) => (
-                        <Star
-                          key={index}
-                          size={14}
-                          fill="currentColor"
-                        />
-                      ),
-                    )}
-                  </div>
-
-                  <h3>{title}</h3>
-
-                  <strong>{name}</strong>
-
-                  <p>{text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <LocalAuthoritySection
   data={homepageLocalAuthorities}

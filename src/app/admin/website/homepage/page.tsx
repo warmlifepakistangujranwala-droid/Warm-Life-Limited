@@ -219,17 +219,24 @@ export default async function HomepageManagerPage() {
       icon: Building2,
     },
     {
-      title: "Testimonials",
-      description:
-        "Add customer reviews, ratings, source links and publication settings.",
-      count: data.testimonialsCount,
-      countLabel: data.testimonialsCount === 1 ? "review" : "reviews",
-      href: "/admin/website/homepage/testimonials",
-      addLabel: "Add Testimonial",
-      addHref: "/admin/website/homepage/testimonials/new",
-      status: data.testimonialsCount > 0 ? "Configured" : "Needs content",
-      icon: MessageSquareQuote,
-    },
+  title: "Testimonials",
+  description:
+    "Add customer reviews, ratings, Google imports and publication settings.",
+  count: data.testimonialsCount,
+  countLabel:
+    data.testimonialsCount === 1
+      ? "review"
+      : "reviews",
+  href: "/admin/website/homepage/reviews",
+  addLabel: "Add Testimonial",
+  addHref:
+    "/admin/website/homepage/reviews#add-review",
+  status:
+    data.testimonialsCount > 0
+      ? "Configured"
+      : "Needs content",
+  icon: MessageSquareQuote,
+},
     {
       title: "Local Authorities",
       description:
