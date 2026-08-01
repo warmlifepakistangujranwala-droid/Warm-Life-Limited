@@ -42,7 +42,7 @@ async function getTableCount(
     | "delivery_statistics"
     | "certifications"
     | "partners"
-    | "why_choose_us_items"
+    | "homepage_why_choose_us_cards"
     | "work_process_groups"
     | "testimonials"
     | "local_authorities",
@@ -100,7 +100,7 @@ async function getHomepageData() {
     getTableCount("delivery_statistics"),
     getTableCount("certifications"),
     getTableCount("partners"),
-    getTableCount("why_choose_us_items"),
+    getTableCount("homepage_why_choose_us_cards"),
     getTableCount("work_process_groups"),
     getTableCount("testimonials"),
     getTableCount("local_authorities"),
@@ -154,9 +154,9 @@ export default async function HomepageManagerPage() {
         "Manage figures such as completed projects, technicians and delivered measures.",
       count: data.statisticsCount,
       countLabel: data.statisticsCount === 1 ? "statistic" : "statistics",
-      href: "/admin/website/homepage/statistics",
+     href:"/admin/website/homepage/delivery-partner",
       addLabel: "Add Statistic",
-      addHref: "/admin/website/homepage/statistics/new",
+      addHref: "/admin/website/homepage/delivery-partner#delivery-statistics",
       status: data.statisticsCount > 0 ? "Configured" : "Needs content",
       icon: BarChart3,
     },
@@ -186,17 +186,26 @@ export default async function HomepageManagerPage() {
       icon: Handshake,
     },
     {
-      title: "Why Choose Us",
-      description:
-        "Manage feature cards, icons, titles and supporting descriptions.",
-      count: data.whyChooseUsCount,
-      countLabel: data.whyChooseUsCount === 1 ? "item" : "items",
-      href: "/admin/website/homepage/why-choose-us",
-      addLabel: "Add Item",
-      addHref: "/admin/website/homepage/why-choose-us/new",
-      status: data.whyChooseUsCount > 0 ? "Configured" : "Needs content",
-      icon: ShieldCheck,
-    },
+  title: "Why Choose Us",
+  description:
+    "Manage the section heading, PAS badge, colours, spacing and unlimited feature cards.",
+  count: data.whyChooseUsCount,
+  countLabel:
+    data.whyChooseUsCount === 1
+      ? "card"
+      : "cards",
+  href:
+    "/admin/website/homepage/why-choose-us",
+  addLabel:
+    "Add Card",
+  addHref:
+    "/admin/website/homepage/why-choose-us#why-choose-us-cards",
+  status:
+    data.whyChooseUsCount > 0
+      ? "Configured"
+      : "Needs content",
+  icon: ShieldCheck,
+},
     {
       title: "How We Work",
       description:

@@ -23,11 +23,17 @@ import type { HomepageCertificationsData } from "@/lib/types/homepage-certificat
 import type { HomepagePartnersData } from "@/lib/types/homepage-partner";
 import type { HomepageLocalAuthoritiesData } from "@/lib/types/homepage-local-authority";
 import LocalAuthoritySection from "./LocalAuthoritySection";
+import type { HomepageDeliveryData } from "@/lib/types/homepage-delivery";
+import DeliveryPartnerSection from "./DeliveryPartnerSection";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import PartnerMarquee from "./PartnerMarquee";
 import type { HeroSlide } from "@/lib/types/hero";
 import type { HeroInsight } from "@/lib/types/hero-insight";
+import type { HomepageWhyChooseUsData } from "@/lib/types/homepage-why-choose-us";
+import WhyChooseUsSection from "./WhyChooseUsSection";
+import type { HomepageHowWeWorkData } from "@/lib/types/homepage-how-we-work";
+import HowWeWorkSection from "./HowWeWorkSection";
 import type {
   HomepageService,
   HomepageServicesData,
@@ -40,6 +46,9 @@ type HomePageClientProps = {
   homepageCertifications: HomepageCertificationsData;
   homepagePartners: HomepagePartnersData;
   homepageLocalAuthorities: HomepageLocalAuthoritiesData;
+  homepageDelivery: HomepageDeliveryData;
+  homepageWhyChooseUs: HomepageWhyChooseUsData;
+  homepageHowWeWork: HomepageHowWeWorkData;
 };
 
 export default function HomePageClient({
@@ -49,6 +58,9 @@ export default function HomePageClient({
   homepageCertifications,
   homepagePartners,
   homepageLocalAuthorities,
+  homepageDelivery,
+  homepageWhyChooseUs,
+  homepageHowWeWork,
 }: HomePageClientProps) {
   const serviceStoryRef = useRef<HTMLElement | null>(null);
   const wheelLockedRef = useRef(false);
@@ -602,76 +614,9 @@ const partners =
         ) : null}
 
 
-        <section className="deliverySection">
-          <div className="shell deliveryGrid">
-            <div className="deliveryCard">
-              <small>
-                Powering energy-efficient homes
-              </small>
-
-              <h2>
-                Proven delivery partner for energy
-                efficiency schemes.
-              </h2>
-
-              <p>
-                With over 1,500 completed projects and 25+
-                qualified technicians, Warm Life is a strong
-                track record of delivering compliant and
-                timely installations under schemes such as
-                ECO, CGB, the Green Homes Grant and local
-                authority programmes.
-              </p>
-
-              <p>
-                We manage the complete journey, from home
-                surveys and technical checks through to
-                installation, quality assurance and resident
-                handover.
-              </p>
-
-              <a
-                className="deliveryButton"
-                href="/contact"
-              >
-                Work with us
-                <ArrowRight size={16} />
-              </a>
-            </div>
-
-            <div
-              className="deliveryStats"
-              aria-label="Warm Life delivery statistics"
-            >
-              <article>
-                <strong>1500+</strong>
-
-                <span>
-                  Successful installations delivered under
-                  live energy schemes.
-                </span>
-              </article>
-
-              <article>
-                <strong>25+</strong>
-
-                <span>
-                  Qualified, accredited installers and
-                  surveyors.
-                </span>
-              </article>
-
-              <article>
-                <strong>12+</strong>
-
-                <span>
-                  Energy-efficiency measures delivered
-                  across insulation and heating.
-                </span>
-              </article>
-            </div>
-          </div>
-        </section>
+       <DeliveryPartnerSection
+  data={homepageDelivery}
+/>
 
         {certificationsSection?.is_active &&
         certifications.length > 0 ? (
@@ -985,261 +930,13 @@ visiblePartners.length > 0 ? (
   </section>
 ) : null}
 
-        <section className="whySection">
-          <div className="shell">
-            <div className="whyHeader">
-              <div>
-                <small>Why choose us?</small>
-
-                <h2>
-                  Energy efficiency made simple.
-                </h2>
-              </div>
-
-              <span>
-                PAS 2035 compliant processes
-              </span>
-            </div>
-
-            <div className="whyGrid">
-              <article>
-                <ShieldCheck />
-
-                <h3>Reliable compliance</h3>
-
-                <p>
-                  All installations are delivered with
-                  clear processes, scheme-ready records and
-                  quality checks.
-                </p>
-              </article>
-
-              <article>
-                <Users />
-
-                <h3>Resident first approach</h3>
-
-                <p>
-                  Our team communicates clearly, respects
-                  the home and keeps residents informed
-                  throughout.
-                </p>
-              </article>
-
-              <article>
-                <Leaf />
-
-                <h3>Fighting fuel poverty</h3>
-
-                <p>
-                  By improving fabric and heating
-                  performance, we help households use less
-                  energy and feel warmer.
-                </p>
-              </article>
-
-              <article>
-                <Wrench />
-
-                <h3>
-                  Flexible, responsive partner
-                </h3>
-
-                <p>
-                  We adapt around delivery programmes,
-                  property needs and changing project
-                  requirements.
-                </p>
-              </article>
-
-              <article>
-                <MapPin />
-
-                <h3>Local teams, national reach</h3>
-
-                <p>
-                  Regional installation teams supported by
-                  consistent standards and central
-                  oversight.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="workSection">
-          <div className="shell">
-            <div className="workHeading">
-              <small>How we work?</small>
-
-              <h2>
-                A clear process for partners and
-                households.
-              </h2>
-            </div>
-
-            <div className="workColumns">
-              <div className="workColumn">
-                <h3>
-                  <Building2 size={27} />
-                  For local authorities &amp; contractors
-                </h3>
-
-                <ol>
-                  <li>
-                    <span>01</span>
-
-                    <div>
-                      <strong>
-                        Project briefing
-                      </strong>
-
-                      <p>
-                        We define objectives, target
-                        properties and required measures.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>02</span>
-
-                    <div>
-                      <strong>
-                        Survey &amp; planning
-                      </strong>
-
-                      <p>
-                        Accurate technical surveys confirm
-                        suitability and scope.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>03</span>
-
-                    <div>
-                      <strong>
-                        Installation &amp; quality checks
-                      </strong>
-
-                      <p>
-                        Our accredited teams complete
-                        installation with structured QA.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>04</span>
-
-                    <div>
-                      <strong>
-                        Handover &amp; documentation
-                      </strong>
-
-                      <p>
-                        We provide compliant records,
-                        certificates and programme
-                        reporting.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>05</span>
-
-                    <div>
-                      <strong>
-                        Ongoing support
-                      </strong>
-
-                      <p>
-                        We remain available for queries,
-                        resident support and follow-up.
-                      </p>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-
-              <div className="workColumn householdColumn">
-                <h3>
-                  <Home size={27} />
-                  For households
-                </h3>
-
-                <ol>
-                  <li>
-                    <span>01</span>
-
-                    <div>
-                      <strong>
-                        Details received
-                      </strong>
-
-                      <p>
-                        We review your basic home and
-                        contact details.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>02</span>
-
-                    <div>
-                      <strong>
-                        Home survey booked
-                      </strong>
-
-                      <p>
-                        Our assessor visits to identify
-                        suitable measures.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>03</span>
-
-                    <div>
-                      <strong>
-                        Installation day
-                      </strong>
-
-                      <p>
-                        Our installers explain the work and
-                        complete it carefully.
-                      </p>
-                    </div>
-                  </li>
-
-                  <li>
-                    <span>04</span>
-
-                    <div>
-                      <strong>
-                        Final checks &amp; handover
-                      </strong>
-
-                      <p>
-                        We inspect the result and explain
-                        warranties and aftercare.
-                      </p>
-                    </div>
-                  </li>
-                </ol>
-
-                <div className="warmHomeNote">
-                  <Sparkles size={18} />
-                  Enjoy a warmer, more efficient home.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhyChooseUsSection
+  data={homepageWhyChooseUs}
+/>
+<HowWeWorkSection
+  data={homepageHowWeWork}
+/>
+        
 
         <section className="reviewsSection">
           <div className="shell">
