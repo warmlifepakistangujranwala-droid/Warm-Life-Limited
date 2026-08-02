@@ -31,7 +31,7 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <Navbar />
+     
       <main className="innerPage">
         <section className="serviceDetailHero">
           <div className="shell serviceDetailHeroInner">
