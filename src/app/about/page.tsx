@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return <>
-    <Navbar />
+    
     <main className="innerPage">
       <PageHero eyebrow="About Warm Life" title="Home energy upgrades, delivered with clarity." description="We help households understand, plan and access improvements that make homes warmer, more comfortable and more efficient." cta={{ label: "Speak to our team", href: "/contact" }} />
       <section className="contentSection"><div className="shell splitContent"><div><span className="pageEyebrow">Our approach</span><h2>One connected plan for the whole home.</h2></div><div><p>Every property is different. We look at the building fabric, heating system and household needs before recommending the right next steps.</p><p>Our aim is to make complex energy upgrades easier to understand—from initial eligibility and survey through to installation and aftercare.</p></div></div></section>
