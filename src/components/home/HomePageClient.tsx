@@ -31,6 +31,8 @@ import PartnerMarquee from "./PartnerMarquee";
 import type { HeroSlide } from "@/lib/types/hero";
 import type { HeroInsight } from "@/lib/types/hero-insight";
 import type { HomepageWhyChooseUsData } from "@/lib/types/homepage-why-choose-us";
+import CtaSection from "./CtaSection";
+import type { HomepageCtaData } from "@/lib/types/homepage-cta";
 import WhyChooseUsSection from "./WhyChooseUsSection";
 import type { HomepageHowWeWorkData } from "@/lib/types/homepage-how-we-work";
 import HowWeWorkSection from "./HowWeWorkSection";
@@ -52,6 +54,7 @@ type HomePageClientProps = {
   homepageWhyChooseUs: HomepageWhyChooseUsData;
   homepageHowWeWork: HomepageHowWeWorkData;
   homepageReviews: HomepageReviewsData;
+  homepageCta: HomepageCtaData;
 };
 
 export default function HomePageClient({
@@ -65,6 +68,7 @@ export default function HomePageClient({
   homepageWhyChooseUs,
   homepageHowWeWork,
   homepageReviews,
+  homepageCta,
 }: HomePageClientProps) {
   const serviceStoryRef = useRef<HTMLElement | null>(null);
   const wheelLockedRef = useRef(false);
@@ -361,6 +365,37 @@ const partners =
          {servicesSection?.is_active &&
         activeServiceData &&
         services.length > 0 ? (
+          <>
+  <div
+    style={{
+      textAlign: "center",
+      paddingTop: "28px",
+      paddingBottom: "18px",
+      backgroundColor:
+        servicesSection.background_color,
+    }}
+  >
+    <span
+      style={{
+        display: "inline-block",
+        padding: "10px 24px",
+        borderRadius: "999px",
+        backgroundColor: "#ffffff",
+        border:
+          "1px solid rgba(23,37,29,0.10)",
+        color: "#0f5132",
+        fontSize: "14px",
+        fontWeight: 700,
+        letterSpacing: "0.16em",
+        textTransform: "uppercase",
+        boxShadow:
+          "0 8px 24px rgba(0,0,0,0.06)",
+      }}
+    >
+      Our Services
+    </span>
+  </div>
+          
           <section
             className="serviceStory"
             id="services"
@@ -615,6 +650,7 @@ const partners =
               </div>
             </div>
           </section>
+          </>
         ) : null}
 
 
@@ -950,47 +986,9 @@ visiblePartners.length > 0 ? (
   data={homepageLocalAuthorities}
 />
 
-        <section
-          className="approvalSection"
-          id="contact"
-        >
-          <div className="shell approvalCard homeFinalCta">
-            <div>
-              <small>
-                Start a conversation
-              </small>
-
-              <h2>
-                Need a trusted delivery partner for your
-                next energy-efficiency programme?
-              </h2>
-
-              <p>
-                Speak with Warm Life about surveys,
-                installation capacity, compliance and
-                resident delivery.
-              </p>
-            </div>
-
-            <div className="homeCtaActions">
-              <a
-                className="primaryButton darkButton"
-                href="/contact"
-              >
-                Get a quote
-                <ArrowRight size={18} />
-              </a>
-
-              <a
-                className="contactPhone"
-                href="tel:+442038399999"
-              >
-                <Phone size={19} />
-                Contact us
-              </a>
-            </div>
-          </div>
-        </section>
+        <CtaSection
+  data={homepageCta}
+/>
       </main>
 
       <Footer />

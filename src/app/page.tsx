@@ -8,6 +8,7 @@ import { getHomepageDeliveryData } from "@/lib/actions/homepage-delivery";
 import { getHomepageWhyChooseUsData } from "@/lib/actions/homepage-why-choose-us";
 import { getHomepageHowWeWorkData } from "@/lib/actions/homepage-how-we-work";
 import { getHomepageReviewsData } from "@/lib/actions/homepage-reviews";
+import { getHomepageCtaData } from "@/lib/actions/homepage-cta";
 
 import HomePageClient from "@/components/home/HomePageClient";
 
@@ -23,6 +24,7 @@ export default async function HomePage() {
     homepageWhyChooseUs,
     homepageHowWeWork,
     homepageReviews,
+    homepageCta,
   ] = await Promise.all([
     getHeroSlides(),
     getHeroInsights(),
@@ -34,6 +36,7 @@ export default async function HomePage() {
     getHomepageWhyChooseUsData(),
     getHomepageHowWeWorkData(),
     getHomepageReviewsData(),
+    getHomepageCtaData(),
   ]);
 
   return (
@@ -48,6 +51,7 @@ export default async function HomePage() {
       homepageWhyChooseUs={homepageWhyChooseUs}
       homepageHowWeWork={homepageHowWeWork}
       homepageReviews={homepageReviews}
+      homepageCta={homepageCta}
     />
   );
 }
