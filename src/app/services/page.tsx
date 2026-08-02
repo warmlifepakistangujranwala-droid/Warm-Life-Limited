@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Home Energy Services", description: 
 
 export default function ServicesPage() {
   return <>
-    <Navbar />
+    
     <main className="innerPage">
       <PageHero eyebrow="Our services" title="A complete route to a warmer, more efficient home." description="Explore upgrades for energy generation, insulation, heating and whole-home performance." cta={{ label: "Check eligibility", href: "/contact#eligibility" }} />
       <section className="contentSection"><div className="shell serviceCardGrid">
