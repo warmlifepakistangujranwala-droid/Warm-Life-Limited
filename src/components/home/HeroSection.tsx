@@ -7,7 +7,7 @@ import {
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import Navbar from "@/components/layout/Navbar";
+
 
 import type { HeroSlide } from "@/lib/types/hero";
 import type { HeroInsight } from "@/lib/types/hero-insight";
@@ -368,7 +368,7 @@ export default function HeroSection({
           }}
         />
 
-        <Navbar overlay />
+        
 
         <div
           className="heroContent shell"

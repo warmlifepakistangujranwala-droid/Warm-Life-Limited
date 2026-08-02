@@ -240,7 +240,7 @@ export default function LocalAuthoritiesMarquee({
     (
       event: React.WheelEvent<HTMLDivElement>,
     ) => {
-      event.preventDefault();
+      // event.preventDefault();
 
       const movement =
         Math.abs(event.deltaX) >
