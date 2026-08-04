@@ -38,6 +38,7 @@ import type { HomepageHowWeWorkData } from "@/lib/types/homepage-how-we-work";
 import HowWeWorkSection from "./HowWeWorkSection";
 import ReviewsSection from "./ReviewsSection";
 import type { HomepageReviewsData } from "@/lib/types/homepage-reviews";
+
 import type {
   HomepageService,
   HomepageServicesData,
@@ -991,7 +992,7 @@ visiblePartners.length > 0 ? (
 />
       </main>
 
-      <Footer />
+      
     </>
   );
 }

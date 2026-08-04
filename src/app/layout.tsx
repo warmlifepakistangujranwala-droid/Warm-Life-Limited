@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-// import SiteChrome from "@/components/layout/SiteChrome";
 import SiteChrome from "@/components/layout/SiteChrome";
+
 import { getSiteHeaderData } from "@/lib/actions/site-header";
+import { getSiteFooterData } from "@/lib/actions/site-footer";
 
 import "./globals.css";
 
@@ -21,16 +22,20 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteHeaderData =
-    await getSiteHeaderData();
+  const [
+    siteHeaderData,
+    siteFooterData,
+  ] = await Promise.all([
+    getSiteHeaderData(),
+    getSiteFooterData(),
+  ]);
 
   return (
     <html lang="en">
       <body>
         <SiteChrome
-          siteHeaderData={
-            siteHeaderData
-          }
+          siteHeaderData={siteHeaderData}
+          siteFooterData={siteFooterData}
         >
           {children}
         </SiteChrome>

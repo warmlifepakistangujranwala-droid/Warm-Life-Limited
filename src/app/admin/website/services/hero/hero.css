@@ -1,0 +1,407 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/services/hero/hero.css
+ *
+ * Purpose :
+ * Styles the Services Hero Manager.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.servicesHeroManager {
+  min-height: 100%;
+  padding: 34px;
+  color: #17251d;
+  background: #f4f6f2;
+}
+
+.servicesHeroManager__header,
+.servicesHeroManager__content {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 14px 42px rgba(22, 61, 42, 0.06);
+}
+
+.servicesHeroManager__header {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.servicesHeroManager__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.servicesHeroManager__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.servicesHeroManager__titleRow {
+  display: flex;
+  gap: 17px;
+}
+
+.servicesHeroManager__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.servicesHeroManager__titleRow span,
+.servicesHeroManager__sectionHeading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.servicesHeroManager__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.servicesHeroManager__titleRow p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.servicesHeroManager__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.servicesHeroManager__actions a {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.servicesHeroManager__actions .isSecondary {
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  color: #315f45;
+  background: #f7f9f6;
+}
+
+.servicesHeroManager__actions .isPrimary {
+  color: #ffffff;
+  background: #315f45;
+}
+
+.servicesHeroManager__summary {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.servicesHeroManager__summary article {
+  padding: 22px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.servicesHeroManager__summary span,
+.servicesHeroManager__summary strong {
+  display: block;
+}
+
+.servicesHeroManager__summary span {
+  color: #718078;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.servicesHeroManager__summary strong {
+  margin-top: 9px;
+  font-size: 28px;
+  text-transform: capitalize;
+}
+
+.servicesHeroManager__content {
+  margin-top: 22px;
+  padding: 28px;
+}
+
+.servicesHeroManager__sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.servicesHeroManager__sectionHeading h2 {
+  margin: 8px 0 0;
+  font-size: 30px;
+}
+
+.servicesHeroManager__sectionHeading p {
+  max-width: 560px;
+  margin: 0;
+  color: #6b786f;
+  line-height: 1.7;
+}
+
+.servicesHeroManager__grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.servicesHeroCard {
+  overflow: hidden;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 20px;
+  background: #fbfcfa;
+}
+
+.servicesHeroCard__media {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  background: #e5ebe5;
+}
+
+.servicesHeroCard__media img,
+.servicesHeroCard__media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.servicesHeroCard__placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #315f45;
+}
+
+.servicesHeroCard__type {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(22, 61, 42, 0.82);
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.servicesHeroCard__body {
+  padding: 22px;
+}
+
+.servicesHeroCard__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.servicesHeroCard__badges span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #315f45;
+  background: #edf3ed;
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.servicesHeroCard__badges .isPublished {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.servicesHeroCard__badges .isDraft {
+  color: #855c23;
+  background: #fff2dc;
+}
+
+.servicesHeroCard__badges .isInactive {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.servicesHeroCard__internal {
+  display: block;
+  margin-top: 17px;
+  color: #748178;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.servicesHeroCard h3 {
+  margin: 8px 0 0;
+  font-size: 24px;
+}
+
+.servicesHeroCard p {
+  margin: 11px 0 0;
+  color: #69766d;
+  line-height: 1.65;
+}
+
+.servicesHeroCard__footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-top: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.servicesHeroCard__footer > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.servicesHeroCardActions {
+  display: flex;
+  gap: 7px;
+}
+
+.servicesHeroCardActions button {
+  min-height: 34px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.servicesHeroCardActions .isPublish {
+  color: #315f45;
+  background: #edf3ed;
+}
+
+.servicesHeroCardActions .isDelete {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.servicesHeroCardActions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.servicesHeroCardActions__spinner {
+  animation:
+    servicesHeroSpin
+    0.8s
+    linear
+    infinite;
+}
+
+.servicesHeroManager__empty {
+  margin-top: 24px;
+  padding: 48px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  border: 1px dashed rgba(22, 61, 42, 0.16);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.servicesHeroManager__empty h2,
+.servicesHeroManager__empty p {
+  margin: 0;
+}
+
+.servicesHeroManager__empty p {
+  color: #6c786f;
+}
+
+.servicesHeroManager__empty a {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+@keyframes servicesHeroSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 950px) {
+  .servicesHeroManager__header,
+  .servicesHeroManager__sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .servicesHeroManager__summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .servicesHeroManager__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .servicesHeroManager {
+    padding: 18px;
+  }
+
+  .servicesHeroManager__titleRow {
+    flex-direction: column;
+  }
+
+  .servicesHeroManager__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesHeroCard__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

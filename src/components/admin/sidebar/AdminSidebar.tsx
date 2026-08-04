@@ -77,6 +77,11 @@ const navigationGroups: NavigationGroup[] = [
         label: "About Page",
         icon: "◉",
       },
+       {
+        href: "/admin/website/services",
+        label: "Services",
+        icon: "◇",
+      },
       {
         href: "/admin/website/contact",
         label: "Contact Page",
@@ -97,16 +102,13 @@ const navigationGroups: NavigationGroup[] = [
         label: "Footer",
         icon: "▁",
       },
+
     ],
   },
   {
     title: "Content",
     items: [
-      {
-        href: "/admin/services",
-        label: "Services",
-        icon: "◇",
-      },
+     
       {
         href: "/admin/blogs",
         label: "Blogs",

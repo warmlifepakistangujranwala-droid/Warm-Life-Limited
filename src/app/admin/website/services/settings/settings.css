@@ -1,0 +1,331 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/services/settings/settings.css
+ *
+ * Purpose :
+ * Styles the Services page settings CMS editor.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.servicesSettingsPage {
+  min-height: 100%;
+  padding: 34px;
+  color: #17251d;
+  background: #f4f6f2;
+}
+
+.servicesSettingsPage__header,
+.servicesSettingsCard {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(22, 61, 42, 0.05);
+}
+
+.servicesSettingsPage__header {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.servicesSettingsPage__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.servicesSettingsPage__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.servicesSettingsPage__titleRow {
+  display: flex;
+  gap: 17px;
+}
+
+.servicesSettingsPage__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.servicesSettingsPage__titleRow span,
+.servicesSettingsCard__heading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.servicesSettingsPage__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.servicesSettingsPage__titleRow p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.servicesSettingsPage__back {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.servicesSettingsEditor {
+  margin-top: 22px;
+  display: grid;
+  gap: 20px;
+}
+
+.servicesSettingsEditor__message {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.servicesSettingsEditor__message.isSuccess {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.servicesSettingsEditor__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.servicesSettingsCard {
+  overflow: hidden;
+}
+
+.servicesSettingsCard__heading {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.servicesSettingsCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.servicesSettingsCard__body {
+  padding: 24px;
+}
+
+.servicesSettingsGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.servicesSettingsGrid--three {
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+}
+
+.servicesSettingsField {
+  display: grid;
+  gap: 8px;
+}
+
+.servicesSettingsField--full {
+  grid-column: 1 / -1;
+}
+
+.servicesSettingsField > span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.servicesSettingsField input,
+.servicesSettingsField select,
+.servicesSettingsField textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  color: #1f2d24;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+.servicesSettingsField input,
+.servicesSettingsField select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.servicesSettingsField input[type="color"] {
+  padding: 5px;
+}
+
+.servicesSettingsField textarea {
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.servicesSettingsToggle {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f6f9f5;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.servicesSettingsToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #315f45;
+}
+
+.servicesSettingsEditor__saveBar {
+  position: sticky;
+  bottom: 18px;
+  z-index: 10;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(22, 61, 42, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.servicesSettingsEditor__saveBar span,
+.servicesSettingsEditor__saveBar strong {
+  display: block;
+}
+
+.servicesSettingsEditor__saveBar span {
+  color: #7e8a81;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.servicesSettingsEditor__saveBar button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.servicesSettingsEditor__saveBar button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.servicesSettingsEditor__spinner {
+  animation:
+    servicesSettingsSpin
+    0.8s
+    linear
+    infinite;
+}
+
+.servicesSettingsPage__missing {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.servicesSettingsPage__missing h1,
+.servicesSettingsPage__missing p {
+  margin: 0;
+}
+
+.servicesSettingsPage__missing a {
+  color: #315f45;
+  font-weight: 800;
+}
+
+@keyframes servicesSettingsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 820px) {
+  .servicesSettingsPage {
+    padding: 18px;
+  }
+
+  .servicesSettingsPage__header {
+    flex-direction: column;
+  }
+
+  .servicesSettingsGrid,
+  .servicesSettingsGrid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesSettingsField--full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .servicesSettingsPage__titleRow {
+    flex-direction: column;
+  }
+
+  .servicesSettingsEditor__saveBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .servicesSettingsEditor__saveBar button {
+    justify-content: center;
+  }
+}

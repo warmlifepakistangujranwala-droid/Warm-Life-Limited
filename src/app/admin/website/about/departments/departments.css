@@ -1,0 +1,227 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/about/departments/departments.css
+ *
+ * Purpose :
+ * Styles the About departments CMS manager.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.aboutDepartmentsAdmin {
+  min-height: 100%;
+  padding: 34px;
+  color: #17221b;
+  background: #f4f6f2;
+}
+
+.aboutDepartmentsAdmin__header,
+.aboutDepartmentsCard {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(22, 61, 42, 0.05);
+}
+
+.aboutDepartmentsAdmin__header {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.aboutDepartmentsAdmin__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.aboutDepartmentsAdmin__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.aboutDepartmentsAdmin__titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.aboutDepartmentsAdmin__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.aboutDepartmentsAdmin__titleRow > div:last-child > span,
+.aboutDepartmentsCard__heading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aboutDepartmentsAdmin__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.aboutDepartmentsAdmin__titleRow p {
+  max-width: 650px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.aboutDepartmentsAdmin__back {
+  height: 44px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.aboutDepartmentsCard {
+  margin-top: 22px;
+  overflow: hidden;
+}
+
+.aboutDepartmentsCard__heading {
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.aboutDepartmentsCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.aboutDepartmentsForm {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.aboutDepartmentsForm label {
+  display: grid;
+  gap: 8px;
+}
+
+.aboutDepartmentsForm label > span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aboutDepartmentsForm input,
+.aboutDepartmentsForm select,
+.aboutDepartmentsForm textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+}
+
+.aboutDepartmentsForm input,
+.aboutDepartmentsForm select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.aboutDepartmentsForm textarea {
+  padding: 12px;
+  resize: vertical;
+}
+
+.aboutDepartmentsForm__wide {
+  grid-column: 1 / -1;
+}
+
+.aboutDepartmentsToggle {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex !important;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f6f9f5;
+}
+
+.aboutDepartmentsToggle input {
+  width: 17px;
+  min-height: 17px;
+  accent-color: #315f45;
+}
+
+.aboutDepartmentsForm button,
+.aboutDepartmentsDelete {
+  min-height: 42px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.aboutDepartmentsDelete {
+  background: #8f3535;
+}
+
+.aboutDepartmentsEmpty {
+  margin-top: 22px;
+  padding: 40px;
+  border: 1px dashed rgba(22, 61, 42, 0.16);
+  border-radius: 20px;
+  color: #68756c;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .aboutDepartmentsAdmin {
+    padding: 18px;
+  }
+
+  .aboutDepartmentsAdmin__header {
+    flex-direction: column;
+  }
+
+  .aboutDepartmentsForm {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutDepartmentsForm__wide {
+    grid-column: auto;
+  }
+}

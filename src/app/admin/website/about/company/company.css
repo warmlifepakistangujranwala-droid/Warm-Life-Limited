@@ -1,0 +1,618 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/about/company/company.css
+ *
+ * Purpose :
+ * Styles the About Company Information CMS editor.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.aboutCompanyAdmin {
+  min-height: 100%;
+  padding: 34px;
+  color: #17221b;
+  background:
+    radial-gradient(
+      circle at 92% 2%,
+      rgba(241, 211, 19, 0.08),
+      transparent 24%
+    ),
+    #f4f6f2;
+}
+
+.aboutCompanyAdmin__header {
+  padding: 34px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 36px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 14px 45px rgba(22, 61, 42, 0.06);
+}
+
+.aboutCompanyAdmin__breadcrumb {
+  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.aboutCompanyAdmin__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.aboutCompanyAdmin__breadcrumb strong {
+  color: #315f45;
+}
+
+.aboutCompanyAdmin__titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.aboutCompanyAdmin__titleIcon {
+  width: 55px;
+  height: 55px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  color: #ffffff;
+  background: linear-gradient(145deg, #315f45, #163d2a);
+  box-shadow: 0 13px 28px rgba(22, 61, 42, 0.19);
+}
+
+.aboutCompanyAdmin__eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.aboutCompanyAdmin__titleRow h1 {
+  margin: 0;
+  color: #17251d;
+  font-size: clamp(30px, 3vw, 45px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.aboutCompanyAdmin__titleRow p {
+  max-width: 710px;
+  margin: 14px 0 0;
+  color: #69766d;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.aboutCompanyAdmin__headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.aboutCompanyAdmin__backButton,
+.aboutCompanyAdmin__previewButton {
+  min-height: 47px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.aboutCompanyAdmin__backButton {
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  color: #315f45;
+  background: #f6f8f5;
+}
+
+.aboutCompanyAdmin__previewButton {
+  color: #ffffff;
+  background: #315f45;
+}
+
+.aboutCompanyEditor {
+  margin-top: 22px;
+}
+
+.aboutCompanyEditor__message {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.aboutCompanyEditor__message.isSuccess {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.aboutCompanyEditor__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.aboutCompanyEditor__layout {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(320px, 0.38fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.aboutCompanyEditor__main {
+  display: grid;
+  gap: 20px;
+}
+
+.aboutCompanyCard {
+  overflow: hidden;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 23px;
+  background: #ffffff;
+  box-shadow: 0 12px 38px rgba(22, 61, 42, 0.045);
+}
+
+.aboutCompanyCard--sticky {
+  position: sticky;
+  top: 20px;
+}
+
+.aboutCompanyCard__heading {
+  padding: 23px 25px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.aboutCompanyCard__heading span {
+  display: block;
+  margin-bottom: 7px;
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.aboutCompanyCard__heading h2 {
+  margin: 0;
+  color: #17251d;
+  font-size: 24px;
+  letter-spacing: -0.035em;
+}
+
+.aboutCompanyCard__body {
+  padding: 25px;
+}
+
+.aboutCompanyFormGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.aboutCompanyFormGrid--four {
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+}
+
+.aboutCompanyField {
+  display: grid;
+  gap: 8px;
+}
+
+.aboutCompanyField--full {
+  grid-column: 1 / -1;
+}
+
+.aboutCompanyField > span {
+  color: #46534a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aboutCompanyField input,
+.aboutCompanyField select,
+.aboutCompanyField textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.13);
+  border-radius: 12px;
+  color: #1f2d24;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+.aboutCompanyField input,
+.aboutCompanyField select {
+  min-height: 45px;
+  padding: 0 13px;
+}
+
+.aboutCompanyField input[type="color"] {
+  padding: 5px;
+}
+
+.aboutCompanyField textarea {
+  min-height: 150px;
+  padding: 13px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.aboutCompanyToggle {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 12px;
+  color: #48564d;
+  background: #f8faf7;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aboutCompanyToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #315f45;
+}
+
+.aboutCompanySubheading {
+  margin: 24px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+  color: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.aboutCompanySubheading:first-child {
+  margin-top: 0;
+}
+
+.aboutCompanyUpload {
+  margin-bottom: 20px;
+  padding: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 16px;
+  background: #fafcf9;
+}
+
+.aboutCompanyUpload__heading {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.aboutCompanyUpload__heading > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.aboutCompanyUpload__heading strong {
+  color: #17251d;
+  font-size: 13px;
+}
+
+.aboutCompanyUpload__heading span {
+  color: #849087;
+  font-size: 10px;
+}
+
+.aboutCompanyUpload__tabs {
+  display: flex;
+  gap: 7px;
+}
+
+.aboutCompanyUpload__tabs button {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 9px;
+  color: #607067;
+  background: #ffffff;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.aboutCompanyUpload__tabs button.isActive {
+  border-color: #315f45;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.aboutCompanyUpload__button {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.aboutCompanyUpload__button input {
+  display: none;
+}
+
+.aboutCompanyUpload__preview {
+  position: relative;
+  height: 320px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e5ece5;
+}
+
+.aboutCompanyUpload__preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.aboutCompanyUpload__preview button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(133, 42, 42, 0.84);
+  cursor: pointer;
+}
+
+.aboutCompanyUpload__empty {
+  min-height: 180px;
+  margin-top: 16px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  border: 1px dashed rgba(22, 61, 42, 0.17);
+  border-radius: 14px;
+  color: #718078;
+}
+
+.aboutCompanyPreview {
+  padding: 22px;
+  display: grid;
+  border-radius: 16px;
+}
+
+.aboutCompanyPreview--image-left img,
+.aboutCompanyPreview--image-left
+  .aboutCompanyPreview__placeholder {
+  order: -1;
+}
+
+.aboutCompanyPreview h3 {
+  margin: 10px 0 0;
+}
+
+.aboutCompanyPreview p {
+  margin: 12px 0 0;
+}
+
+.aboutCompanyPreview img,
+.aboutCompanyPreview__placeholder {
+  width: 100%;
+  object-fit: cover;
+}
+
+.aboutCompanyPreview__placeholder {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: #315f45;
+  background: rgba(49, 95, 69, 0.1);
+}
+
+.aboutCompanyEditor__saveBar {
+  position: sticky;
+  bottom: 18px;
+  z-index: 10;
+  margin-top: 22px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 50px rgba(22, 61, 42, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.aboutCompanyEditor__saveBar > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aboutCompanyEditor__saveBar span {
+  display: block;
+  color: #849087;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.aboutCompanyEditor__saveBar strong {
+  display: block;
+  color: #203027;
+  font-size: 14px;
+}
+
+.aboutCompanyEditor__saveBar button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.aboutCompanyEditor__spinner {
+  animation:
+    aboutCompanySpin
+    0.8s
+    linear
+    infinite;
+}
+
+.aboutCompanyAdmin__missing {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.aboutCompanyAdmin__missing h1,
+.aboutCompanyAdmin__missing p {
+  margin: 0;
+}
+
+.aboutCompanyAdmin__missing a {
+  color: #315f45;
+  font-weight: 800;
+}
+
+@keyframes aboutCompanySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1150px) {
+  .aboutCompanyAdmin__header {
+    flex-direction: column;
+  }
+
+  .aboutCompanyAdmin__headerActions {
+    justify-content: flex-start;
+  }
+
+  .aboutCompanyEditor__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutCompanyCard--sticky {
+    position: static;
+  }
+
+  .aboutCompanyFormGrid--four {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .aboutCompanyAdmin {
+    padding: 22px;
+  }
+
+  .aboutCompanyFormGrid,
+  .aboutCompanyFormGrid--four {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutCompanyField--full {
+    grid-column: auto;
+  }
+
+  .aboutCompanyUpload__heading {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutCompanyAdmin {
+    padding: 15px;
+  }
+
+  .aboutCompanyAdmin__header,
+  .aboutCompanyCard {
+    border-radius: 20px;
+  }
+
+  .aboutCompanyAdmin__header,
+  .aboutCompanyCard__body,
+  .aboutCompanyCard__heading {
+    padding: 21px;
+  }
+
+  .aboutCompanyAdmin__titleRow {
+    flex-direction: column;
+  }
+
+  .aboutCompanyAdmin__headerActions,
+  .aboutCompanyAdmin__backButton,
+  .aboutCompanyAdmin__previewButton {
+    width: 100%;
+  }
+
+  .aboutCompanyEditor__saveBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .aboutCompanyEditor__saveBar button {
+    width: 100%;
+  }
+}

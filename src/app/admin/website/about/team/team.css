@@ -1,0 +1,328 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/about/team/team.css
+ *
+ * Purpose :
+ * Styles the About team CMS manager.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.aboutTeamAdmin {
+  min-height: 100%;
+  padding: 34px;
+  color: #17221b;
+  background: #f4f6f2;
+}
+
+.aboutTeamAdmin__header,
+.aboutTeamCard {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(22, 61, 42, 0.05);
+}
+
+.aboutTeamAdmin__header {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.aboutTeamAdmin__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.aboutTeamAdmin__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.aboutTeamAdmin__titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.aboutTeamAdmin__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.aboutTeamAdmin__titleRow > div:last-child > span,
+.aboutTeamCard__heading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aboutTeamAdmin__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.aboutTeamAdmin__titleRow p {
+  max-width: 650px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.aboutTeamAdmin__back {
+  height: 44px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.aboutTeamCard {
+  margin-top: 22px;
+  overflow: hidden;
+}
+
+.aboutTeamCard__heading {
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.aboutTeamCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.aboutTeamForm {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.aboutTeamForm label {
+  display: grid;
+  gap: 8px;
+}
+
+.aboutTeamForm label > span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aboutTeamForm input,
+.aboutTeamForm select,
+.aboutTeamForm textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+}
+
+.aboutTeamForm input,
+.aboutTeamForm select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.aboutTeamForm textarea {
+  padding: 12px;
+  resize: vertical;
+}
+
+.aboutTeamForm__wide {
+  grid-column: 1 / -1;
+}
+
+.aboutTeamToggle {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex !important;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f6f9f5;
+}
+
+.aboutTeamToggle input {
+  width: 17px;
+  min-height: 17px;
+  accent-color: #315f45;
+}
+
+.aboutTeamForm button,
+.aboutTeamDelete {
+  min-height: 42px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.aboutTeamDelete {
+  background: #8f3535;
+}
+
+.aboutTeamEmpty {
+  margin-top: 22px;
+  padding: 40px;
+  border: 1px dashed rgba(22, 61, 42, 0.16);
+  border-radius: 20px;
+  color: #68756c;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .aboutTeamAdmin {
+    padding: 18px;
+  }
+
+  .aboutTeamAdmin__header {
+    flex-direction: column;
+  }
+
+  .aboutTeamForm {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutTeamForm__wide {
+    grid-column: auto;
+  }
+}
+
+
+.aboutTeamCard__heading p {
+  margin: 8px 0 0;
+  color: #6d786f;
+  font-size: 12px;
+}
+
+.aboutTeamDelete {
+  background: #8f3535;
+}
+
+
+/* Team photo upload */
+
+.aboutTeamPhotoField {
+  display: grid;
+  gap: 8px;
+}
+
+.aboutTeamPhotoField > span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aboutTeamPhotoUpload {
+  min-height: 44px;
+  padding: 0 14px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed rgba(22, 61, 42, 0.3);
+  border-radius: 11px;
+  color: #315f45;
+  background: #f3f8f3;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.aboutTeamPhotoUpload input {
+  display: none;
+}
+
+.aboutTeamPhotoField small {
+  color: #78857c;
+  font-size: 10px;
+}
+
+.aboutTeamPhotoPreview {
+  width: 112px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #e4ece4;
+}
+
+.aboutTeamPhotoPreview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.aboutTeamRemovePhoto {
+  display: flex !important;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  color: #873636;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.aboutTeamRemovePhoto input {
+  width: 16px;
+  min-height: 16px;
+  accent-color: #873636;
+}
+
+
+.aboutTeamNotice {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.aboutTeamNotice.isSuccess {
+  border: 1px solid rgba(36, 88, 57, 0.16);
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.aboutTeamNotice.isError {
+  border: 1px solid rgba(133, 42, 42, 0.16);
+  color: #852a2a;
+  background: #fbeaea;
+}

@@ -1,0 +1,407 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/services/hero/new/hero-slide-form.css
+ *
+ * Purpose :
+ * Styles the Add/Edit Services Hero Slide form.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.serviceHeroFormPage {
+  min-height: 100%;
+  padding: 34px;
+  color: #17251d;
+  background: #f4f6f2;
+}
+
+.serviceHeroFormPage__header,
+.serviceHeroFormCard {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(22, 61, 42, 0.05);
+}
+
+.serviceHeroFormPage__header {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.serviceHeroFormPage__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.serviceHeroFormPage__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.serviceHeroFormPage__titleRow {
+  display: flex;
+  gap: 17px;
+}
+
+.serviceHeroFormPage__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.serviceHeroFormPage__titleRow span,
+.serviceHeroFormCard__heading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.serviceHeroFormPage__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.serviceHeroFormPage__titleRow p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.serviceHeroFormPage__back {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.serviceHeroEditor {
+  margin-top: 22px;
+  display: grid;
+  gap: 20px;
+}
+
+.serviceHeroEditor__message {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.serviceHeroEditor__message.isSuccess {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.serviceHeroEditor__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.serviceHeroFormCard {
+  overflow: hidden;
+}
+
+.serviceHeroFormCard__heading {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.serviceHeroFormCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.serviceHeroFormCard__body {
+  padding: 24px;
+}
+
+.serviceHeroGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.serviceHeroField {
+  display: grid;
+  gap: 8px;
+}
+
+.serviceHeroField--full {
+  grid-column: 1 / -1;
+}
+
+.serviceHeroField > span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.serviceHeroField input,
+.serviceHeroField select,
+.serviceHeroField textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  color: #1f2d24;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+.serviceHeroField input,
+.serviceHeroField select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.serviceHeroField input[type="color"] {
+  padding: 5px;
+}
+
+.serviceHeroField textarea {
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.serviceHeroToggle {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f6f9f5;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.serviceHeroToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #315f45;
+}
+
+.serviceHeroMedia {
+  margin-bottom: 20px;
+  padding: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 16px;
+  background: #fafcf9;
+}
+
+.serviceHeroMedia__heading {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.serviceHeroMedia__heading > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.serviceHeroMedia__heading strong {
+  font-size: 13px;
+}
+
+.serviceHeroMedia__heading span {
+  color: #849087;
+  font-size: 10px;
+}
+
+.serviceHeroMedia__tabs {
+  display: flex;
+  gap: 7px;
+}
+
+.serviceHeroMedia__tabs button {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 9px;
+  color: #607067;
+  background: #ffffff;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.serviceHeroMedia__tabs button.isActive {
+  border-color: #315f45;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.serviceHeroMedia__upload {
+  min-height: 43px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.serviceHeroMedia__upload input {
+  display: none;
+}
+
+.serviceHeroMedia__preview {
+  position: relative;
+  height: 330px;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e5ebe5;
+}
+
+.serviceHeroMedia__preview img,
+.serviceHeroMedia__preview video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.serviceHeroMedia__preview button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(133, 42, 42, 0.86);
+  cursor: pointer;
+}
+
+.serviceHeroMedia__empty {
+  min-height: 170px;
+  margin-top: 15px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  border: 1px dashed rgba(22, 61, 42, 0.16);
+  border-radius: 14px;
+  color: #738079;
+}
+
+.serviceHeroEditor__saveBar {
+  position: sticky;
+  bottom: 18px;
+  z-index: 10;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(22, 61, 42, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.serviceHeroEditor__saveBar button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.serviceHeroEditor__saveBar button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.serviceHeroEditor__spinner {
+  animation:
+    serviceHeroFormSpin
+    0.8s
+    linear
+    infinite;
+}
+
+.serviceHeroFormPage__missing {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes serviceHeroFormSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .serviceHeroFormPage {
+    padding: 18px;
+  }
+
+  .serviceHeroFormPage__header,
+  .serviceHeroMedia__heading {
+    flex-direction: column;
+  }
+
+  .serviceHeroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceHeroField--full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .serviceHeroFormPage__titleRow {
+    flex-direction: column;
+  }
+}

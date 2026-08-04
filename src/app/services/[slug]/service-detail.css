@@ -1,0 +1,528 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/services/[slug]/service-detail.css
+ *
+ * Purpose :
+ * Styles dynamic public service detail pages, including real
+ * benefits, process steps and gallery content.
+ *
+ * Version : v1.1.0
+ * ============================================================
+ */
+
+.serviceDetailPage {
+  min-height: 100vh;
+  color: var(--service-detail-primary);
+  background: #ffffff;
+}
+
+.serviceDetailHero {
+  position: relative;
+  min-height: 720px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+  background: var(--service-detail-primary);
+}
+
+.serviceDetailHero__media,
+.serviceDetailHero__fallback,
+.serviceDetailHero__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.serviceDetailHero__media {
+  display: block;
+  object-fit: cover;
+}
+
+.serviceDetailHero__fallback {
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(241, 211, 19, 0.2),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #163d2a,
+      #08291e
+    );
+}
+
+.serviceDetailHero__overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 35, 26, 0.9),
+      rgba(5, 35, 26, 0.52)
+    );
+}
+
+.serviceDetailHero__inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 130px 32px 90px;
+}
+
+.serviceDetailHero__breadcrumb {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.serviceDetailHero__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.serviceDetailHero__eyebrow {
+  display: inline-block;
+  margin-bottom: 17px;
+  color: var(--service-detail-accent);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.serviceDetailHero h1 {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(46px, 6.4vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.serviceDetailHero__inner > p {
+  max-width: 760px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 19px;
+  line-height: 1.72;
+}
+
+.serviceDetailIntro {
+  padding: 90px 28px;
+  background: #ffffff;
+}
+
+.serviceDetailIntro__inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 30px;
+}
+
+.serviceDetailIntro__icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: var(--service-detail-primary);
+  background: var(--service-detail-accent);
+  box-shadow:
+    0 18px 36px
+    rgba(22, 61, 42, 0.16);
+}
+
+.serviceDetailIntro__content > span,
+.serviceDetailAudience header > span,
+.serviceDetailSectionHeader > span,
+.serviceDetailCta__inner > div > span {
+  color: var(--service-detail-secondary);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.serviceDetailIntro h2,
+.serviceDetailAudience h2,
+.serviceDetailSectionHeader h2,
+.serviceDetailCta h2 {
+  margin: 11px 0 0;
+  letter-spacing: -0.04em;
+}
+
+.serviceDetailIntro h2 {
+  font-size: clamp(36px, 4vw, 56px);
+}
+
+.serviceDetailRichText {
+  max-width: 900px;
+  margin-top: 25px;
+}
+
+.serviceDetailRichText p {
+  margin: 0;
+  color: var(--service-detail-text);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.serviceDetailRichText p + p {
+  margin-top: 20px;
+}
+
+.serviceDetailAudience {
+  padding: 85px 28px;
+  background: var(--service-detail-surface);
+}
+
+.serviceDetailAudience__inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(0, 1.2fr);
+  gap: 50px;
+  align-items: start;
+}
+
+.serviceDetailAudience h2 {
+  font-size: clamp(34px, 4vw, 54px);
+}
+
+.serviceDetailAudience__panel {
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow:
+    0 22px 54px
+    rgba(22, 61, 42, 0.09);
+}
+
+.serviceDetailAudience__panel p {
+  margin: 0;
+  color: var(--service-detail-text);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.serviceDetailAudience__panel p + p {
+  margin-top: 18px;
+}
+
+.serviceDetailBenefits,
+.serviceDetailProcess,
+.serviceDetailGallery {
+  padding: 85px 28px;
+}
+
+.serviceDetailBenefits {
+  background: #ffffff;
+}
+
+.serviceDetailProcess {
+  background: var(--service-detail-surface);
+}
+
+.serviceDetailGallery {
+  background: #ffffff;
+}
+
+.serviceDetailBenefits__inner,
+.serviceDetailProcess__inner,
+.serviceDetailGallery__inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.serviceDetailSectionHeader {
+  max-width: 760px;
+}
+
+.serviceDetailSectionHeader h2 {
+  font-size: clamp(34px, 4vw, 54px);
+}
+
+.serviceDetailBenefits__grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.serviceDetailBenefitCard {
+  padding: 28px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 24px;
+  background: var(--service-detail-surface);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.serviceDetailBenefitCard:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 22px 46px
+    rgba(22, 61, 42, 0.11);
+}
+
+.serviceDetailBenefitCard > div {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--service-detail-primary);
+  background: var(--service-detail-accent);
+}
+
+.serviceDetailBenefitCard h3 {
+  margin: 20px 0 0;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+
+.serviceDetailBenefitCard p {
+  margin: 12px 0 0;
+  color: var(--service-detail-text);
+  line-height: 1.72;
+}
+
+.serviceDetailProcess__list {
+  margin: 38px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  list-style: none;
+}
+
+.serviceDetailProcessStep {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    auto auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 22px;
+  background: #ffffff;
+}
+
+.serviceDetailProcessStep__number {
+  min-width: 52px;
+  color: var(--service-detail-secondary);
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.serviceDetailProcessStep__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--service-detail-primary);
+  background: var(--service-detail-accent);
+}
+
+.serviceDetailProcessStep__content h3 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+
+.serviceDetailProcessStep__content p {
+  margin: 10px 0 0;
+  color: var(--service-detail-text);
+  line-height: 1.72;
+}
+
+.serviceDetailGallery__grid {
+  margin-top: 38px;
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.serviceDetailGalleryItem {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--service-detail-surface);
+  box-shadow:
+    0 18px 42px
+    rgba(22, 61, 42, 0.08);
+}
+
+.serviceDetailGalleryItem img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.serviceDetailGalleryItem:hover img {
+  transform: scale(1.035);
+}
+
+.serviceDetailGalleryItem figcaption {
+  padding: 16px 18px;
+  color: var(--service-detail-text);
+  line-height: 1.6;
+}
+
+.serviceDetailCta {
+  padding: 80px 28px;
+  background: var(--service-detail-surface);
+}
+
+.serviceDetailCta__inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: clamp(38px, 6vw, 70px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  overflow: hidden;
+  border-radius: 32px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      135deg,
+      #163d2a,
+      #0a2d21
+    );
+  box-shadow:
+    0 30px 70px
+    rgba(22, 61, 42, 0.22);
+}
+
+.serviceDetailCta h2 {
+  max-width: 780px;
+  color: #ffffff;
+  font-size: clamp(34px, 4.5vw, 58px);
+}
+
+.serviceDetailCta__inner p {
+  max-width: 730px;
+  margin: 17px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.75;
+}
+
+.serviceDetailCta__inner > a {
+  flex: 0 0 auto;
+  padding: 15px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 999px;
+  color: var(--service-detail-primary);
+  background: var(--service-detail-accent);
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.serviceDetailCta__inner > a:hover {
+  transform: translateY(-2px);
+}
+
+.serviceDetailBack {
+  padding: 36px 28px 70px;
+  background: var(--service-detail-surface);
+  text-align: center;
+}
+
+.serviceDetailBack a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--service-detail-primary);
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+@media (max-width: 950px) {
+  .serviceDetailAudience__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceDetailBenefits__grid,
+  .serviceDetailGallery__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .serviceDetailCta__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 680px) {
+  .serviceDetailHero {
+    min-height: 640px;
+  }
+
+  .serviceDetailHero__inner {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .serviceDetailIntro,
+  .serviceDetailAudience,
+  .serviceDetailBenefits,
+  .serviceDetailProcess,
+  .serviceDetailGallery,
+  .serviceDetailCta {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .serviceDetailIntro__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceDetailBenefits__grid,
+  .serviceDetailGallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceDetailProcessStep {
+    grid-template-columns: auto 1fr;
+  }
+
+  .serviceDetailProcessStep__content {
+    grid-column: 1 / -1;
+  }
+
+  .serviceDetailCta__inner {
+    border-radius: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceDetailBenefitCard,
+  .serviceDetailGalleryItem img,
+  .serviceDetailCta__inner > a {
+    transition: none;
+  }
+}

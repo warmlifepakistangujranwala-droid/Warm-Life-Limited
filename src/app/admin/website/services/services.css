@@ -1,0 +1,378 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/services/services.css
+ *
+ * Purpose :
+ * Styles the Services page CMS manager.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.servicesManager {
+  min-height: 100%;
+  padding: 34px;
+  color: #17251d;
+  background: #f4f6f2;
+}
+
+.servicesManager__header,
+.servicesManager__content {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 14px 42px rgba(22, 61, 42, 0.06);
+}
+
+.servicesManager__header {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.servicesManager__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.servicesManager__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.servicesManager__titleRow {
+  display: flex;
+  gap: 17px;
+}
+
+.servicesManager__titleIcon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.servicesManager__titleRow span,
+.servicesManager__sectionHeading span,
+.servicesModuleCard span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.servicesManager__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.servicesManager__titleRow p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.servicesManager__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.servicesManager__actions a {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.servicesManager__actions .isSecondary {
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  color: #315f45;
+  background: #f7f9f6;
+}
+
+.servicesManager__actions .isPrimary {
+  color: #ffffff;
+  background: #315f45;
+}
+
+.servicesManager__stats {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.servicesManager__stats article {
+  padding: 22px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.servicesManager__stats span,
+.servicesManager__stats strong {
+  display: block;
+}
+
+.servicesManager__stats span {
+  color: #718078;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.servicesManager__stats strong {
+  margin-top: 9px;
+  font-size: 30px;
+}
+
+.servicesManager__modules {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.servicesModuleCard {
+  padding: 24px;
+  display: flex;
+  gap: 17px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 20px;
+  color: inherit;
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.servicesModuleCard > svg {
+  color: #315f45;
+}
+
+.servicesModuleCard h2 {
+  margin: 8px 0 0;
+}
+
+.servicesModuleCard p {
+  margin: 10px 0 0;
+  color: #69766d;
+  line-height: 1.6;
+}
+
+.servicesModuleCard strong {
+  display: block;
+  margin-top: 10px;
+  color: #315f45;
+  font-size: 12px;
+}
+
+.servicesManager__content {
+  margin-top: 22px;
+  padding: 28px;
+}
+
+.servicesManager__sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.servicesManager__sectionHeading h2 {
+  margin: 8px 0 0;
+  font-size: 30px;
+}
+
+.servicesManager__sectionHeading p {
+  max-width: 560px;
+  margin: 0;
+  color: #6b786f;
+  line-height: 1.7;
+}
+
+.servicesManager__grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.serviceAdminCard {
+  overflow: hidden;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 19px;
+  background: #fbfcfa;
+}
+
+.serviceAdminCard__media {
+  height: 210px;
+  overflow: hidden;
+  background: #e5ebe5;
+}
+
+.serviceAdminCard__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.serviceAdminCard__placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #315f45;
+}
+
+.serviceAdminCard__body {
+  padding: 20px;
+}
+
+.serviceAdminCard__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.serviceAdminCard__badges span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #315f45;
+  background: #edf3ed;
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.serviceAdminCard__badges .isPublished {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.serviceAdminCard__badges .isDraft {
+  color: #855c23;
+  background: #fff2dc;
+}
+
+.serviceAdminCard h3 {
+  margin: 17px 0 0;
+  font-size: 21px;
+}
+
+.serviceAdminCard p {
+  margin: 10px 0 0;
+  color: #6b786f;
+  line-height: 1.6;
+}
+
+.serviceAdminCard__footer {
+  margin-top: 18px;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.serviceAdminCard__footer span {
+  min-width: 0;
+  overflow: hidden;
+  color: #7c887f;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.serviceAdminCard__footer a,
+.servicesManager__empty a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #315f45;
+  font-size: 11px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.servicesManager__empty {
+  margin-top: 24px;
+  padding: 48px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  border: 1px dashed rgba(22, 61, 42, 0.16);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.servicesManager__empty h2,
+.servicesManager__empty p {
+  margin: 0;
+}
+
+.servicesManager__empty p {
+  color: #6c786f;
+}
+
+.servicesManager__warning {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: #852a2a;
+  background: #fbeaea;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+@media (max-width: 1100px) {
+  .servicesManager__header,
+  .servicesManager__sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .servicesManager__stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .servicesManager__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .servicesManager {
+    padding: 18px;
+  }
+
+  .servicesManager__modules,
+  .servicesManager__grid,
+  .servicesManager__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesManager__titleRow {
+    flex-direction: column;
+  }
+}

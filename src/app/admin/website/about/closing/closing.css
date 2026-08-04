@@ -1,0 +1,283 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/website/about/closing/closing.css
+ *
+ * Purpose :
+ * Styles the About closing statement CMS editor.
+ *
+ * Version : v1.0.0
+ * ============================================================
+ */
+
+.closingAdmin {
+  min-height: 100%;
+  padding: 34px;
+  color: #17221b;
+  background: #f4f6f2;
+}
+
+.closingAdmin__header,
+.closingCard {
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(22, 61, 42, 0.05);
+}
+
+.closingAdmin__header {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.closingAdmin__breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 9px;
+  color: #7c887f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.closingAdmin__breadcrumb a {
+  color: #647168;
+  text-decoration: none;
+}
+
+.closingAdmin__titleRow {
+  display: flex;
+  gap: 17px;
+}
+
+.closingAdmin__icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background: #315f45;
+}
+
+.closingAdmin__titleRow span,
+.closingCard__heading span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.closingAdmin__titleRow h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+}
+
+.closingAdmin__titleRow p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: #6d786f;
+  line-height: 1.7;
+}
+
+.closingAdmin__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.closingAdmin__actions a {
+  min-height: 44px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.closingAdmin__notice {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.closingAdmin__notice.isSuccess {
+  color: #245839;
+  background: #e8f4ea;
+}
+
+.closingAdmin__notice.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.closingEditor {
+  margin-top: 22px;
+  display: grid;
+  gap: 20px;
+}
+
+.closingCard {
+  overflow: hidden;
+}
+
+.closingCard__heading {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.closingCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.closingCard__body {
+  padding: 24px;
+}
+
+.closingGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.closingField {
+  display: grid;
+  gap: 8px;
+}
+
+.closingField span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.closingField input,
+.closingField select,
+.closingField textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  color: #1f2d24;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+}
+
+.closingField input,
+.closingField select {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.closingField input[type="color"] {
+  padding: 5px;
+}
+
+.closingField textarea {
+  min-height: 150px;
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.closingToggle {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f6f9f5;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.closingToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #315f45;
+}
+
+.closingEditor__save {
+  position: sticky;
+  bottom: 18px;
+  z-index: 5;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(22, 61, 42, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(22, 61, 42, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.closingEditor__save span,
+.closingEditor__save strong {
+  display: block;
+}
+
+.closingEditor__save span {
+  color: #7e8a81;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.closingEditor__save button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #315f45;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.closingAdmin__missing {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 780px) {
+  .closingAdmin {
+    padding: 18px;
+  }
+
+  .closingAdmin__header {
+    flex-direction: column;
+  }
+
+  .closingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .closingEditor__save {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .closingEditor__save button {
+    justify-content: center;
+  }
+}
