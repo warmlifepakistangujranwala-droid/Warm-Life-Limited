@@ -6,7 +6,7 @@
  * Purpose :
  * Manages About page team departments.
  *
- * Version : v1.0.0
+ * Version : v1.0.1
  * ============================================================
  */
 
@@ -23,6 +23,7 @@ import {
   createAboutDepartment,
   deleteAboutDepartment,
   getAboutDepartments,
+  getAboutPageSettings,
   updateAboutDepartment,
 } from "@/lib/actions/about-page";
 
@@ -32,6 +33,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 async function saveDepartmentAction(
+  aboutPageId: string,
   formData: FormData,
 ) {
   "use server";
@@ -79,6 +81,7 @@ async function saveDepartmentAction(
     );
   } else {
     await createAboutDepartment(
+      aboutPageId,
       payload,
     );
   }
@@ -113,8 +116,19 @@ async function deleteDepartmentAction(
 }
 
 export default async function AboutDepartmentsPage() {
-  const departments =
-    await getAboutDepartments();
+  const [
+    aboutPage,
+    departments,
+  ] = await Promise.all([
+    getAboutPageSettings(),
+    getAboutDepartments(),
+  ]);
+
+  if (!aboutPage) {
+    throw new Error(
+      "About page settings could not be found.",
+    );
+  }
 
   return (
     <div className="aboutDepartmentsAdmin">
@@ -178,7 +192,10 @@ export default async function AboutDepartmentsPage() {
         </div>
 
         <form
-          action={saveDepartmentAction}
+          action={saveDepartmentAction.bind(
+            null,
+            aboutPage.id,
+          )}
           className="aboutDepartmentsForm"
         >
           <label>
@@ -319,7 +336,10 @@ export default async function AboutDepartmentsPage() {
               </div>
 
               <form
-                action={saveDepartmentAction}
+                action={saveDepartmentAction.bind(
+                  null,
+                  aboutPage.id,
+                )}
                 className="aboutDepartmentsForm"
               >
                 <input
