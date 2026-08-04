@@ -7,7 +7,7 @@
  * Provides the Add Service form with Supabase media uploads,
  * automatic slug generation and optional detail-page controls.
  *
- * Version : v1.1.0
+ * Version : v1.2.0
  * ============================================================
  */
 
@@ -33,12 +33,14 @@ import { useRouter } from "next/navigation";
 
 import {
   createService,
+  updateService,
 } from "@/lib/actions/services-page";
 
 import { createClient } from "@/lib/supabase/client";
 
 import type {
   CreateServiceInput,
+  Service,
   ServiceDetailHeroType,
 } from "@/lib/types/services-page";
 
@@ -138,6 +140,48 @@ const INITIAL_FORM: CreateServiceInput = {
   is_published: false,
 };
 
+type ServiceFormProps = {
+  initialService?: Service;
+};
+
+function getInitialForm(
+  service?: Service,
+): CreateServiceInput {
+  if (!service) {
+    return {
+      ...INITIAL_FORM,
+    };
+  }
+
+  const initialForm: CreateServiceInput = {
+    ...INITIAL_FORM,
+  };
+
+  (
+    Object.keys(
+      initialForm,
+    ) as Array<
+      keyof CreateServiceInput
+    >
+  ).forEach((key) => {
+    const value =
+      service[
+        key as keyof Service
+      ];
+
+    if (value !== undefined) {
+      (
+        initialForm as Record<
+          keyof CreateServiceInput,
+          unknown
+        >
+      )[key] = value;
+    }
+  });
+
+  return initialForm;
+}
+
 function slugify(value: string): string {
   return value
     .toLowerCase()
@@ -146,13 +190,21 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-export default function ServiceForm() {
+export default function ServiceForm({
+  initialService,
+}: ServiceFormProps) {
   const router = useRouter();
   const supabase = createClient();
 
+  const isEditing =
+    Boolean(initialService?.id);
+
   const [form, setForm] =
     useState<CreateServiceInput>(
-      INITIAL_FORM,
+      () =>
+        getInitialForm(
+          initialService,
+        ),
     );
 
   const [slugEdited, setSlugEdited] =
@@ -166,22 +218,56 @@ export default function ServiceForm() {
   const [sources, setSources] =
     useState<
       Record<MediaKey, MediaSource>
-    >({
-      featured: "upload",
-      detailImage: "upload",
-      detailVideo: "upload",
-      detailPoster: "upload",
-    });
+    >(() => ({
+      featured:
+        initialService
+          ?.featured_image_url
+          ? "url"
+          : "upload",
+
+      detailImage:
+        initialService
+          ?.detail_hero_image_url
+          ? "url"
+          : "upload",
+
+      detailVideo:
+        initialService
+          ?.detail_hero_video_url
+          ? "url"
+          : "upload",
+
+      detailPoster:
+        initialService
+          ?.detail_hero_poster_url
+          ? "url"
+          : "upload",
+    }));
 
   const [previews, setPreviews] =
     useState<
       Record<MediaKey, string>
-    >({
-      featured: "",
-      detailImage: "",
-      detailVideo: "",
-      detailPoster: "",
-    });
+    >(() => ({
+      featured:
+        initialService
+          ?.featured_image_url ??
+        "",
+
+      detailImage:
+        initialService
+          ?.detail_hero_image_url ??
+        "",
+
+      detailVideo:
+        initialService
+          ?.detail_hero_video_url ??
+        "",
+
+      detailPoster:
+        initialService
+          ?.detail_hero_poster_url ??
+        "",
+    }));
 
   const [message, setMessage] =
     useState<Message>(null);
@@ -459,7 +545,8 @@ export default function ServiceForm() {
 
     if (
       sources.featured === "upload" &&
-      !files.featured
+      !files.featured &&
+      !form.featured_image_url
     ) {
       return "Featured image is required.";
     }
@@ -482,7 +569,8 @@ export default function ServiceForm() {
       form.has_detail_page &&
       form.detail_hero_type === "image" &&
       sources.detailImage === "upload" &&
-      !files.detailImage
+      !files.detailImage &&
+      !form.detail_hero_image_url
     ) {
       return "Detail page hero image is required.";
     }
@@ -491,7 +579,8 @@ export default function ServiceForm() {
       form.has_detail_page &&
       form.detail_hero_type === "video" &&
       sources.detailVideo === "upload" &&
-      !files.detailVideo
+      !files.detailVideo &&
+      !form.detail_hero_video_url
     ) {
       return "Detail page hero video is required.";
     }
@@ -655,9 +744,15 @@ export default function ServiceForm() {
       }
 
       const result =
-        await createService(
-          payload,
-        );
+        isEditing &&
+        initialService
+          ? await updateService(
+              initialService.id,
+              payload,
+            )
+          : await createService(
+              payload,
+            );
 
       if (!result.success) {
         const fieldErrors =
@@ -679,10 +774,17 @@ export default function ServiceForm() {
       setMessage({
         type: "success",
         text:
-          submitMode === "publish"
-            ? "Service published successfully."
-            : "Service saved as draft.",
+          isEditing
+            ? "Service updated successfully."
+            : submitMode === "publish"
+              ? "Service published successfully."
+              : "Service saved as draft.",
       });
+
+      if (isEditing) {
+        router.refresh();
+        return;
+      }
 
       const createdServiceId =
         result.data?.id;
@@ -711,7 +813,9 @@ export default function ServiceForm() {
         text:
           error instanceof Error
             ? error.message
-            : "Unable to create service.",
+            : isEditing
+              ? "Unable to update service."
+              : "Unable to create service.",
       });
     } finally {
       setIsSaving(false);
