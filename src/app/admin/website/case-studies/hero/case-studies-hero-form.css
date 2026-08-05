@@ -1,0 +1,233 @@
+.caseStudiesHeroAdmin {
+  min-height: 100vh;
+  padding: 34px;
+  color: #163d2a;
+  background: #f5f7f3;
+}
+
+.caseStudiesHeroAdmin__header,
+.caseStudiesHeroForm {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+}
+
+.caseStudiesHeroAdmin__header {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.caseStudiesHeroAdmin__header > div > span,
+.caseStudiesHeroForm section > header > span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.caseStudiesHeroAdmin__header > div > div {
+  margin-top: 10px;
+  display: flex;
+  gap: 14px;
+}
+
+.caseStudiesHeroAdmin__header h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.caseStudiesHeroAdmin__header p {
+  margin: 8px 0 0;
+  color: #6c776f;
+}
+
+.caseStudiesHeroAdmin__header > a {
+  height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 11px;
+  color: #315f45;
+  background: #fff;
+  font-size: 10px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.caseStudiesHeroForm {
+  display: grid;
+  gap: 20px;
+}
+
+.caseStudiesHeroForm > section {
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.09);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.caseStudiesHeroForm section > header {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+}
+
+.caseStudiesHeroForm section > header h2 {
+  margin: 7px 0 0;
+  font-size: 25px;
+}
+
+.caseStudiesHeroForm__grid,
+.caseStudiesHeroForm__media {
+  padding: 24px;
+}
+
+.caseStudiesHeroForm__grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 16px;
+}
+
+.caseStudiesHeroForm label {
+  display: grid;
+  gap: 7px;
+}
+
+.caseStudiesHeroForm label > span {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.caseStudiesHeroForm .isFull {
+  grid-column: 1 / -1;
+}
+
+.caseStudiesHeroForm input,
+.caseStudiesHeroForm textarea {
+  width: 100%;
+  border: 1px solid rgba(22,61,42,.14);
+  border-radius: 10px;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 11px;
+}
+
+.caseStudiesHeroForm input {
+  min-height: 42px;
+  padding: 0 11px;
+}
+
+.caseStudiesHeroForm textarea {
+  padding: 11px;
+}
+
+.caseStudiesHeroForm__media {
+  display: grid;
+  gap: 15px;
+}
+
+.caseStudiesHeroForm__upload {
+  width: fit-content;
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+  border-radius: 10px;
+  color: #fff;
+  background: #315f45;
+  cursor: pointer;
+}
+
+.caseStudiesHeroForm__upload input {
+  display: none;
+}
+
+.caseStudiesHeroForm__media img,
+.caseStudiesHeroForm__empty {
+  width: 100%;
+  height: 320px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.caseStudiesHeroForm__empty {
+  display: grid;
+  place-items: center;
+  color: #738078;
+  background: #edf1ec;
+}
+
+.caseStudiesHeroForm > footer {
+  position: sticky;
+  bottom: 14px;
+  padding: 13px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 16px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 18px 46px rgba(22,61,42,.13);
+}
+
+.caseStudiesHeroForm > footer button {
+  min-height: 42px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: #163d2a;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.caseStudiesHeroForm__message {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.caseStudiesHeroForm__message.isSuccess {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.caseStudiesHeroForm__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.caseStudiesHeroForm__spinner {
+  animation: caseStudiesHeroSpin .8s linear infinite;
+}
+
+@keyframes caseStudiesHeroSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 760px) {
+  .caseStudiesHeroAdmin {
+    padding: 24px 18px;
+  }
+
+  .caseStudiesHeroAdmin__header {
+    flex-direction: column;
+  }
+
+  .caseStudiesHeroForm__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .caseStudiesHeroForm .isFull {
+    grid-column: auto;
+  }
+}

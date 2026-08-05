@@ -1,0 +1,462 @@
+/**
+ * Case Study Add/Edit Form
+ * Version: v0.1.0
+ */
+
+.caseStudyFormPage {
+  min-height: 100vh;
+  padding: 34px;
+  color: #163d2a;
+  background: #f5f7f3;
+}
+
+.caseStudyFormPage__header {
+  width: min(100%, 1380px);
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.caseStudyFormPage__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  color: #78827b;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.caseStudyFormPage__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.caseStudyFormPage__titleRow {
+  margin-top: 14px;
+  display: flex;
+  gap: 15px;
+}
+
+.caseStudyFormPage__titleIcon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  color: #163d2a;
+  background: #f1d313;
+  box-shadow:
+    0 14px 32px
+    rgba(22, 61, 42, 0.12);
+}
+
+.caseStudyFormPage__titleRow > div:last-child > span,
+.caseStudyFormCard__heading > span {
+  color: #477553;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.caseStudyFormPage__titleRow h1 {
+  margin: 6px 0 0;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.caseStudyFormPage__titleRow p {
+  margin: 10px 0 0;
+  color: #6a776e;
+  line-height: 1.7;
+}
+
+.caseStudyFormPage__back {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 11px;
+  color: #315f45;
+  background: #ffffff;
+  font-size: 10px;
+  font-weight: 850;
+  text-decoration: none;
+  box-shadow:
+    0 10px 28px
+    rgba(22, 61, 42, 0.07);
+}
+
+.caseStudyEditor {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.caseStudyEditor__message {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.caseStudyEditor__message.isSuccess {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.caseStudyEditor__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.caseStudyFormCard {
+  overflow: hidden;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:
+    0 14px 40px
+    rgba(22, 61, 42, 0.05);
+}
+
+.caseStudyFormCard__heading {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.caseStudyFormCard__heading h2 {
+  margin: 7px 0 0;
+  font-size: 25px;
+  letter-spacing: -0.035em;
+}
+
+.caseStudyFormCard__body {
+  padding: 24px;
+}
+
+.caseStudyFormCard__body--border {
+  border-top: 1px solid rgba(22, 61, 42, 0.08);
+}
+
+.caseStudyFormGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.caseStudyField {
+  display: grid;
+  gap: 7px;
+}
+
+.caseStudyField--full {
+  grid-column: 1 / -1;
+}
+
+.caseStudyField > span {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.caseStudyField input,
+.caseStudyField textarea,
+.caseStudyField select {
+  width: 100%;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 10px;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 11px;
+  outline: none;
+}
+
+.caseStudyField input,
+.caseStudyField select {
+  min-height: 43px;
+  padding: 0 12px;
+}
+
+.caseStudyField textarea {
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.caseStudyField input:focus,
+.caseStudyField textarea:focus,
+.caseStudyField select:focus {
+  border-color: #477553;
+  box-shadow:
+    0 0 0 3px
+    rgba(71, 117, 83, 0.09);
+}
+
+.caseStudyToggle {
+  min-height: 43px;
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f8faf7;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.caseStudyToggle input {
+  width: 17px;
+  height: 17px;
+  accent-color: #315f45;
+}
+
+.caseStudyMedia {
+  display: grid;
+  gap: 14px;
+}
+
+.caseStudyMedia__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.caseStudyMedia__heading strong {
+  display: block;
+  font-size: 11px;
+}
+
+.caseStudyMedia__heading span {
+  display: block;
+  margin-top: 4px;
+  color: #78827b;
+  font-size: 9px;
+}
+
+.caseStudyMedia__tabs {
+  padding: 3px;
+  display: flex;
+  border-radius: 10px;
+  background: #edf2ec;
+}
+
+.caseStudyMedia__tabs button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #5d6c62;
+  background: transparent;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.caseStudyMedia__tabs button.isActive {
+  color: #ffffff;
+  background: #315f45;
+}
+
+.caseStudyMedia__upload {
+  width: fit-content;
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.caseStudyMedia__upload input {
+  display: none;
+}
+
+.caseStudyMedia__preview,
+.caseStudyMedia__empty {
+  position: relative;
+  width: 100%;
+  height: 290px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.caseStudyMedia__preview img,
+.caseStudyMedia__preview video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.caseStudyMedia__preview button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  color: #852a2a;
+  background: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+}
+
+.caseStudyMedia__empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: #748078;
+  background: #edf1ec;
+}
+
+.caseStudyAppearanceGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 16px;
+  background: #f8faf7;
+}
+
+.caseStudyContentSections {
+  display: grid;
+  gap: 18px;
+}
+
+.caseStudySectionEditor {
+  padding: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 15px;
+  background: #f8faf7;
+}
+
+.caseStudySectionEditor > .caseStudyFormGrid {
+  margin-top: 15px;
+}
+
+.caseStudyDynamicToggle {
+  display: grid;
+  gap: 11px;
+}
+
+.caseStudyEditor__saveBar {
+  position: sticky;
+  bottom: 14px;
+  z-index: 10;
+  padding: 13px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 18px 46px
+    rgba(22, 61, 42, 0.13);
+  backdrop-filter: blur(14px);
+}
+
+.caseStudyEditor__saveBar button {
+  min-height: 42px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.caseStudyEditor__saveBar
+.isSecondary {
+  color: #315f45;
+  background: #e8f0e8;
+}
+
+.caseStudyEditor__saveBar
+.isPrimary {
+  color: #ffffff;
+  background: #163d2a;
+}
+
+.caseStudyEditor__saveBar
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.caseStudyEditor__spinner {
+  animation:
+    caseStudySpin
+    0.8s linear infinite;
+}
+
+@keyframes caseStudySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .caseStudyFormPage {
+    padding: 24px 18px;
+  }
+
+  .caseStudyFormPage__header {
+    flex-direction: column;
+  }
+
+  .caseStudyFormPage__back {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .caseStudyFormGrid,
+  .caseStudyAppearanceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .caseStudyField--full {
+    grid-column: auto;
+  }
+
+  .caseStudyMedia__heading {
+    flex-direction: column;
+  }
+
+  .caseStudyEditor__saveBar {
+    position: static;
+    flex-direction: column;
+  }
+
+  .caseStudyEditor__saveBar button {
+    width: 100%;
+  }
+}

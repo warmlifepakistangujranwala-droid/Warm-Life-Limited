@@ -1,0 +1,85 @@
+/**
+ * Case Study Timeline Manager
+ * Version: v0.1.0
+ */
+
+.caseStudyTimelineCreate {
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+}
+
+.caseStudyTimelineCreate__description {
+  grid-column: 1 / -1;
+}
+
+.caseStudyTimelineCreate textarea,
+.caseStudyDynamicManager__item textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid
+    rgba(22, 61, 42, 0.14);
+  border-radius: 10px;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.caseStudyTimelineItem__top {
+  display: grid;
+  grid-template-columns:
+    90px minmax(0, 1fr) 150px;
+  gap: 10px;
+}
+
+.caseStudyTimelineItem__settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.caseStudyTimelineItem__settings select {
+  width: min(100%, 220px);
+}
+
+.caseStudyTimelineItem__settings label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.caseStudyTimelineItem__settings
+input[type="number"] {
+  width: 80px;
+}
+
+@media (max-width: 1050px) {
+  .caseStudyTimelineCreate {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .caseStudyTimelineCreate,
+  .caseStudyTimelineItem__top {
+    grid-template-columns: 1fr;
+  }
+
+  .caseStudyTimelineCreate__description {
+    grid-column: auto;
+  }
+
+  .caseStudyTimelineItem__settings {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .caseStudyTimelineItem__settings select {
+    width: 100%;
+  }
+}

@@ -83,6 +83,11 @@ const navigationGroups: NavigationGroup[] = [
         icon: "◇",
       },
       {
+        href: "/admin/website/case-studies",
+        label: "Case Studies",
+        icon: "▣",
+      },
+      {
         href: "/admin/website/contact",
         label: "Contact Page",
         icon: "✉",
@@ -114,11 +119,7 @@ const navigationGroups: NavigationGroup[] = [
         label: "Blogs",
         icon: "✎",
       },
-      {
-        href: "/admin/case-studies",
-        label: "Case Studies",
-        icon: "▣",
-      },
+      
       {
         href: "/admin/testimonials",
         label: "Testimonials",
