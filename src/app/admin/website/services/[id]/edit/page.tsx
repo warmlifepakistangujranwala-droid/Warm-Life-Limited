@@ -7,7 +7,7 @@
  * Loads an existing service, reusable service form and
  * repeatable Benefits, Process Steps and Gallery managers.
  *
- * Version : v1.1.0
+ * Version : v1.2.0
  * ============================================================
  */
 
@@ -119,51 +119,28 @@ export default async function EditServicePage({
 
       <ServiceForm
         initialService={service}
+        detailManagers={{
+          benefits: (
+            <BenefitsManager
+              serviceId={service.id}
+              initialItems={benefits}
+            />
+          ),
+          process: (
+            <ProcessManager
+              serviceId={service.id}
+              initialItems={processSteps}
+            />
+          ),
+          gallery: (
+            <GalleryManager
+              serviceId={service.id}
+              initialItems={galleryItems}
+            />
+          ),
+        }}
       />
 
-      {service.has_detail_page ? (
-        <section
-          id="detail-content"
-          className="serviceDetailManagers"
-        >
-          <header className="serviceDetailManagers__header">
-            <span>
-              Dynamic detail content
-            </span>
-
-            <h2>
-              Benefits, Process & Gallery
-            </h2>
-
-            <p>
-              Add unlimited repeatable content for this service.
-              Active and published items appear automatically on
-              the public service detail page.
-            </p>
-
-            <div className="serviceDetailManagers__steps">
-              <span>1. Add benefits</span>
-              <span>2. Add process steps</span>
-              <span>3. Upload gallery images</span>
-            </div>
-          </header>
-
-          <BenefitsManager
-            serviceId={service.id}
-            initialItems={benefits}
-          />
-
-          <ProcessManager
-            serviceId={service.id}
-            initialItems={processSteps}
-          />
-
-          <GalleryManager
-            serviceId={service.id}
-            initialItems={galleryItems}
-          />
-        </section>
-      ) : null}
     </div>
   );
 }

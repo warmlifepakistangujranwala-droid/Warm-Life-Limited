@@ -1,5 +1,8 @@
 /**
  * Benefits Manager
+ *
+ * Version: v1.1.0
+ * Fixes stale editing state after router refresh.
  */
 
 "use client";
@@ -12,7 +15,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import {
@@ -50,6 +53,38 @@ const EMPTY_BENEFIT: BenefitDraft = {
   is_published: true,
 };
 
+function toBenefitDraft(
+  item: ServiceBenefit,
+): BenefitDraft {
+  return {
+    internal_name:
+      item.internal_name ?? "",
+    title:
+      item.title ?? "",
+    description:
+      item.description ?? "",
+    icon_name:
+      item.icon_name ?? "CheckCircle2",
+    display_order:
+      item.display_order ?? 0,
+    is_active:
+      item.is_active ?? true,
+    is_published:
+      item.is_published ?? true,
+  };
+}
+
+function buildEditingState(
+  items: ServiceBenefit[],
+): Record<string, BenefitDraft> {
+  return Object.fromEntries(
+    items.map((item) => [
+      item.id,
+      toBenefitDraft(item),
+    ]),
+  );
+}
+
 export default function BenefitsManager({
   serviceId,
   initialItems,
@@ -63,27 +98,19 @@ export default function BenefitsManager({
 
   const [editing, setEditing] =
     useState<Record<string, BenefitDraft>>(
-      Object.fromEntries(
-        initialItems.map((item) => [
-          item.id,
-          {
-            internal_name:
-              item.internal_name,
-            title: item.title,
-            description:
-              item.description,
-            icon_name:
-              item.icon_name,
-            display_order:
-              item.display_order,
-            is_active:
-              item.is_active,
-            is_published:
-              item.is_published,
-          },
-        ]),
+      () =>
+        buildEditingState(
+          initialItems,
+        ),
+    );
+
+  useEffect(() => {
+    setEditing(
+      buildEditingState(
+        initialItems,
       ),
     );
+  }, [initialItems]);
 
   const [busyId, setBusyId] =
     useState<string | null>(null);
@@ -302,7 +329,8 @@ export default function BenefitsManager({
       <div className="detailManagerList">
         {initialItems.map((item) => {
           const value =
-            editing[item.id];
+            editing[item.id] ??
+            toBenefitDraft(item);
 
           return (
             <div

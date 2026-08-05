@@ -7,7 +7,7 @@
  * Renders a dynamic public detail page for each published
  * service, including real benefits, process steps and gallery.
  *
- * Version : v1.1.0
+ * Version : v1.2.0
  * ============================================================
  */
 
@@ -80,13 +80,27 @@ const SERVICE_ICONS: Record<
   BadgePoundSterling,
 };
 
-function getPageVariables(): CSSVariableProperties {
+function getPageVariables(
+  service: Service,
+): CSSVariableProperties {
   return {
     "--service-detail-accent": "#f1d313",
     "--service-detail-primary": "#163d2a",
     "--service-detail-secondary": "#315f45",
     "--service-detail-surface": "#f5f7f3",
     "--service-detail-text": "#5f6d64",
+    "--service-detail-hero-heading-size":
+      `${service.detail_hero_heading_size || 88}px`,
+    "--service-detail-hero-heading-size-mobile":
+      `${service.detail_hero_heading_size_mobile || 48}px`,
+    "--service-detail-section-heading-size":
+      `${service.detail_section_heading_size || 54}px`,
+    "--service-detail-section-heading-size-mobile":
+      `${service.detail_section_heading_size_mobile || 36}px`,
+    "--service-detail-card-heading-size":
+      `${service.detail_card_heading_size || 24}px`,
+    "--service-detail-cta-heading-size":
+      `${service.detail_cta_heading_size || 58}px`,
   };
 }
 
@@ -546,7 +560,7 @@ export default async function ServiceDetailPage({
   return (
     <main
       className="serviceDetailPage"
-      style={getPageVariables()}
+      style={getPageVariables(service)}
     >
       <ServiceDetailHero
         service={service}

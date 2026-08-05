@@ -8,7 +8,7 @@
  * page CMS, hero slides, service cards and optional service
  * detail pages.
  *
- * Version : v1.1.1
+ * Version : v1.2.0
  * ============================================================
  */
 
@@ -1085,6 +1085,24 @@ const serviceBaseSchema =
       detail_hero_description:
         optionalText(2000)
           .default(""),
+
+      detail_hero_heading_size:
+        positiveNumber.max(180).default(88),
+
+      detail_hero_heading_size_mobile:
+        positiveNumber.max(120).default(48),
+
+      detail_section_heading_size:
+        positiveNumber.max(120).default(54),
+
+      detail_section_heading_size_mobile:
+        positiveNumber.max(90).default(36),
+
+      detail_card_heading_size:
+        positiveNumber.max(72).default(24),
+
+      detail_cta_heading_size:
+        positiveNumber.max(120).default(58),
 
       who_is_it_for_enabled:
         z.boolean()

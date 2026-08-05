@@ -1,5 +1,8 @@
 /**
  * Gallery Manager
+ *
+ * Version: v1.1.0
+ * Fixes stale editing state after router refresh.
  */
 
 "use client";
@@ -15,6 +18,7 @@ import {
 
 import {
   type ChangeEvent,
+  useEffect,
   useState,
 } from "react";
 
@@ -59,6 +63,40 @@ const EMPTY_GALLERY: GalleryDraft = {
   is_published: true,
 };
 
+function toGalleryDraft(
+  item: ServiceGalleryItem,
+): GalleryDraft {
+  return {
+    internal_name:
+      item.internal_name ?? "",
+    image_url:
+      item.image_url ?? null,
+    image_storage_path:
+      item.image_storage_path ?? null,
+    image_alt:
+      item.image_alt ?? "",
+    caption:
+      item.caption ?? "",
+    display_order:
+      item.display_order ?? 0,
+    is_active:
+      item.is_active ?? true,
+    is_published:
+      item.is_published ?? true,
+  };
+}
+
+function buildEditingState(
+  items: ServiceGalleryItem[],
+): Record<string, GalleryDraft> {
+  return Object.fromEntries(
+    items.map((item) => [
+      item.id,
+      toGalleryDraft(item),
+    ]),
+  );
+}
+
 export default function GalleryManager({
   serviceId,
   initialItems,
@@ -79,30 +117,19 @@ export default function GalleryManager({
 
   const [editing, setEditing] =
     useState<Record<string, GalleryDraft>>(
-      Object.fromEntries(
-        initialItems.map((item) => [
-          item.id,
-          {
-            internal_name:
-              item.internal_name,
-            image_url:
-              item.image_url,
-            image_storage_path:
-              item.image_storage_path,
-            image_alt:
-              item.image_alt,
-            caption:
-              item.caption,
-            display_order:
-              item.display_order,
-            is_active:
-              item.is_active,
-            is_published:
-              item.is_published,
-          },
-        ]),
+      () =>
+        buildEditingState(
+          initialItems,
+        ),
+    );
+
+  useEffect(() => {
+    setEditing(
+      buildEditingState(
+        initialItems,
       ),
     );
+  }, [initialItems]);
 
   const [busyId, setBusyId] =
     useState<string | null>(null);
@@ -459,7 +486,8 @@ export default function GalleryManager({
       <div className="galleryManagerGrid">
         {initialItems.map((item) => {
           const value =
-            editing[item.id];
+            editing[item.id] ??
+            toGalleryDraft(item);
 
           return (
             <div

@@ -8,7 +8,7 @@
  * CMS, including page settings, hero slides, service cards and
  * optional dynamic service detail pages.
  *
- * Version : v1.2.0
+ * Version : v1.3.0
  * ============================================================
  */
 
@@ -309,6 +309,13 @@ export interface Service {
   detail_hero_heading: string;
   detail_hero_description: string;
 
+  detail_hero_heading_size: number;
+  detail_hero_heading_size_mobile: number;
+  detail_section_heading_size: number;
+  detail_section_heading_size_mobile: number;
+  detail_card_heading_size: number;
+  detail_cta_heading_size: number;
+
   who_is_it_for_enabled: boolean;
   who_is_it_for_heading: string;
   who_is_it_for_content: string;
@@ -543,6 +550,13 @@ export interface CreateServiceInput {
   detail_hero_eyebrow?: string;
   detail_hero_heading?: string;
   detail_hero_description?: string;
+
+  detail_hero_heading_size?: number;
+  detail_hero_heading_size_mobile?: number;
+  detail_section_heading_size?: number;
+  detail_section_heading_size_mobile?: number;
+  detail_card_heading_size?: number;
+  detail_cta_heading_size?: number;
 
   who_is_it_for_enabled?: boolean;
   who_is_it_for_heading?: string;

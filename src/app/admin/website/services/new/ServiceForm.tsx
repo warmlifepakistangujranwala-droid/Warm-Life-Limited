@@ -7,7 +7,7 @@
  * Provides the Add Service form with Supabase media uploads,
  * automatic slug generation and optional detail-page controls.
  *
- * Version : v1.2.0
+ * Version : v1.3.2
  * ============================================================
  */
 
@@ -26,6 +26,7 @@ import {
 import {
   type ChangeEvent,
   type FormEvent,
+  type ReactNode,
   useState,
 } from "react";
 
@@ -112,6 +113,13 @@ const INITIAL_FORM: CreateServiceInput = {
   detail_hero_heading: "",
   detail_hero_description: "",
 
+  detail_hero_heading_size: 88,
+  detail_hero_heading_size_mobile: 48,
+  detail_section_heading_size: 54,
+  detail_section_heading_size_mobile: 36,
+  detail_card_heading_size: 24,
+  detail_cta_heading_size: 58,
+
   who_is_it_for_enabled: false,
   who_is_it_for_heading:
     "Who This Service Is For",
@@ -142,46 +150,55 @@ const INITIAL_FORM: CreateServiceInput = {
 
 type ServiceFormProps = {
   initialService?: Service;
+  detailManagers?: {
+    benefits?: ReactNode;
+    process?: ReactNode;
+    gallery?: ReactNode;
+  };
 };
 
 function getInitialForm(
   service?: Service,
 ): CreateServiceInput {
   if (!service) {
-    return {
-      ...INITIAL_FORM,
-    };
+    return { ...INITIAL_FORM };
   }
 
-  const initialForm: CreateServiceInput = {
+  return {
     ...INITIAL_FORM,
+    ...service,
+    internal_name:
+      service.internal_name ??
+      service.service_name ??
+      "",
+    service_name:
+      service.service_name ?? "",
+    slug:
+      service.slug ?? "",
+    eyebrow:
+      service.eyebrow ?? "",
+    short_description:
+      service.short_description ?? "",
+    full_description:
+      service.full_description ?? "",
+    featured_image_url:
+      service.featured_image_url ?? null,
+    featured_image_storage_path:
+      service.featured_image_storage_path ?? null,
+    detail_hero_image_url:
+      service.detail_hero_image_url ?? null,
+    detail_hero_image_storage_path:
+      service.detail_hero_image_storage_path ?? null,
+    detail_hero_video_url:
+      service.detail_hero_video_url ?? null,
+    detail_hero_video_storage_path:
+      service.detail_hero_video_storage_path ?? null,
+    detail_hero_poster_url:
+      service.detail_hero_poster_url ?? null,
+    detail_hero_poster_storage_path:
+      service.detail_hero_poster_storage_path ?? null,
   };
-
-  (
-    Object.keys(
-      initialForm,
-    ) as Array<
-      keyof CreateServiceInput
-    >
-  ).forEach((key) => {
-    const value =
-      service[
-        key as keyof Service
-      ];
-
-    if (value !== undefined) {
-      (
-        initialForm as Record<
-          keyof CreateServiceInput,
-          unknown
-        >
-      )[key] = value;
-    }
-  });
-
-  return initialForm;
 }
-
 function slugify(value: string): string {
   return value
     .toLowerCase()
@@ -192,6 +209,7 @@ function slugify(value: string): string {
 
 export default function ServiceForm({
   initialService,
+  detailManagers,
 }: ServiceFormProps) {
   const router = useRouter();
   const supabase = createClient();
@@ -209,6 +227,7 @@ export default function ServiceForm({
 
   const [slugEdited, setSlugEdited] =
     useState(false);
+
 
   const [files, setFiles] =
     useState<
@@ -632,7 +651,11 @@ export default function ServiceForm({
           slugify(form.slug),
 
         is_published:
-          submitMode === "publish",
+          submitMode === "publish"
+            ? true
+            : isEditing
+              ? Boolean(form.is_published)
+              : false,
       };
 
       if (
@@ -654,9 +677,8 @@ export default function ServiceForm({
 
         payload.featured_image_storage_path =
           uploaded.storagePath;
-      } else {
-        payload.featured_image_storage_path =
-          null;
+      } else if (sources.featured === "url") {
+        payload.featured_image_storage_path = null;
       }
 
       if (
@@ -682,9 +704,8 @@ export default function ServiceForm({
 
           payload.detail_hero_image_storage_path =
             uploaded.storagePath;
-        } else {
-          payload.detail_hero_image_storage_path =
-            null;
+        } else if (sources.detailImage === "url") {
+          payload.detail_hero_image_storage_path = null;
         }
       }
 
@@ -711,9 +732,8 @@ export default function ServiceForm({
 
           payload.detail_hero_video_storage_path =
             uploaded.storagePath;
-        } else {
-          payload.detail_hero_video_storage_path =
-            null;
+        } else if (sources.detailVideo === "url") {
+          payload.detail_hero_video_storage_path = null;
         }
 
         if (
@@ -1395,6 +1415,33 @@ export default function ServiceForm({
                   }
                 />
               </label>
+
+              <div className="serviceAppearanceGrid serviceField--full">
+                {[
+                  ["detail_hero_heading_size", "Hero heading desktop"],
+                  ["detail_hero_heading_size_mobile", "Hero heading mobile"],
+                  ["detail_section_heading_size", "Section heading desktop"],
+                  ["detail_section_heading_size_mobile", "Section heading mobile"],
+                  ["detail_card_heading_size", "Card heading"],
+                  ["detail_cta_heading_size", "CTA heading"],
+                ].map(([field, label]) => (
+                  <label className="serviceField" key={field}>
+                    <span>{label} (px)</span>
+                    <input
+                      type="number"
+                      min="16"
+                      max="180"
+                      value={Number(form[field as keyof CreateServiceInput] ?? 0)}
+                      onChange={(event) =>
+                        updateField(
+                          field as keyof CreateServiceInput,
+                          Number(event.target.value) as never,
+                        )
+                      }
+                    />
+                  </label>
+                ))}
+              </div>
             </div>
 
             <div className="serviceFormCard__body serviceFormCard__body--border">
@@ -1587,6 +1634,14 @@ export default function ServiceForm({
                 </label>
               ) : null}
 
+              {form.benefits_enabled &&
+              isEditing &&
+              detailManagers?.benefits ? (
+                <div className="serviceField--full serviceInlineManager">
+                  {detailManagers.benefits}
+                </div>
+              ) : null}
+
               {form.process_enabled ? (
                 <label className="serviceField">
                   <span>Process heading</span>
@@ -1604,6 +1659,22 @@ export default function ServiceForm({
                     }
                   />
                 </label>
+              ) : null}
+
+              {form.process_enabled &&
+              isEditing &&
+              detailManagers?.process ? (
+                <div className="serviceField--full serviceInlineManager">
+                  {detailManagers.process}
+                </div>
+              ) : null}
+
+              {form.gallery_enabled &&
+              isEditing &&
+              detailManagers?.gallery ? (
+                <div className="serviceField--full serviceInlineManager">
+                  {detailManagers.gallery}
+                </div>
               ) : null}
             </div>
           </section>

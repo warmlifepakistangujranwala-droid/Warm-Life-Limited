@@ -7,7 +7,7 @@
  * Styles dynamic public service detail pages, including real
  * benefits, process steps and gallery content.
  *
- * Version : v1.1.0
+ * Version : v1.2.0
  * ============================================================
  */
 
@@ -100,7 +100,7 @@
 .serviceDetailHero h1 {
   max-width: 980px;
   margin: 0;
-  font-size: clamp(46px, 6.4vw, 88px);
+  font-size: min(6.4vw, var(--service-detail-hero-heading-size));
   line-height: 0.98;
   letter-spacing: -0.055em;
   text-wrap: balance;
@@ -196,7 +196,7 @@
 }
 
 .serviceDetailAudience h2 {
-  font-size: clamp(34px, 4vw, 54px);
+  font-size: min(4vw, var(--service-detail-section-heading-size));
 }
 
 .serviceDetailAudience__panel {
@@ -250,7 +250,7 @@
 }
 
 .serviceDetailSectionHeader h2 {
-  font-size: clamp(34px, 4vw, 54px);
+  font-size: min(4vw, var(--service-detail-section-heading-size));
 }
 
 .serviceDetailBenefits__grid {
@@ -290,7 +290,7 @@
 
 .serviceDetailBenefitCard h3 {
   margin: 20px 0 0;
-  font-size: 24px;
+  font-size: var(--service-detail-card-heading-size);
   letter-spacing: -0.03em;
 }
 
@@ -339,7 +339,7 @@
 
 .serviceDetailProcessStep__content h3 {
   margin: 0;
-  font-size: 24px;
+  font-size: var(--service-detail-card-heading-size);
   letter-spacing: -0.03em;
 }
 
@@ -415,7 +415,7 @@
 .serviceDetailCta h2 {
   max-width: 780px;
   color: #ffffff;
-  font-size: clamp(34px, 4.5vw, 58px);
+  font-size: var(--service-detail-cta-heading-size);
 }
 
 .serviceDetailCta__inner p {
@@ -478,6 +478,15 @@
 }
 
 @media (max-width: 680px) {
+  .serviceDetailHero h1 {
+    font-size: var(--service-detail-hero-heading-size-mobile);
+  }
+
+  .serviceDetailAudience h2,
+  .serviceDetailSectionHeader h2 {
+    font-size: var(--service-detail-section-heading-size-mobile);
+  }
+
   .serviceDetailHero {
     min-height: 640px;
   }

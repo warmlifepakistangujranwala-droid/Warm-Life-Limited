@@ -1,0 +1,21 @@
+
+.serviceAppearanceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid rgba(22, 61, 42, 0.1);
+  border-radius: 16px;
+  background: #f8faf7;
+}
+
+.serviceInlineManager {
+  width: 100%;
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .serviceAppearanceGrid {
+    grid-template-columns: 1fr;
+  }
+}
