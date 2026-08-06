@@ -88,6 +88,11 @@ const navigationGroups: NavigationGroup[] = [
         icon: "▣",
       },
       {
+        href: "/admin/website/blogs",
+        label: "Blogs",
+        icon: "✎",
+      },
+      {
         href: "/admin/website/contact",
         label: "Contact Page",
         icon: "✉",
@@ -114,11 +119,7 @@ const navigationGroups: NavigationGroup[] = [
     title: "Content",
     items: [
      
-      {
-        href: "/admin/blogs",
-        label: "Blogs",
-        icon: "✎",
-      },
+      
       
       {
         href: "/admin/testimonials",

@@ -1,0 +1,483 @@
+/**
+ * Complete Blog Form
+ * Version: v0.1.0
+ */
+
+.blogEditorPage {
+  min-height: 100vh;
+  padding: 34px;
+  color: #163d2a;
+  background: #f5f7f3;
+}
+
+.blogEditorPage__header,
+.blogForm {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+}
+
+.blogEditorPage__header {
+  margin-bottom: 22px;
+  padding: 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 26px;
+  border: 1px solid
+    rgba(22, 61, 42, 0.09);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow:
+    0 14px 38px
+    rgba(22, 61, 42, 0.05);
+}
+
+.blogEditorPage__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #748078;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.blogEditorPage__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blogEditorPage__titleRow {
+  margin-top: 18px;
+  display: flex;
+  gap: 15px;
+}
+
+.blogEditorPage__titleIcon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  color: #163d2a;
+  background: #f1d313;
+}
+
+.blogEditorPage__titleRow > div:last-child > span,
+.blogFormSection > header > span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.blogEditorPage__titleRow h1 {
+  margin: 7px 0 0;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.blogEditorPage__titleRow p {
+  max-width: 720px;
+  margin: 11px 0 0;
+  color: #6a776e;
+  line-height: 1.7;
+}
+
+.blogEditorPage__backButton {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 11px;
+  color: #315f45;
+  background: #edf3ed;
+  font-size: 10px;
+  font-weight: 850;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.blogForm {
+  display: grid;
+  gap: 20px;
+}
+
+.blogFormSection {
+  overflow: hidden;
+  border: 1px solid
+    rgba(22, 61, 42, 0.09);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:
+    0 14px 38px
+    rgba(22, 61, 42, 0.045);
+}
+
+.blogFormSection > header {
+  padding: 22px 24px;
+  border-bottom: 1px solid
+    rgba(22, 61, 42, 0.08);
+}
+
+.blogFormSection > header h2 {
+  margin: 7px 0 0;
+  font-size: 25px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.blogFormGrid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.blogFormGrid--padded {
+  padding-top: 0;
+}
+
+.blogFormGrid label,
+.blogMediaField label {
+  display: grid;
+  gap: 7px;
+}
+
+.blogFormGrid label > span,
+.blogMediaField label > span {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.blogFormGrid .isFull {
+  grid-column: 1 / -1;
+}
+
+.blogForm input,
+.blogForm select,
+.blogForm textarea {
+  width: 100%;
+  border: 1px solid
+    rgba(22, 61, 42, 0.14);
+  border-radius: 10px;
+  background: #fbfcfa;
+  color: #163d2a;
+  font: inherit;
+  font-size: 11px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.blogForm input,
+.blogForm select {
+  min-height: 42px;
+  padding: 0 11px;
+}
+
+.blogForm textarea {
+  padding: 11px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.blogForm input:focus,
+.blogForm select:focus,
+.blogForm textarea:focus {
+  border-color: #477553;
+  box-shadow:
+    0 0 0 3px
+    rgba(71, 117, 83, 0.1);
+}
+
+.blogForm__help,
+.blogForm__count {
+  color: #7a857d;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.blogForm__count {
+  justify-self: end;
+}
+
+.blogForm__count.isOver {
+  color: #a34f35;
+}
+
+.blogFormSection__content {
+  padding: 24px;
+}
+
+.blogMediaField {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid
+    rgba(22, 61, 42, 0.09);
+  border-radius: 15px;
+  background: #fafcf9;
+}
+
+.blogMediaField__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.blogMediaField__top strong {
+  display: block;
+  font-size: 13px;
+}
+
+.blogMediaField__top small {
+  display: block;
+  max-width: 720px;
+  margin-top: 5px;
+}
+
+.blogMediaField__upload {
+  min-height: 40px;
+  padding: 0 13px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #315f45;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.blogMediaField__upload input {
+  display: none;
+}
+
+.blogMediaField__preview,
+.blogMediaField__empty {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+}
+
+.blogMediaField__preview {
+  display: block;
+  object-fit: cover;
+}
+
+.blogMediaField__empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: #758078;
+  background: #edf1ec;
+}
+
+.blogToggleGrid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.blogToggleGrid label,
+.blogInlineCheckbox {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid
+    rgba(22, 61, 42, 0.1);
+  border-radius: 11px;
+  background: #f8faf7;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.blogToggleGrid input,
+.blogInlineCheckbox input {
+  width: 17px;
+  height: 17px;
+  min-height: auto;
+  padding: 0;
+  accent-color: #315f45;
+}
+
+.blogFormNotice {
+  margin: 20px 24px 0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid
+    rgba(71, 117, 83, 0.15);
+  border-radius: 12px;
+  color: #315f45;
+  background: #edf3ed;
+}
+
+.blogFormNotice p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.blogManagerToggleList {
+  padding: 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.blogManagerToggleList > div {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  border: 1px solid
+    rgba(22, 61, 42, 0.1);
+  border-radius: 13px;
+  background: #f8faf7;
+}
+
+.blogManagerToggleList label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.blogManagerToggleList label input {
+  width: 17px;
+  height: 17px;
+  min-height: auto;
+  padding: 0;
+  accent-color: #315f45;
+}
+
+.blogForm__message {
+  padding: 15px 17px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 13px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.blogForm__message.isSuccess {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.blogForm__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.blogForm__footer {
+  position: sticky;
+  bottom: 14px;
+  z-index: 10;
+  padding: 13px;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid
+    rgba(22, 61, 42, 0.08);
+  border-radius: 16px;
+  background:
+    rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 18px 46px
+    rgba(22, 61, 42, 0.13);
+  backdrop-filter: blur(12px);
+}
+
+.blogForm__footer button {
+  min-height: 44px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #163d2a;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.blogForm__footer button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.blogForm__spinner {
+  animation:
+    blogFormSpin 0.8s linear infinite;
+}
+
+@keyframes blogFormSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 820px) {
+  .blogEditorPage {
+    padding: 24px 18px;
+  }
+
+  .blogEditorPage__header {
+    flex-direction: column;
+  }
+
+  .blogEditorPage__backButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .blogFormGrid,
+  .blogToggleGrid,
+  .blogManagerToggleList {
+    grid-template-columns: 1fr;
+  }
+
+  .blogFormGrid .isFull {
+    grid-column: auto;
+  }
+
+  .blogMediaField__top {
+    flex-direction: column;
+  }
+
+  .blogMediaField__upload {
+    width: 100%;
+  }
+
+  .blogMediaField__preview,
+  .blogMediaField__empty {
+    height: 240px;
+  }
+
+  .blogForm__footer button {
+    width: 100%;
+  }
+}
