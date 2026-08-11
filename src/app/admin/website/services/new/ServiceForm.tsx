@@ -7,7 +7,7 @@
  * Provides the Add Service form with Supabase media uploads,
  * automatic slug generation and optional detail-page controls.
  *
- * Version : v1.3.2
+ * Version : v1.6.0
  * ============================================================
  */
 
@@ -34,10 +34,17 @@ import { useRouter } from "next/navigation";
 
 import {
   createService,
+  createServiceBenefit,
+  createServiceGalleryItem,
+  createServiceProcessStep,
   updateService,
 } from "@/lib/actions/services-page";
 
 import { createClient } from "@/lib/supabase/client";
+
+import NewServiceDetailBuilder, {
+  type NewServiceDetailDrafts,
+} from "./NewServiceDetailBuilder";
 
 import type {
   CreateServiceInput,
@@ -298,6 +305,13 @@ export default function ServiceForm({
     useState<"draft" | "publish">(
       "draft",
     );
+
+  const [newDetailDrafts, setNewDetailDrafts] =
+    useState<NewServiceDetailDrafts>({
+      benefits: [],
+      processSteps: [],
+      galleryItems: [],
+    });
 
   function updateField<
     K extends keyof CreateServiceInput,
@@ -615,6 +629,168 @@ export default function ServiceForm({
     return null;
   }
 
+
+  async function saveNewServiceRepeatableContent(
+    serviceId: string,
+  ): Promise<void> {
+    for (
+      const benefit of
+      newDetailDrafts.benefits
+    ) {
+      const result =
+        await createServiceBenefit({
+          service_id:
+            serviceId,
+
+          internal_name:
+            benefit.internal_name.trim() ||
+            benefit.title.trim(),
+
+          title:
+            benefit.title.trim(),
+
+          description:
+            benefit.description,
+
+          icon_name:
+            benefit.icon_name,
+
+          display_order:
+            benefit.display_order,
+
+          is_active:
+            benefit.is_active,
+
+          is_published:
+            benefit.is_published,
+        });
+
+      if (!result.success) {
+        throw new Error(
+          `Benefit "${benefit.title}" could not be saved: ${result.message}`,
+        );
+      }
+    }
+
+    for (
+      const step of
+      newDetailDrafts.processSteps
+    ) {
+      const result =
+        await createServiceProcessStep({
+          service_id:
+            serviceId,
+
+          internal_name:
+            step.internal_name.trim() ||
+            step.title.trim(),
+
+          step_number:
+            step.step_number,
+
+          title:
+            step.title.trim(),
+
+          description:
+            step.description,
+
+          icon_name:
+            step.icon_name,
+
+          display_order:
+            step.display_order,
+
+          is_active:
+            step.is_active,
+
+          is_published:
+            step.is_published,
+        });
+
+      if (!result.success) {
+        throw new Error(
+          `Process step "${step.title}" could not be saved: ${result.message}`,
+        );
+      }
+    }
+
+    for (
+      const galleryItem of
+      newDetailDrafts.galleryItems
+    ) {
+      let publicUrl =
+        galleryItem.image_url;
+
+      let storagePath:
+        string | null =
+        null;
+
+      if (
+        galleryItem.file
+      ) {
+        const uploaded =
+          await uploadFile(
+            galleryItem.file,
+            `gallery/${serviceId}`,
+          );
+
+        publicUrl =
+          uploaded.publicUrl;
+
+        storagePath =
+          uploaded.storagePath;
+      }
+
+      if (!publicUrl) {
+        continue;
+      }
+
+      const result =
+        await createServiceGalleryItem({
+          service_id:
+            serviceId,
+
+          internal_name:
+            galleryItem.internal_name.trim() ||
+            galleryItem.image_alt.trim() ||
+            `Gallery image ${galleryItem.display_order + 1}`,
+
+          image_url:
+            publicUrl,
+
+          image_storage_path:
+            storagePath,
+
+          image_alt:
+            galleryItem.image_alt,
+
+          caption:
+            galleryItem.caption,
+
+          display_order:
+            galleryItem.display_order,
+
+          is_active:
+            galleryItem.is_active,
+
+          is_published:
+            galleryItem.is_published,
+        });
+
+      if (!result.success) {
+        if (storagePath) {
+          await removeUploadedFiles([
+            storagePath,
+          ]);
+        }
+
+        throw new Error(
+          `Gallery item could not be saved: ${result.message}`,
+        );
+      }
+    }
+  }
+
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
@@ -808,6 +984,16 @@ export default function ServiceForm({
 
       const createdServiceId =
         result.data?.id;
+
+      if (
+        !isEditing &&
+        form.has_detail_page &&
+        createdServiceId
+      ) {
+        await saveNewServiceRepeatableContent(
+          createdServiceId,
+        );
+      }
 
       if (
         form.has_detail_page &&
@@ -1312,27 +1498,6 @@ export default function ServiceForm({
       </section>
 
       {form.has_detail_page ? (
-        <section className="serviceRepeatableNotice">
-          <div className="serviceRepeatableNotice__icon">
-            <Save size={20} />
-          </div>
-
-          <div>
-            <strong>
-              Benefits, Process Steps and Gallery
-            </strong>
-
-            <p>
-              Save or publish this service first. You will then be
-              taken automatically to the Edit Service page, where
-              you can add unlimited benefits, process steps and
-              gallery images.
-            </p>
-          </div>
-        </section>
-      ) : null}
-
-      {form.has_detail_page ? (
         <>
           <section className="serviceFormCard">
             <div className="serviceFormCard__heading">
@@ -1502,7 +1667,10 @@ export default function ServiceForm({
             </div>
           </section>
 
-          <section className="serviceFormCard">
+          <section
+            className="serviceFormCard"
+            id="detail-content"
+          >
             <div className="serviceFormCard__heading">
               <span>Detail sections</span>
               <h2>Optional content sections</h2>
@@ -1676,6 +1844,42 @@ export default function ServiceForm({
                   {detailManagers.gallery}
                 </div>
               ) : null}
+
+            {!isEditing &&
+(
+  Boolean(
+    form.benefits_enabled,
+  ) ||
+  Boolean(
+    form.process_enabled,
+  ) ||
+  Boolean(
+    form.gallery_enabled,
+  )
+) ? (
+  <div className="serviceField--full">
+    <NewServiceDetailBuilder
+      benefitsEnabled={
+        Boolean(
+          form.benefits_enabled,
+        )
+      }
+      processEnabled={
+        Boolean(
+          form.process_enabled,
+        )
+      }
+      galleryEnabled={
+        Boolean(
+          form.gallery_enabled,
+        )
+      }
+      onChange={
+        setNewDetailDrafts
+      }
+    />
+  </div>
+) : null}
             </div>
           </section>
 

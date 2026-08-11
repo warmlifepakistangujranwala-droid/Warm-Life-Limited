@@ -7,11 +7,13 @@
  * Purpose :
  * Displays the CMS top navigation and administrator profile.
  *
- * Version : v0.3.0
+ * Version : v0.4.0
  * ============================================================
  */
 
 "use client";
+
+import Link from "next/link";
 
 import "./admin-topbar.css";
 
@@ -53,14 +55,25 @@ export default function AdminTopbar({
           View website ↗
         </a>
 
-        <div className="admin-topbar__profile">
-          <span className="admin-topbar__avatar">A</span>
+        <Link
+          href="/admin/account"
+          className="admin-topbar__profile"
+          aria-label="Open administrator account settings"
+        >
+          <span className="admin-topbar__avatar">
+            A
+          </span>
 
           <div>
-            <strong>Administrator</strong>
-            <span>Secure access</span>
+            <strong>
+              Administrator
+            </strong>
+
+            <span>
+              Account settings
+            </span>
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );

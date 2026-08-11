@@ -1,0 +1,472 @@
+/**
+ * ============================================================
+ * Project : Warm Life Ltd
+ * File    : src/app/admin/account/account.css
+ *
+ * Purpose :
+ * Styles the authenticated administrator Account Settings page.
+ *
+ * Version : v0.1.0
+ * ============================================================
+ */
+
+.adminAccountPage {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: 34px;
+  color: #163d2a;
+}
+
+
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+
+.adminAccountHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 28px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:
+    0 18px 46px
+    rgba(22, 61, 42, 0.05);
+}
+
+.adminAccountHeader__icon {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #163d2a;
+  background: #f1d313;
+}
+
+.adminAccountHeader > div:last-child > span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.adminAccountHeader h1 {
+  margin: 7px 0 0;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.adminAccountHeader p {
+  max-width: 700px;
+  margin: 10px 0 0;
+  color: #6a776e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   ACCOUNT CARDS
+   ============================================================ */
+
+.adminAccountCard {
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow:
+    0 16px 42px
+    rgba(22, 61, 42, 0.045);
+}
+
+.adminAccountCard__heading {
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-bottom: 1px solid rgba(22, 61, 42, 0.08);
+  background: #fafcf9;
+}
+
+.adminAccountCard__headingIcon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #315f45;
+  background: #edf3ed;
+}
+
+.adminAccountCard__heading span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.adminAccountCard__heading h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.adminAccountCard__heading p {
+  max-width: 680px;
+  margin: 7px 0 0;
+  color: #6a776e;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   ACCOUNT DETAILS
+   ============================================================ */
+
+.adminAccountDetails {
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  gap: 14px;
+}
+
+.adminAccountDetails__item {
+  padding: 16px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 13px;
+  background: #fbfcfa;
+}
+
+.adminAccountDetails__item span,
+.adminAccountDetails__item strong {
+  display: block;
+}
+
+.adminAccountDetails__item span {
+  color: #748078;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.adminAccountDetails__item strong {
+  margin-top: 6px;
+  color: #163d2a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   PASSWORD AREA
+   ============================================================ */
+
+.adminAccountSecurity {
+  padding: 24px;
+}
+
+
+/* ============================================================
+   SECURITY NOTICE
+   ============================================================ */
+
+.adminAccountSecurity__notice {
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 14px;
+  background: #f8faf7;
+}
+
+.adminAccountSecurity__notice > div:first-child {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #315f45;
+  background: #e7f5ea;
+}
+
+.adminAccountSecurity__notice strong {
+  color: #163d2a;
+  font-size: 11px;
+}
+
+.adminAccountSecurity__notice p {
+  margin: 5px 0 0;
+  color: #6a776e;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   FORM MESSAGE
+   ============================================================ */
+
+.adminAccountSecurity__message {
+  margin-top: 16px;
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 11px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.adminAccountSecurity__message.isSuccess {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.adminAccountSecurity__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.adminAccountSecurity__form {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.adminAccountSecurity__field {
+  display: grid;
+  gap: 8px;
+}
+
+.adminAccountSecurity__field > span {
+  color: #163d2a;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.adminAccountSecurity__input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.adminAccountSecurity__input > svg {
+  position: absolute;
+  left: 14px;
+  z-index: 1;
+  color: #477553;
+  pointer-events: none;
+}
+
+.adminAccountSecurity__input input {
+  width: 100%;
+  min-height: 50px;
+  padding:
+    0 48px
+    0 42px;
+  border: 1px solid rgba(22, 61, 42, 0.14);
+  border-radius: 11px;
+  outline: none;
+  color: #163d2a;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 12px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.adminAccountSecurity__input input:focus {
+  border-color: #315f45;
+  box-shadow:
+    0 0 0 4px
+    rgba(49, 95, 69, 0.08);
+}
+
+.adminAccountSecurity__input button {
+  position: absolute;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  color: #748078;
+  background: transparent;
+  cursor: pointer;
+}
+
+.adminAccountSecurity__input button:hover {
+  color: #315f45;
+  background: #edf3ed;
+}
+
+
+/* ============================================================
+   PASSWORD RULES
+   ============================================================ */
+
+.adminAccountPasswordRules {
+  padding: 16px;
+  border: 1px solid rgba(22, 61, 42, 0.09);
+  border-radius: 13px;
+  background: #fafcf9;
+}
+
+.adminAccountPasswordRules > strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 10px;
+}
+
+.adminAccountPasswordRules__grid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  gap: 8px;
+}
+
+.adminAccountPasswordRules__grid > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #9a9f9b;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.adminAccountPasswordRules__grid > span svg {
+  color: #b8bdb9;
+}
+
+.adminAccountPasswordRules__grid > span.isValid {
+  color: #245d37;
+}
+
+.adminAccountPasswordRules__grid > span.isValid svg {
+  color: #2c8a4b;
+}
+
+
+/* ============================================================
+   PASSWORD MATCH
+   ============================================================ */
+
+.adminAccountPasswordMatch {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.adminAccountPasswordMatch.isValid {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.adminAccountPasswordMatch.isInvalid {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+
+/* ============================================================
+   SUBMIT BUTTON
+   ============================================================ */
+
+.adminAccountSecurity__submit {
+  min-height: 48px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #163d2a;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.adminAccountSecurity__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.adminAccountSecurity__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.adminAccountSecurity__spinner {
+  animation:
+    adminAccountSpin
+    0.8s linear
+    infinite;
+}
+
+@keyframes adminAccountSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 760px) {
+  .adminAccountPage {
+    padding: 24px 18px;
+  }
+
+  .adminAccountHeader {
+    flex-direction: column;
+  }
+
+  .adminAccountHeader h1 {
+    font-size: 34px;
+  }
+
+  .adminAccountDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .adminAccountPasswordRules__grid {
+    grid-template-columns: 1fr;
+  }
+}

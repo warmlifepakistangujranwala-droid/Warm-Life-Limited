@@ -1,0 +1,594 @@
+.contactAdminPage {
+  min-height: 100vh;
+  padding: 34px;
+  color: #163d2a;
+  background: #f5f7f3;
+}
+
+.contactAdminHeader,
+.contactSettingsForm {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+}
+
+.contactAdminHeader {
+  margin-bottom: 22px;
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border: 1px solid rgba(22,61,42,.09);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.contactAdminHeader span,
+.contactSettingsForm section > header > span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.contactAdminHeader h1 {
+  margin: 8px 0 0;
+  font-size: 42px;
+  letter-spacing: -.05em;
+}
+
+.contactAdminHeader p {
+  max-width: 650px;
+  margin: 9px 0 0;
+  color: #6a776e;
+}
+
+.contactAdminHeader__actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.contactAdminHeader__actions a {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 11px;
+  color: #315f45;
+  background: #edf3ed;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.contactSettingsForm {
+  display: grid;
+  gap: 20px;
+}
+
+.contactSettingsForm > section {
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.09);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.contactSettingsForm section > header {
+  padding: 20px 22px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+}
+
+.contactSettingsForm section > header h2 {
+  margin: 7px 0 0;
+  font-size: 25px;
+}
+
+.contactSettingsForm__grid {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.contactSettingsForm label {
+  display: grid;
+  gap: 7px;
+}
+
+.contactSettingsForm label > span {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.contactSettingsForm .isFull {
+  grid-column: 1 / -1;
+}
+
+.contactSettingsForm input,
+.contactSettingsForm textarea {
+  width: 100%;
+  border: 1px solid rgba(22,61,42,.14);
+  border-radius: 10px;
+  background: #fbfcfa;
+  color: #163d2a;
+  font: inherit;
+  font-size: 11px;
+}
+
+.contactSettingsForm input {
+  min-height: 42px;
+  padding: 0 11px;
+}
+
+.contactSettingsForm textarea {
+  padding: 11px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.contactSettingsForm__toggles {
+  padding: 20px 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contactSettingsForm__toggles label {
+  min-height: 42px;
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(22,61,42,.1);
+  border-radius: 10px;
+  background: #f8faf7;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.contactSettingsForm__toggles input {
+  width: 17px;
+  height: 17px;
+  min-height: auto;
+  accent-color: #315f45;
+}
+
+.contactSettingsForm__mediaWrap {
+  padding: 0 22px 22px;
+}
+
+.contactMediaField {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid rgba(22,61,42,.09);
+  border-radius: 15px;
+  background: #fafcf9;
+}
+
+.contactMediaField__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.contactMediaField__upload {
+  min-height: 40px;
+  padding: 0 13px;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+  border-radius: 10px;
+  color: #fff;
+  background: #315f45;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.contactMediaField__upload input {
+  display: none;
+}
+
+.contactMediaField__preview,
+.contactMediaField__empty {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+}
+
+.contactMediaField__preview {
+  object-fit: cover;
+}
+
+.contactMediaField__empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: #748078;
+  background: #edf1ec;
+}
+
+.contactSettingsForm__message {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.contactSettingsForm__message.isSuccess {
+  color: #245d37;
+  background: #e7f5ea;
+}
+
+.contactSettingsForm__message.isError {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.contactSettingsForm__footer {
+  position: sticky;
+  bottom: 14px;
+  z-index: 20;
+  padding: 13px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 16px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 18px 46px rgba(22,61,42,.13);
+}
+
+.contactSettingsForm__footer button {
+  min-height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  background: #163d2a;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.contactSettingsForm__spinner {
+  animation: contactSpin .8s linear infinite;
+}
+
+@keyframes contactSpin {
+  to { transform: rotate(360deg); }
+}
+
+.contactAdminPage__missing {
+  max-width: 720px;
+  margin: 70px auto;
+  padding: 36px;
+  border-radius: 20px;
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+@media (max-width: 820px) {
+  .contactAdminPage {
+    padding: 24px 18px;
+  }
+
+  .contactAdminHeader {
+    flex-direction: column;
+  }
+
+  .contactAdminHeader__actions {
+    flex-direction: column;
+  }
+
+  .contactAdminHeader__actions a {
+    justify-content: center;
+  }
+
+  .contactSettingsForm__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactSettingsForm .isFull {
+    grid-column: auto;
+  }
+
+  .contactMediaField__top {
+    flex-direction: column;
+  }
+
+  .contactMediaField__upload {
+    justify-content: center;
+  }
+
+  .contactMediaField__preview,
+  .contactMediaField__empty {
+    height: 240px;
+  }
+}
+
+/* ============================================================
+   Contact Repeatable Managers
+   ============================================================ */
+
+.contactRepeatableManager {
+  width: min(100%, 1380px);
+  margin: 20px auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.09);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.contactRepeatableManager > header {
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+}
+
+.contactRepeatableManager > header span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.contactRepeatableManager > header h2 {
+  margin: 7px 0 0;
+  font-size: 25px;
+}
+
+.contactRepeatableManager > header p {
+  max-width: 720px;
+  margin: 8px 0 0;
+  color: #6a776e;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.contactRepeatableManager > header > strong {
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #315f45;
+  background: #edf3ed;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.contactManagerCreate {
+  padding: 22px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+  background: #fbfcfa;
+}
+
+.contactManagerCreate > h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+.contactManagerFields {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.contactManagerFields label {
+  display: grid;
+  gap: 7px;
+}
+
+.contactManagerFields label > span {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.contactManagerFields .isFull {
+  grid-column: 1 / -1;
+}
+
+.contactManagerFields input,
+.contactManagerFields textarea,
+.contactManagerFields select {
+  width: 100%;
+  border: 1px solid rgba(22,61,42,.14);
+  border-radius: 10px;
+  color: #163d2a;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+}
+
+.contactManagerFields input,
+.contactManagerFields select {
+  min-height: 42px;
+  padding: 0 11px;
+}
+
+.contactManagerFields textarea {
+  padding: 11px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.contactManagerToggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+}
+
+.contactManagerToggles label {
+  min-height: 42px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(22,61,42,.1);
+  border-radius: 10px;
+  background: #f8faf7;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.contactManagerToggles input {
+  width: 16px;
+  height: 16px;
+  min-height: auto;
+  padding: 0;
+  accent-color: #315f45;
+}
+
+.contactManagerCreate > button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: #315f45;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.contactManagerList {
+  padding: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.contactManagerCard {
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.1);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.contactManagerCard__title {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+  background: #f9fbf8;
+}
+
+.contactManagerCard__title span {
+  color: #477553;
+  font-size: 8px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.contactManagerCard__title h3 {
+  margin: 5px 0 0;
+  font-size: 18px;
+}
+
+.contactManagerCard__title small {
+  display: block;
+  margin-top: 5px;
+  color: #748078;
+}
+
+.contactManagerCard__title > strong {
+  padding: 7px 10px;
+  height: fit-content;
+  border-radius: 999px;
+  color: #315f45;
+  background: #edf3ed;
+  font-size: 8px;
+}
+
+.contactManagerCard > .contactManagerFields {
+  padding: 18px;
+}
+
+.contactManagerCard > footer {
+  padding: 13px 18px;
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(22,61,42,.08);
+}
+
+.contactManagerCard > footer button {
+  min-height: 38px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.contactManagerCard > footer .isSave {
+  color: #315f45;
+  background: #e8f0e8;
+}
+
+.contactManagerCard > footer .isDelete {
+  color: #852a2a;
+  background: #fbeaea;
+}
+
+.contactManagerMessage {
+  margin: 18px 22px 0;
+  padding: 13px 15px;
+  border-radius: 11px;
+  color: #852a2a;
+  background: #fbeaea;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.contactManagerSpin {
+  animation: contactManagerSpin .8s linear infinite;
+}
+
+@keyframes contactManagerSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 820px) {
+  .contactRepeatableManager > header {
+    flex-direction: column;
+  }
+
+  .contactManagerFields {
+    grid-template-columns: 1fr;
+  }
+
+  .contactManagerFields .isFull {
+    grid-column: auto;
+  }
+
+  .contactManagerToggles {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contactManagerCard__title {
+    flex-direction: column;
+  }
+}

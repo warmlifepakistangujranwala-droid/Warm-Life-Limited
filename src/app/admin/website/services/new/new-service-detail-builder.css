@@ -1,0 +1,259 @@
+/**
+ * New Service Detail Builder
+ * Version: v1.0.0
+ */
+
+.newServiceDetailBuilder {
+  display: grid;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.newDetailBuilderSection {
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.11);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.newDetailBuilderSection > header {
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+  background: #f9fbf8;
+}
+
+.newDetailBuilderSection > header span {
+  color: #477553;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.newDetailBuilderSection > header h3 {
+  margin: 5px 0 0;
+  font-size: 22px;
+}
+
+.newDetailBuilderSection > header p {
+  max-width: 560px;
+  margin: 6px 0 0;
+  color: #6a776e;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.newDetailBuilderSection > header button,
+.newDetailBuilderEmpty {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.newDetailBuilderSection > header button {
+  min-height: 39px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 10px;
+  color: #fff;
+  background: #315f45;
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.newDetailBuilderEmpty {
+  width: calc(100% - 36px);
+  min-height: 145px;
+  margin: 18px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  border: 1px dashed rgba(22,61,42,.2);
+  border-radius: 14px;
+  color: #477553;
+  background: #fbfcfa;
+}
+
+.newDetailBuilderEmpty strong {
+  color: #163d2a;
+  font-size: 11px;
+}
+
+.newDetailBuilderEmpty span {
+  color: #748078;
+  font-size: 9px;
+}
+
+.newDetailBuilderList {
+  padding: 18px;
+  display: grid;
+  gap: 13px;
+}
+
+.newDetailBuilderItem {
+  overflow: hidden;
+  border: 1px solid rgba(22,61,42,.1);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.newDetailBuilderItem__top {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fbf8;
+  border-bottom: 1px solid rgba(22,61,42,.08);
+}
+
+.newDetailBuilderItem__top strong {
+  font-size: 10px;
+}
+
+.newDetailBuilderItem__top button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  color: #852a2a;
+  background: #fbeaea;
+  cursor: pointer;
+}
+
+.newDetailBuilderGrid {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+
+.newDetailBuilderGrid label {
+  display: grid;
+  gap: 6px;
+}
+
+.newDetailBuilderGrid label > span {
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.newDetailBuilderGrid .isFull {
+  grid-column: 1 / -1;
+}
+
+.newDetailBuilderGrid input,
+.newDetailBuilderGrid textarea,
+.newDetailBuilderGrid select,
+.newGalleryPicker > input {
+  width: 100%;
+  border: 1px solid rgba(22,61,42,.14);
+  border-radius: 9px;
+  color: #163d2a;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 10px;
+}
+
+.newDetailBuilderGrid input,
+.newDetailBuilderGrid select,
+.newGalleryPicker > input {
+  min-height: 40px;
+  padding: 0 10px;
+}
+
+.newDetailBuilderGrid textarea {
+  padding: 10px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.newGalleryPicker {
+  padding: 15px 15px 0;
+  display: grid;
+  grid-template-columns: auto auto minmax(0,1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.newGalleryPicker > label {
+  min-height: 40px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 9px;
+  color: #fff;
+  background: #315f45;
+  font-size: 9px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.newGalleryPicker > label input {
+  display: none;
+}
+
+.newGalleryPicker > span {
+  color: #748078;
+  font-size: 9px;
+}
+
+.newGalleryPreview,
+.newGalleryEmpty {
+  width: calc(100% - 30px);
+  height: 230px;
+  margin: 15px;
+  border-radius: 12px;
+}
+
+.newGalleryPreview {
+  display: block;
+  object-fit: cover;
+}
+
+.newGalleryEmpty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  color: #748078;
+  background: #edf1ec;
+  font-size: 9px;
+}
+
+@media (max-width: 760px) {
+  .newDetailBuilderSection > header {
+    flex-direction: column;
+  }
+
+  .newDetailBuilderSection > header button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .newDetailBuilderGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .newDetailBuilderGrid .isFull {
+    grid-column: auto;
+  }
+
+  .newGalleryPicker {
+    grid-template-columns: 1fr;
+  }
+
+  .newGalleryPicker > span {
+    text-align: center;
+  }
+}
