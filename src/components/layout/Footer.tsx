@@ -635,7 +635,92 @@ export default function Footer({
           ) : null}
         </div>
 
-        {settings.show_copyright ? (
+
+
+              <div style={{ marginTop: "14px" }}>
+                {/* Finance partner */}
+                <p
+                  style={{
+                    margin: "0 0 6px",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: settings.copyright_color,
+                  }}
+                >
+                  Finance partner
+                </p>
+
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <img
+                    src="/images/hometree-finance-logo.png"
+                    alt="Hometree Finance"
+                    style={{
+                      height: "32px",
+                      maxWidth: "50%",
+                      objectFit: "contain",
+                      background: "#ffffff",
+                      padding: "4px 10px",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+
+                                {/* Accredited by */}
+                <p
+                  style={{
+                    margin: "10px 0 6px",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: settings.copyright_color,
+                  }}
+                >
+                  Accredited by
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    src="/images/NAPIT-logo.png"
+                    alt="NAPIT"
+                    style={{
+                      width: "200px",
+                      height: "60px",
+                      objectFit: "contain",
+                      background: "#ffffff",
+                      padding: "6px 14px",
+                      borderRadius: "10px",
+                    }}
+                  />
+
+                  <img
+                    src="/images/installation-assurance-authority-logo.png"
+                    alt="Installation Assurance Authority"
+                    style={{
+                      width: "200px",
+                      height: "60px",
+                      objectFit: "contain",
+                      background: "#ffffff",
+                      padding: "6px 14px",
+                      borderRadius: "10px",
+                    }}
+                  />
+                </div>
+              </div>
+
+
+
+
+                        {settings.show_copyright ? (
           <div className="footerBottom">
             <p>{settings.copyright_text}</p>
 

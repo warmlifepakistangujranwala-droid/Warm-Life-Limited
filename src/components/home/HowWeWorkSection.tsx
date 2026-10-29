@@ -40,11 +40,7 @@ function getSectionBackground(
 function getGroupBackground(
   group: HomepageHowWeWorkGroupWithSteps,
 ): string {
-  if (group.background_type === "gradient") {
-    return `linear-gradient(${group.gradient_direction}, ${group.gradient_start_color}, ${group.gradient_end_color})`;
-  }
-
-  return group.background_color;
+  return "#17503f";
 }
 
 function getShadow(style: HomepageHowWeWorkGroupWithSteps["shadow_style"]): string {

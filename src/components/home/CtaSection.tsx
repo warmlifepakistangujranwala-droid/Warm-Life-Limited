@@ -243,14 +243,32 @@ export default function CtaSection({
             </>
           ) : null}
 
+
+          {/* Bottom-right corner image */}
+          <img
+            src="/images/cta-surveyor.png"
+            alt="Warm Life surveyor holding a clipboard"
+            className="pointer-events-none absolute bottom-0 right-0 z-0 hidden h-full w-auto max-w-[50%] object-cover object-top md:block"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 40%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 40%)",
+            }}
+          />
+
+
           <div
             className="relative z-10 mx-auto"
             style={{
               maxWidth: `${section.content_inner_width}px`,
               textAlign:
                 section.text_alignment,
+              paddingRight: "clamp(0px, 28vw, 380px)",
             }}
           >
+
+
             <div
               className="flex flex-col"
               style={{
@@ -354,9 +372,9 @@ export default function CtaSection({
                   text={
                     section.primary_button_text
                   }
-                  link={
-                    section.primary_button_link
-                  }
+
+                     link="/contact"
+                  
                   openInNewTab={
                     section.primary_button_open_in_new_tab
                   }

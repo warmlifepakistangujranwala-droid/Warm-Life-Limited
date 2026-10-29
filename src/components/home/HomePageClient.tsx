@@ -411,6 +411,8 @@ const partners =
             <div className="serviceExperience">
               <div className="serviceStage shell">
                 <div className="videoPanel">
+
+
                   {activeServiceData.media_type === "video" &&
                   activeServiceData.video_url ? (
                     <video
@@ -435,6 +437,8 @@ const partners =
                         type="video/mp4"
                       />
                     </video>
+
+                    
                   ) : activeServiceData.image_url ? (
                     <Image
                       key={activeServiceData.image_url}

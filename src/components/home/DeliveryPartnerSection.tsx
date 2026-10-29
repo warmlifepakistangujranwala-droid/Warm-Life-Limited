@@ -269,7 +269,7 @@ export default function DeliveryPartnerSection({
 
               {section.image_url ? (
                 <>
-                  <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[88%] w-[40%] items-end justify-end lg:flex">
+                  <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[115%] w-[55%] items-end justify-end lg:flex">
                     <Image
                       src={section.image_url}
                       alt={
@@ -291,7 +291,7 @@ export default function DeliveryPartnerSection({
                       }
                       width={300}
                       height={340}
-                      className="max-h-72 w-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.2)]"
+                      className="max-h-72 w-auto object-contain drop-shadow-[0_28px_32px_rgba(0,0,0,0.22)]"
                     />
                   </div>
                 </>
@@ -369,7 +369,20 @@ export default function DeliveryPartnerSection({
           </div>
 
           {features.length > 0 ? (
-            <div className="mt-10 grid gap-5 rounded-[30px] border border-slate-200/70 bg-white/70 p-5 shadow-[0_22px_60px_rgba(23,37,29,0.10)] backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
+
+
+            <div
+  className="mt-10 grid gap-5 rounded-[30px] border border-slate-200/70 p-5 shadow-[0_22px_60px_rgba(23,37,29,0.10)] sm:grid-cols-2 lg:grid-cols-4"
+  style={{
+    
+    backgroundImage:
+  "linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)), url('/images/solar-home-landscape.png')",
+      
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+
               {features.map((feature) => (
                 <article
                   key={feature.id}
