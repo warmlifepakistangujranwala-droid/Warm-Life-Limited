@@ -637,6 +637,8 @@ export default function Footer({
 
 
 
+
+
               <div style={{ marginTop: "14px" }}>
                 {/* Finance partner */}
                 <p
@@ -667,7 +669,10 @@ export default function Footer({
                   />
                 </div>
 
-                                {/* Accredited by */}
+
+
+
+                {/* Accredited by */}
                 <p
                   style={{
                     margin: "10px 0 6px",
@@ -716,6 +721,43 @@ export default function Footer({
                   />
                 </div>
               </div>
+
+
+           {/*Build Lives (SMC) Pvt Ltd*/}
+                <p
+                  style={{
+                    margin: "0 0 6px",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: settings.copyright_color,
+                  }}
+                >
+                  Media partner
+                </p>
+
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <a
+             href="https://buildlives.com.pk"
+             target="_blank"
+             rel="noopener noreferrer"
+             >
+            <img
+             src="/images/build-lives-logo.png"
+             alt="Build Lives (SMC) Pvt Ltd"
+             style={{
+              height: "100px",
+              maxWidth: "100%",
+              objectFit: "contain",
+              background: "#ffffff",
+              padding: "4px 10px",
+               borderRadius: "8px",
+               }}
+                />
+               </a>
+                </div>
+
 
 
 
