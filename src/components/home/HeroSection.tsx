@@ -239,15 +239,15 @@ export default function HeroSection({
 
   const titleLineOne =
     activeHeroSlide?.title_line_one ??
-    "A warmer home,";
+    "Warm Life Limited,";
 
   const titleLineTwo =
     activeHeroSlide?.title_line_two ??
-    "built around you.";
+    "Complete Energy Provider";
 
   const description =
     activeHeroSlide?.description ??
-    "Move your cursor across the scene to control the house journey. Scroll down to explore each Warm Life service through video.";
+    "Warm Life delivers compliant, high-quality heating and insulation installs for local authorities, principal contractors, and UK households, helping you deliver warmer homes, lower bills, and successful scheme outcomes.";
 
   const videoUrl =
     activeHeroSlide?.video_url ??
@@ -259,7 +259,7 @@ export default function HeroSection({
 
   const primaryButtonText =
     activeHeroSlide?.primary_button_text ??
-    "Explore our services";
+    "Explore services";
 
   const primaryButtonLink =
     activeHeroSlide?.primary_button_link ??

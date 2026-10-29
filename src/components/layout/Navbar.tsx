@@ -172,6 +172,9 @@ export default function Navbar({ data, overlay = false }: NavbarProps) {
         ? "rgba(255,255,255,0.90)"
         : settings.header_background_color;
 
+
+   const ctaLink = "/contact";
+
   const ctaStyle = {
     "--cta-text": settings.cta_text_color,
     "--cta-background": settings.cta_background_color,
@@ -355,40 +358,21 @@ export default function Navbar({ data, overlay = false }: NavbarProps) {
           </nav>
 
           <div className="navbarActions">
-            {settings.show_cta && settings.cta_text && settings.cta_link ? (
-              isExternalLink(settings.cta_link) ? (
-                <a
-                  href={settings.cta_link}
-                  target={settings.cta_open_in_new_tab ? "_blank" : undefined}
-                  rel={
-                    settings.cta_open_in_new_tab
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  className="navbarCta"
-                  style={ctaStyle}
-                >
-                  <span>{settings.cta_text}</span>
-                  <ArrowRight size={16} />
-                </a>
-              ) : (
-                <Link
-                  href={settings.cta_link}
-                  target={settings.cta_open_in_new_tab ? "_blank" : undefined}
-                  rel={
-                    settings.cta_open_in_new_tab
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  className="navbarCta"
-                  style={ctaStyle}
-                  onClick={closeMobileMenu}
-                >
-                  <span>{settings.cta_text}</span>
-                  <ArrowRight size={16} />
-                </Link>
-              )
-            ) : null}
+
+
+               {settings.show_cta && settings.cta_text ? (
+     <Link
+       href={ctaLink}
+       className="navbarCta"
+       style={ctaStyle}
+       onClick={closeMobileMenu}
+     >
+       <span>{settings.cta_text}</span>
+       <ArrowRight size={16} />
+     </Link>
+   ) : null}
+
+
 
             <button
               type="button"

@@ -115,20 +115,38 @@ export default function WhyChooseUsSection({
     );
 
   return (
-    <section
-      aria-labelledby="why-choose-us-heading"
-      className="relative overflow-hidden"
+  <section
+    aria-labelledby="why-choose-us-heading"
+    className="relative overflow-hidden"
+    style={{
+      backgroundColor: "transparent",
+      paddingTop: `${section.padding_top}px`,
+      paddingBottom: `${section.padding_bottom}px`,
+    }}
+  >
+
+
+    {/* Background image */}
+    <div
+      className="absolute inset-0"
+      aria-hidden="true"
       style={{
-        backgroundColor:
-          section.section_background_color,
-        paddingTop: `${section.padding_top}px`,
-        paddingBottom: `${section.padding_bottom}px`,
+        backgroundImage: "url('/images/solar-powered-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
-    >
-      <div
-        className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-emerald-100/35 blur-3xl"
-        aria-hidden="true"
-      />
+    />
+
+    {/* Light overlay: soft white at the top for the heading, clear image below */}
+    <div
+      className="absolute inset-0"
+      aria-hidden="true"
+      style={{
+        background:
+          "linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 55%)",
+      }}
+    />
+
 
       <div
         className="pointer-events-none absolute -right-28 bottom-10 h-72 w-72 rounded-full bg-amber-100/35 blur-3xl"
@@ -184,32 +202,32 @@ export default function WhyChooseUsSection({
             ) : null}
           </div>
 
+
           {section.badge_text ? (
-            <div
-              className="inline-flex w-fit items-center justify-center uppercase tracking-[0.12em] shadow-[0_12px_30px_rgba(19,146,103,0.18)]"
-              style={{
-                color:
-                  section.badge_text_color,
-                backgroundColor:
-                  section.badge_background_color,
-                fontSize: `${section.badge_font_size}px`,
-                fontWeight:
-                  section.badge_font_weight,
-                borderRadius: `${section.badge_radius}px`,
-                padding: `${section.badge_padding_y}px ${section.badge_padding_x}px`,
-                justifySelf:
-                  section.heading_alignment ===
-                  "right"
-                    ? "end"
-                    : section.heading_alignment ===
-                        "center"
-                      ? "center"
-                      : "start",
-              }}
-            >
-              {section.badge_text}
-            </div>
-          ) : null}
+  <a
+    href="/contact"
+    className="inline-flex w-fit items-center justify-center uppercase tracking-[0.12em] shadow-[0_12px_30px_rgba(19,146,103,0.18)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    style={{
+      color: section.badge_text_color,
+      backgroundColor: section.badge_background_color,
+      fontSize: `${section.badge_font_size}px`,
+      fontWeight: section.badge_font_weight,
+      borderRadius: `${section.badge_radius}px`,
+      padding: `${section.badge_padding_y}px ${section.badge_padding_x}px`,
+      textDecoration: "none",
+      justifySelf:
+        section.heading_alignment === "right"
+          ? "end"
+          : section.heading_alignment === "center"
+            ? "center"
+            : "start",
+    }}
+  >
+    {section.badge_text}
+  </a>
+) : null}
+
+
         </div>
 
         <div
